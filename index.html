@@ -344,9 +344,7 @@ a{color:inherit;text-decoration:none}
 .stab-icon{font-size:14px;display:block;margin-bottom:2px}
 
 /* ── PANEL SYSTEM ──────────────────────────────────────────────── */
-.panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-.panel.active{display:flex}
-
+/* panel css removed */
 /* ── FAVORITES ─────────────────────────────────────────────────── */
 .fav-btn{
   position:absolute;bottom:10px;right:10px;
@@ -645,9 +643,7 @@ a{color:inherit;text-decoration:none}
 .stab-icon{font-size:14px;display:block;margin-bottom:2px}
 
 /* ── PANEL SYSTEM ──────────────────────────────────────────────── */
-.panel{display:none;flex-direction:column;flex:1;overflow:hidden}
-.panel.active{display:flex}
-
+/* panel css removed */
 /* ── FAVORITES ─────────────────────────────────────────────────── */
 .fav-btn{
   position:absolute;bottom:10px;right:10px;
@@ -1633,6 +1629,24 @@ a{color:inherit;text-decoration:none}
 .sug-match{color:#7AABFF}
 .sug-empty{padding:10px 12px;font-size:11.5px;color:#4A6A9A;text-align:center}
 
+
+/* ── TOPBAR QUICK BUTTONS (Feedback + Support) ──────────────────── */
+.topbar-quick-btn{
+  border:1.5px solid #E2E8F0;background:#F8FAFC;
+  border-radius:6px;padding:4px 9px;font-size:11px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  color:#334155;cursor:pointer;height:26px;
+  display:flex;align-items:center;gap:4px;
+  text-decoration:none;white-space:nowrap;transition:all .15s;
+  flex-shrink:0;
+}
+.topbar-quick-btn:hover{border-color:#1565C0;color:#1565C0}
+
+/* ── HIDE TOPBAR QUICK BTNS ON VERY SMALL SCREENS ───────────────── */
+@media(max-width:480px){
+  .topbar-quick-btn{display:none}
+}
+
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -1657,6 +1671,8 @@ a{color:inherit;text-decoration:none}
       <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
       <button class="lang-btn"        data-lang="es" onclick="setLang('es')">Español</button>
     </div>
+    <button class="topbar-quick-btn" onclick="openFeedback()" title="Send feedback">&#128172; Feedback</button>
+    <a class="topbar-quick-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener" title="Support this directory">&#9749; Support</a>
     <div id="a11y-controls">
       <select id="text-size-select" onchange="setTextSize(this.value)" title="Text size">
         <option value="sm">Smaller text</option>
@@ -1830,7 +1846,16 @@ a{color:inherit;text-decoration:none}
     </select>
   </div>
   
-  </div><!-- end panel-search -->
+  
+<div id="status-bar"></div>
+<div id="church-list">
+    <div id="no-results">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <p>No congregations match.<br>Try adjusting your filters.</p>
+    </div>
+  </div>
+  <div id="status-bar"></div>
+</div><!-- end panel-search -->
 
   <!-- ROUTE PANEL -->
   <div class="tab-panel" id="panel-route">
@@ -1838,11 +1863,25 @@ a{color:inherit;text-decoration:none}
       <h3>&#128506; <span data-i18n="route_title">Churches Along Your Route</span></h3>
       <div class="route-input-row">
         <label data-i18n="route_from">From</label>
-        <input class="route-input" id="route-from" placeholder="City, State or ZIP" autocomplete="off">
+        <div style="position:relative;flex:1">
+          <input class="route-input" id="route-from"
+            placeholder="City, State or ZIP"
+            autocomplete="off"
+            oninput="showRouteSug('route-from','sug-route-from',this.value)"
+            onfocus="if(this.value.length>=2)showRouteSug('route-from','sug-route-from',this.value)">
+          <div id="sug-route-from" class="search-sug-box"></div>
+        </div>
       </div>
       <div class="route-input-row">
         <label data-i18n="route_to">To</label>
-        <input class="route-input" id="route-to" placeholder="City, State or ZIP" autocomplete="off">
+        <div style="position:relative;flex:1">
+          <input class="route-input" id="route-to"
+            placeholder="City, State or ZIP"
+            autocomplete="off"
+            oninput="showRouteSug('route-to','sug-route-to',this.value)"
+            onfocus="if(this.value.length>=2)showRouteSug('route-to','sug-route-to',this.value)">
+          <div id="sug-route-to" class="search-sug-box"></div>
+        </div>
       </div>
       <div id="route-radius-row">
         <label data-i18n="route_within">Within</label>
@@ -1854,9 +1893,10 @@ a{color:inherit;text-decoration:none}
         </select>
         <label>&nbsp;<span data-i18n="route_of">of route</span></label>
       </div>
-      <button id="btn-route" onclick="searchRoute()">
-        &#128269; <span data-i18n="route_btn">Find Churches</span>
-      </button>
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <button id="btn-route" onclick="searchRoute()" style="flex:1">&#128269; Find Churches</button>
+        <button onclick="clearRouteSearch()" style="background:transparent;border:1.5px solid var(--navy4);color:#4A6A9A;border-radius:6px;padding:7px 12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600">&#10005; Clear</button>
+      </div>
       <div id="route-status"></div>
       <div id="route-results"></div>
     </div>
@@ -1880,13 +1920,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-<div id="church-list">
-    <div id="no-results">
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <p>No congregations match.<br>Try adjusting your filters.</p>
-    </div>
-  </div>
-  <div id="status-bar"></div>
+
   <!-- INFO PANEL -->
   <div class="tab-panel" id="panel-info">
     <div id="info-panel-body">
@@ -4159,6 +4193,62 @@ function showRouteSug(inputId,boxId,q){
 function pickRouteSug(iid,bid,val){
   var i=document.getElementById(iid); if(i)i.value=val;
   var b=document.getElementById(bid); if(b){b.className="";b.innerHTML="";}
+}
+
+
+// ── CLEAR ROUTE SEARCH ───────────────────────────────────────────
+function clearRouteSearch(){
+  var from=document.getElementById("route-from");
+  var to=document.getElementById("route-to");
+  var status=document.getElementById("route-status");
+  var results=document.getElementById("route-results");
+  var navBar=document.getElementById("route-nav-bar");
+  var sf=document.getElementById("sug-route-from");
+  var st=document.getElementById("sug-route-to");
+  if(from){from.value="";}
+  if(to){to.value="";}
+  if(status){status.textContent="";}
+  if(results){results.innerHTML="";}
+  if(navBar){navBar.className="route-nav-bar";}
+  if(sf){sf.className="search-sug-box";sf.innerHTML="";}
+  if(st){st.className="search-sug-box";st.innerHTML="";}
+}
+
+// ── ROUTE CITY SUGGESTIONS ───────────────────────────────────────
+function showRouteSug(inputId, boxId, q){
+  var box=document.getElementById(boxId); if(!box)return;
+  var ql=q.trim().toLowerCase();
+  if(ql.length<2){box.className="search-sug-box";box.innerHTML="";return;}
+  var cities={};
+  CHURCHES.forEach(function(c){
+    if(!c.city||!c.state)return;
+    var k=c.city+", "+c.state;
+    if(k.toLowerCase().includes(ql)){
+      if(!cities[k])cities[k]={label:k,count:0};
+      cities[k].count++;
+    }
+  });
+  var sorted=Object.values(cities).sort(function(a,b){return b.count-a.count;}).slice(0,5);
+  if(!sorted.length){
+    box.innerHTML='<div class="sug-empty">No cities found — try a ZIP code</div>';
+    box.className="search-sug-box open";return;
+  }
+  function hl(t,q){var x=t.toLowerCase().indexOf(q);if(x<0)return t;return t.slice(0,x)+'<span class="sug-match">'+t.slice(x,x+q.length)+'</span>'+t.slice(x+q.length);}
+  box.innerHTML=sorted.map(function(item){
+    var lbl=item.label;
+    var safeId=inputId; var safeBid=boxId;
+    return '<div class="suggestion-item" data-val="'+lbl.replace(/"/g,"&quot;")
+      +'" onclick="pickRouteSug(\''+safeId+'\',\''+safeBid+'\',this)">'
+      +'<div class="sug-name">'+hl(lbl,ql)+'</div>'
+      +'<div class="sug-detail">'+item.count+' church'+(item.count===1?'':'es')+'</div></div>';
+  }).join("");
+  box.className="search-sug-box open";
+}
+
+function pickRouteSug(inputId, boxId, el){
+  var val=el.getAttribute("data-val");
+  var inp=document.getElementById(inputId); if(inp)inp.value=val;
+  var box=document.getElementById(boxId); if(box){box.className="search-sug-box";box.innerHTML="";}
 }
 
 applyFilters();
