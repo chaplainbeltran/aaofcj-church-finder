@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AAOFCJ Church Finder</title>
+<title>AAOFCJ Church Finder | apostolicchurchfinder.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -1478,6 +1478,7 @@ a{color:inherit;text-decoration:none}
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="AAOFCJ">
+  <link rel="canonical" href="https://apostolicchurchfinder.com">
 </head>
 <body>
 
@@ -3091,7 +3092,7 @@ function submitCorrection(){
   if(!correct){ alert("Please enter the correct information."); return; }
   const body="Church: "+correctionChurch.name+"\nCity: "+correctionChurch.city+", "+correctionChurch.state+
     "\n\nField: "+field+"\nCorrect value: "+correct+(notes?"\nNotes: "+notes:"")+(email?"\nReply to: "+email:"");
-  window.open("mailto:corrections@aaofcj.org?subject="+encodeURIComponent("AAOFCJ [CORRECTION] "+correctionChurch.name)+"&body="+encodeURIComponent(body),"_blank");
+  window.open("mailto:corrections@apostolicchurchfinder.com?subject="+encodeURIComponent("AAOFCJ [CORRECTION] "+correctionChurch.name)+"&body="+encodeURIComponent(body),"_blank");
   closeCorrectionModal(); showToast("Thank you! Correction submitted.");
 }
 
@@ -3384,7 +3385,7 @@ function submitFeedback(){
   const email=document.getElementById("fb-email").value.trim();
   if(email)body+="\nReply to: "+email;
   
-  window.open("mailto:feedback@aaofcj.org?subject="+encodeURIComponent("AAOFCJ Church Finder "+typeLabels[fbType])+"&body="+encodeURIComponent(body),"_blank");
+  window.open("mailto:feedback@apostolicchurchfinder.com?subject="+encodeURIComponent("AAOFCJ Church Finder "+typeLabels[fbType])+"&body="+encodeURIComponent(body),"_blank");
   
   // Success state
   const successMsg={suggestion:"Your suggestion helps us improve for everyone.",bug:"We'll investigate this as soon as possible.",missing:"We'll review and add this church if confirmed.",general:"We read every message."};
@@ -3540,7 +3541,7 @@ function reportClosed(idx){
   const c = CHURCHES[idx];
   if(!c) return;
   const body = `Church: ${c.name}\nCity: ${c.city}, ${c.state}\nAddress: ${c.address}\n\nStatus: This church may be CLOSED or RELOCATED.\nPlease verify and update the directory.`;
-  window.open(`mailto:corrections@aaofcj.org?subject=${encodeURIComponent('[CLOSED] '+c.name)}&body=${encodeURIComponent(body)}`,'_blank');
+  window.open(`mailto:corrections@apostolicchurchfinder.com?subject=${encodeURIComponent('[CLOSED] '+c.name)}&body=${encodeURIComponent(body)}`,'_blank');
   showToast("Report submitted — thank you.");
 }
 
@@ -3583,7 +3584,7 @@ function openBishopDir(){
 //  EMBED CODE GENERATOR
 // ═══════════════════════════════════════════════════════════════════════
 var embedType = "full";
-const LIVE_URL = "https://your-domain.com/aaofcj-church-finder.html"; // ← update after going live
+const LIVE_URL = "https://apostolicchurchfinder.com"; // ← update after going live
 
 function openEmbedModal(){
   document.getElementById("embed-modal").classList.add("open");
@@ -3877,7 +3878,7 @@ setTimeout(function(){ map.invalidateSize(true); }, 300);
 <div id="share-toast">✓ <span id="share-toast-msg">Link copied!</span></div>
 
 <!-- KO-FI BUTTON -->
-<a id="kofi-btn" href="https://ko-fi.com/aaofcjchurchfinder" target="_blank" rel="noopener">
+<a id="kofi-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener">
   <span class="kofi-icon">☕</span>
   <span data-i18n="kofi_label">Support This Directory</span>
 </a>
