@@ -1590,6 +1590,32 @@ a{color:inherit;text-decoration:none}
   #total-badge{display:none}
 }
 
+
+/* ── POPUP TEXT — HIGH SPECIFICITY FIX ─────────────────────────── */
+.leaflet-popup-content .pu-body{background:#ffffff !important}
+.leaflet-popup-content .pu-row{color:#1E293B !important}
+.leaflet-popup-content .pu-row a{color:#1565C0 !important}
+.leaflet-popup-content .pu-btn.secondary{
+  background:#F1F5F9 !important;color:#334155 !important;
+  border:1px solid #CBD5E1 !important;
+}
+.leaflet-popup-content .pu-btn.secondary:hover{
+  border-color:#1565C0 !important;color:#1565C0 !important;
+}
+.leaflet-popup-content .pu-visit-btn{
+  background:rgba(21,101,192,.08) !important;
+  border-color:rgba(21,101,192,.25) !important;
+  color:#1565C0 !important;
+}
+.leaflet-popup-content .pu-closed-btn{color:#DC2626 !important;opacity:.7}
+.leaflet-popup-content .pu-district-block{
+  background:#EFF6FF !important;border-color:#BFDBFE !important;
+}
+.leaflet-popup-content .pu-district-block p{color:#1E3A5F !important}
+.leaflet-popup-content .pu-district-block span{color:#475569 !important}
+.leaflet-popup-content .pu-sched{color:#475569 !important}
+.leaflet-popup-content .pu-sched strong{color:#1565C0 !important}
+
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -1646,13 +1672,13 @@ a{color:inherit;text-decoration:none}
   <!-- TABS -->
   <div id="sidebar-tabs">
     <div class="stab active" data-tab="search" onclick="switchTab('search')">
-      <span class="stab-icon">🔍</span><span class="stab-label" data-i18n="tab_search">Search</span>
+      <span class="stab-icon">&#128269;</span><span class="stab-label" data-i18n="tab_search">Search</span>
     </div>
     <div class="stab" data-tab="route" onclick="switchTab('route')">
-      <span class="stab-icon">🗺️</span><span class="stab-label" data-i18n="tab_route">Route</span>
+      <span class="stab-icon">&#128506;</span><span class="stab-label" data-i18n="tab_route">Route</span>
     </div>
     <div class="stab" data-tab="favorites" onclick="switchTab('favorites')">
-      <span class="stab-icon">❤️</span><span class="stab-label" data-i18n="tab_favs">Saved</span>
+      <span class="stab-icon">&#10084;</span><span class="stab-label" data-i18n="tab_favs">Saved</span>
     </div>
     <div class="stab" data-tab="info" onclick="switchTab('info')">
       <span class="stab-icon">&#8505;</span><span class="stab-label">Info</span>
@@ -1663,11 +1689,11 @@ a{color:inherit;text-decoration:none}
   <div class="panel active" id="panel-search">
 
   <!-- SEARCH -->
-  <div class="section-label">&#9670; Search</div>
+  <div class="section-label" data-i18n="sec_search">&#9670; Search</div>
   <div id="search-zone">
     <div class="search-row" style="position:relative">
-      <input class="si" id="text-search" type="text" 
-        placeholder="Church name, city, or pastor…"
+      <input class="si" id="text-search" type="text"
+        placeholder="Church name, city, or pastor&#8230;"
         autocomplete="off"
         oninput="showSuggestions(this.value)"
         onkeydown="handleSuggestionKey(event)"
@@ -1678,175 +1704,103 @@ a{color:inherit;text-decoration:none}
       <input class="si" id="zip-input" type="text" placeholder="ZIP code" maxlength="5" style="width:90px;min-width:90px;flex:0 0 auto">
       <select class="si" id="zip-radius" style="width:100px;min-width:100px;flex:0 0 auto">
         <option value="10">10 mi</option>
-        <option value="25">25 mi</option>
-        <option value="50" selected>50 mi</option>
+        <option value="25" selected>25 mi</option>
+        <option value="50">50 mi</option>
         <option value="100">100 mi</option>
         <option value="200">200 mi</option>
       </select>
-      <button id="btn-zip">Search ZIP</button>
+      <button id="btn-zip" onclick="searchByZip()">Search ZIP</button>
     </div>
     <div class="search-row">
-      <button id="btn-locate" style="flex:1">&#127358; Use My Location</button>
-      <button id="btn-reset">&#10005; Clear</button>
+      <button id="btn-locate" onclick="locateMe()">&#128205; Use My Location</button>
+      <button id="btn-reset" onclick="resetAll()">&#10005; Clear</button>
     </div>
   </div>
 
-  <!-- FILTERS -->
-  <div class="section-label">&#9670; Filter</div>
+  <div class="section-label" data-i18n="sec_filter">&#9670; Filter</div>
   <div id="filter-zone">
     <div class="fgrid full">
       <div class="fg">
         <label>District</label>
-        <select id="f-district"><option value="">All Districts</option></select>
+        <select id="f-district" onchange="applyFilters()"><option value="">All Districts</option></select>
       </div>
     </div>
     <div id="district-info-bar"></div>
     <div class="fgrid full">
       <div class="fg">
         <label>Sector</label>
-        <select id="f-sector"><option value="">All Sectors</option></select>
+        <select id="f-sector" onchange="applyFilters()"><option value="">All Sectors</option></select>
       </div>
     </div>
     <div id="sector-info-bar"></div>
     <div class="fgrid">
       <div class="fg">
         <label>State</label>
-        <select id="f-state">
+        <select id="f-state" onchange="applyFilters()">
           <option value="">All</option>
-          <option value="CA">CA</option>
-          <option value="AZ">AZ</option>
-          <option value="NV">NV</option>
-          <option value="UT">UT</option>
-          <option value="TX">TX</option>
-          <option value="GA">GA</option>
-          <option value="NC">NC</option>
-          <option value="SC">SC</option>
-          <option value="CO">CO</option>
-          <option value="WY">WY</option>
-          <option value="FL">FL</option>
-          <option value="IN">IN</option>
-          <option value="MI">MI</option>
-          <option value="OH">OH</option>
-          <option value="IA">IA</option>
-          <option value="IL">IL</option>
-          <option value="KS">KS</option>
-          <option value="MO">MO</option>
-          <option value="NE">NE</option>
-          <option value="OK">OK</option>
-          <option value="WI">WI</option>
-          <option value="AL">AL</option>
-          <option value="AR">AR</option>
-          <option value="HI">HI</option>
-          <option value="KY">KY</option>
-          <option value="LA">LA</option>
-          <option value="MN">MN</option>
-          <option value="MS">MS</option>
-          <option value="MT">MT</option>
-          <option value="SD">SD</option>
-          <option value="TN">TN</option>
-          <option value="CT">CT</option>
-          <option value="DC">DC</option>
-          <option value="MA">MA</option>
-          <option value="MD">MD</option>
-          <option value="NJ">NJ</option>
-          <option value="NY">NY</option>
-          <option value="PA">PA</option>
-          <option value="VA">VA</option>
-          <option value="NM">NM</option>
-          <option value="WA">WA</option>
-          <option value="OR">OR</option>
+          <option value="CA">CA</option><option value="AZ">AZ</option>
+          <option value="NV">NV</option><option value="UT">UT</option>
+          <option value="TX">TX</option><option value="GA">GA</option>
+          <option value="NC">NC</option><option value="SC">SC</option>
+          <option value="CO">CO</option><option value="WY">WY</option>
+          <option value="FL">FL</option><option value="IN">IN</option>
+          <option value="MI">MI</option><option value="OH">OH</option>
+          <option value="IA">IA</option><option value="IL">IL</option>
+          <option value="KS">KS</option><option value="MO">MO</option>
+          <option value="NE">NE</option><option value="OK">OK</option>
+          <option value="WI">WI</option><option value="AL">AL</option>
+          <option value="AR">AR</option><option value="HI">HI</option>
+          <option value="KY">KY</option><option value="LA">LA</option>
+          <option value="MN">MN</option><option value="MS">MS</option>
+          <option value="MT">MT</option><option value="SD">SD</option>
+          <option value="TN">TN</option><option value="CT">CT</option>
+          <option value="DC">DC</option><option value="MA">MA</option>
+          <option value="MD">MD</option><option value="NJ">NJ</option>
+          <option value="NY">NY</option><option value="PA">PA</option>
+          <option value="VA">VA</option><option value="NM">NM</option>
+          <option value="WA">WA</option><option value="OR">OR</option>
         </select>
       </div>
       <div class="fg">
         <label>Language</label>
-        <select id="f-lang">
-          <option value="">All</option>
-          <option value="Bilingual">Bilingual</option>
+        <select id="f-lang" onchange="applyFilters()">
+          <option value="">All Languages</option>
           <option value="Spanish">Spanish</option>
           <option value="English">English</option>
+          <option value="Bilingual">Bilingual</option>
         </select>
       </div>
     </div>
     <div class="fgrid">
       <div class="fg">
         <label>County</label>
-        <select id="f-county"><option value="">All Counties</option></select>
+        <select id="f-county" onchange="applyFilters()"><option value="">All Counties</option></select>
       </div>
       <div class="fg">
         <label>City</label>
-        <select id="f-city"><option value="">All Cities</option></select>
+        <select id="f-city" onchange="applyFilters()"><option value="">All Cities</option></select>
       </div>
     </div>
   </div>
 
-  <!-- RESULTS -->
   <div id="results-bar">
-    <span><span id="results-count">0</span> congregations</span>
-    <select id="sort-select">
-      <option value="name">Sort: A–Z</option>
-      <option value="city">Sort: City</option>
-      <option value="district">Sort: District</option>
-      <option value="distance">Sort: Distance</option>
-    </select>
+    <span><span id="results-count">0</span> congregations
+      <select id="sort-select" onchange="applyFilters()">
+        <option value="az">Sort: A&#8211;Z</option>
+        <option value="distance">Sort: Distance</option>
+        <option value="city">Sort: City</option>
+        <option value="district">Sort: District</option>
+      </select>
+    </span>
   </div>
-  
-  
-  <!-- INFO PANEL -->
-  <div class="panel" id="panel-info">
-    <div style="padding:14px;overflow-y:auto;flex:1">
 
-      <!-- 2x2 Button Grid -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-
-        <button class="info-grid-btn" onclick="switchTab('search');openBishopDir()">
-          <span class="igb-icon">&#128081;</span>
-          <span class="igb-label">Bishops</span>
-          <span class="igb-sub">All 26 district supervisors</span>
-        </button>
-
-        <button class="info-grid-btn" onclick="switchTab('search');openStats()">
-          <span class="igb-icon">&#128202;</span>
-          <span class="igb-label">Stats</span>
-          <span class="igb-sub">Directory data & completeness</span>
-        </button>
-
-        <button class="info-grid-btn" onclick="switchTab('search');openEmbedModal()">
-          <span class="igb-icon">&#60;/&#62;</span>
-          <span class="igb-label">Embed</span>
-          <span class="igb-sub">Add this finder to your site</span>
-        </button>
-
-        <button class="info-grid-btn" onclick="switchTab('search');openAboutModal()">
-          <span class="igb-icon">&#9432;</span>
-          <span class="igb-label">About</span>
-          <span class="igb-sub">Constitutional basis & mission</span>
-        </button>
-
-      </div>
-
-      <!-- Feedback & Support -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-        <button class="info-grid-btn info-grid-btn--feedback" onclick="openFeedback()">
-          <span class="igb-icon">&#128172;</span>
-          <span class="igb-label">Feedback</span>
-          <span class="igb-sub">Suggestions & bug reports</span>
-        </button>
-        <a class="info-grid-btn info-grid-btn--support" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener" style="text-decoration:none">
-          <span class="igb-icon">&#9749;</span>
-          <span class="igb-label">Support</span>
-          <span class="igb-sub">Keep it free & accurate</span>
-        </a>
-      </div>
-
-      <!-- Constitution reference -->
-      <div style="background:rgba(21,101,192,.1);border:1px solid rgba(74,144,217,.25);border-left:3px solid var(--blue);border-radius:var(--radius-sm);padding:12px 14px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Constitutional Basis</div>
-        <div style="font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:4px">AAOFCJ Constitution (2025) — Article 2, Clause V</div>
-        <div style="font-size:11px;color:#CBD5E1;line-height:1.6;font-style:italic">"To procure, by all possible means, mutual help that form the Apostolic Assembly, and to promote the growth and expansion of the work of our Lord Jesus Christ."</div>
-      </div>
-
+  <div id="church-list">
+    <div id="no-results" style="display:none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <p>No congregations match.<br>Try adjusting your filters.</p>
     </div>
   </div>
+  <div id="status-bar"></div>
 
 </div><!-- end panel-search -->
 
@@ -1857,18 +1811,18 @@ a{color:inherit;text-decoration:none}
       <div class="route-input-row" style="position:relative">
         <label data-i18n="route_from">From</label>
         <input class="route-input" id="route-from" placeholder="City, State or ZIP" autocomplete="off"
-        oninput="showRouteSuggestions('route-from','route-from-suggestions',this.value)"
-        onkeydown="handleRouteSugKey(event,'route-from-suggestions')"
-        onfocus="if(this.value.length>=2)showRouteSuggestions('route-from','route-from-suggestions',this.value)">
-      <div id="route-from-suggestions"></div>
+          oninput="showRouteSuggestions('route-from','route-from-suggestions',this.value)"
+          onkeydown="handleRouteSugKey(event,'route-from-suggestions')"
+          onfocus="if(this.value.length>=2)showRouteSuggestions('route-from','route-from-suggestions',this.value)">
+        <div id="route-from-suggestions"></div>
       </div>
       <div class="route-input-row" style="position:relative">
         <label data-i18n="route_to">To</label>
         <input class="route-input" id="route-to" placeholder="City, State or ZIP" autocomplete="off"
-        oninput="showRouteSuggestions('route-to','route-to-suggestions',this.value)"
-        onkeydown="handleRouteSugKey(event,'route-to-suggestions')"
-        onfocus="if(this.value.length>=2)showRouteSuggestions('route-to','route-to-suggestions',this.value)">
-      <div id="route-to-suggestions"></div>
+          oninput="showRouteSuggestions('route-to','route-to-suggestions',this.value)"
+          onkeydown="handleRouteSugKey(event,'route-to-suggestions')"
+          onfocus="if(this.value.length>=2)showRouteSuggestions('route-to','route-to-suggestions',this.value)">
+        <div id="route-to-suggestions"></div>
       </div>
       <div id="route-radius-row">
         <label data-i18n="route_within">Within</label>
@@ -1892,18 +1846,67 @@ a{color:inherit;text-decoration:none}
   <div class="panel" id="panel-favorites">
     <div id="fav-list"></div>
     <div id="fav-empty" style="display:none">
-      <div style="font-size:32px;margin-bottom:12px">❤️</div>
-      <div data-i18n="fav_empty">No saved churches yet.<br>Tap ❤️ on any church to save it.</div>
+      <div style="font-size:32px;margin-bottom:12px">&#10084;</div>
+      <div data-i18n="fav_empty">No saved churches yet.<br>Tap &#10084; on any church to save it.</div>
     </div>
   </div>
 
-<div id="church-list">
-    <div id="no-results">
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <p>No congregations match.<br>Try adjusting your filters.</p>
+  <!-- INFO PANEL -->
+  <div class="panel" id="panel-info">
+    <div style="padding:14px;overflow-y:auto;flex:1">
+
+      <!-- 2x2 Button Grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+
+        <button class="info-grid-btn" onclick="switchTab('search');openBishopDir()">
+          <span class="igb-icon">&#128081;</span>
+          <span class="igb-label">Bishops</span>
+          <span class="igb-sub">All 26 district supervisors</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openStats()">
+          <span class="igb-icon">&#128202;</span>
+          <span class="igb-label">Stats</span>
+          <span class="igb-sub">Directory data &amp; completeness</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openEmbedModal()">
+          <span class="igb-icon">&#60;/&#62;</span>
+          <span class="igb-label">Embed</span>
+          <span class="igb-sub">Add this finder to your site</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openAboutModal()">
+          <span class="igb-icon">&#9432;</span>
+          <span class="igb-label">About</span>
+          <span class="igb-sub">Constitutional basis &amp; mission</span>
+        </button>
+
+      </div>
+
+      <!-- Feedback & Support -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        <button class="info-grid-btn info-grid-btn--feedback" onclick="openFeedback()">
+          <span class="igb-icon">&#128172;</span>
+          <span class="igb-label">Feedback</span>
+          <span class="igb-sub">Suggestions &amp; bug reports</span>
+        </button>
+        <a class="info-grid-btn info-grid-btn--support" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener" style="text-decoration:none">
+          <span class="igb-icon">&#9749;</span>
+          <span class="igb-label">Support</span>
+          <span class="igb-sub">Keep it free &amp; accurate</span>
+        </a>
+      </div>
+
+      <!-- Constitution reference -->
+      <div style="background:rgba(21,101,192,.1);border:1px solid rgba(74,144,217,.25);border-left:3px solid var(--blue);border-radius:var(--radius-sm);padding:12px 14px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Constitutional Basis</div>
+        <div style="font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:4px">AAOFCJ Constitution (2025) — Article 2, Clause V</div>
+        <div style="font-size:11px;color:#CBD5E1;line-height:1.6;font-style:italic">"To procure, by all possible means, mutual help that form the Apostolic Assembly, and to promote the growth and expansion of the work of our Lord Jesus Christ."</div>
+      </div>
+
     </div>
   </div>
-  <div id="status-bar"></div>
 
 </div><!-- /sidebar -->
 
@@ -2910,6 +2913,16 @@ function rebuildDropdowns(source){
 
 rebuildDropdowns(CHURCHES);
 
+// ── Update sector dropdown when district changes ──────────────────
+document.getElementById("f-district").addEventListener("change", function(){
+  const dist = this.value;
+  const source = dist ? CHURCHES.filter(c=>c.district===dist) : CHURCHES;
+  const sectors = [...new Set(source.map(c=>c.sector).filter(Boolean))].sort();
+  const sel = document.getElementById("f-sector");
+  sel.innerHTML = "<option value=''>All Sectors</option>" +
+    sectors.map(s=>`<option value="${s}">${s}</option>`).join("");
+});
+
 // ═══════════════════════════════════════════════════════════════════════
 //  FILTER & RENDER
 // ═══════════════════════════════════════════════════════════════════════
@@ -3124,6 +3137,16 @@ document.getElementById("btn-reset").addEventListener("click",()=>{
   document.getElementById("btn-locate").classList.remove("active");
   document.getElementById("status-bar").style.display="none";
   rebuildDropdowns(CHURCHES);
+
+// ── Update sector dropdown when district changes ──────────────────
+document.getElementById("f-district").addEventListener("change", function(){
+  const dist = this.value;
+  const source = dist ? CHURCHES.filter(c=>c.district===dist) : CHURCHES;
+  const sectors = [...new Set(source.map(c=>c.sector).filter(Boolean))].sort();
+  const sel = document.getElementById("f-sector");
+  sel.innerHTML = "<option value=''>All Sectors</option>" +
+    sectors.map(s=>`<option value="${s}">${s}</option>`).join("");
+});
   applyFilters();
   map.setView([37.5,-98.5],5);
 });
