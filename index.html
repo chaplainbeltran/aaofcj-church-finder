@@ -1647,6 +1647,44 @@ a{color:inherit;text-decoration:none}
   .topbar-quick-btn{display:none}
 }
 
+
+/* ── ROUTE NAV BAR ──────────────────────────────────────────────── */
+#route-nav-bar{
+  display:none;
+  margin-top:10px;
+  background:rgba(21,101,192,.1);
+  border:1px solid rgba(74,144,217,.25);
+  border-radius:8px;padding:10px 12px;
+  flex-shrink:0;
+}
+.nav-bar-top{margin-bottom:6px}
+#nav-count{
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;
+  font-weight:700;color:#7AABFF;letter-spacing:.04em;
+}
+#nav-hint{
+  font-size:10.5px;color:#4A6A9A;margin-bottom:8px;line-height:1.5;
+}
+.nav-primary{
+  display:block;width:100%;padding:10px;
+  background:#1565C0;color:#fff !important;
+  border:none;border-radius:8px;
+  font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:.05em;text-align:center;text-decoration:none;
+  margin-bottom:8px;transition:background .15s;
+}
+.nav-primary:hover{background:#1976D2}
+.nav-secondary-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.nav-secondary{
+  display:block;padding:7px 4px;
+  border:1.5px solid var(--navy4);
+  background:var(--navy3);color:#CBD5E1 !important;
+  border-radius:6px;font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.04em;
+  text-align:center;text-decoration:none;transition:all .15s;
+}
+.nav-secondary:hover{border-color:#4A90D9;color:#7AABFF !important}
+
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -3470,7 +3508,9 @@ async function searchRoute(){
 
     found.forEach(({c,i,d})=>{
       const m=L.marker([c.lat,c.lng],{icon:makeIcon((DISTRICT_META[c.district]||{}).color||"#4A90D9")}).addTo(map);
-      m.bindPopup(buildPopup(c,i)); routeMarkers.push(m);
+      m.bindPopup(buildPopup(c,i));
+      m._churchIdx = i; // store index so we can filter
+      routeMarkers.push(m);
 
       const el=document.createElement("div");
       el.className="route-result-item";
@@ -3513,11 +3553,18 @@ async function searchRoute(){
     // Nav bar (appears when churches are selected)
     const navBar = document.createElement("div");
     navBar.id="route-nav-bar";
+    // Detect device for primary nav button
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var isAndroid = /Android/.test(navigator.userAgent);
+    var primaryLabel = isIOS ? '🍎 Open in Apple Maps' : '📍 Open in Google Maps';
     navBar.innerHTML='<div class="nav-bar-top"><span class="nav-count" id="nav-count">0 churches selected</span></div>'+
-      '<div class="nav-hint">Google Maps supports up to 9 waypoints</div>'+
-      '<a class="nav-btn google" id="nav-google" href="#" target="_blank">📍 Open in Google Maps</a>'+
-      '<a class="nav-btn apple" id="nav-apple" href="#" target="_blank">🍎 Open in Apple Maps</a>'+
-      '<a class="nav-btn waze" id="nav-waze" href="#" target="_blank">🚗 Open in Waze</a>';
+      '<div class="nav-hint" id="nav-hint">Select churches above, then open in your navigation app</div>'+
+      '<a class="nav-btn nav-primary" id="nav-primary" href="#" target="_blank">'+primaryLabel+'</a>'+
+      '<div class="nav-secondary-row">'+
+      '<a class="nav-btn nav-secondary" id="nav-google" href="#" target="_blank">&#128205; Google Maps</a>'+
+      '<a class="nav-btn nav-secondary" id="nav-apple" href="#" target="_blank">&#63743; Apple Maps</a>'+
+      '<a class="nav-btn nav-secondary" id="nav-waze" href="#" target="_blank">&#128663; Waze</a>'+
+      '</div>';
     results.appendChild(navBar);
 
     // Store endpoints for nav bar updates
@@ -3541,6 +3588,36 @@ function updateNavBar(A, B){
     count === 0 ? "No churches selected" :
     count === 1 ? "1 church selected" :
     count + " churches selected";
+
+  // ── Filter map to show only selected churches ──────────────────
+  // Show all route markers if nothing selected, only selected if some checked
+  if(typeof routeMarkers !== "undefined"){
+    const selectedIndices = new Set(selected.map(el => parseInt(el.dataset.idx)));
+    routeMarkers.forEach(function(m){
+      // Each routeMarker that is a Marker (not circleMarker for A/B endpoints)
+      // has a churchIdx stored on it
+      if(m._churchIdx !== undefined){
+        if(count === 0){
+          if(!map.hasLayer(m)) m.addTo(map);
+        } else {
+          if(selectedIndices.has(m._churchIdx)){
+            if(!map.hasLayer(m)) m.addTo(map);
+          } else {
+            if(map.hasLayer(m)) map.removeLayer(m);
+          }
+        }
+      }
+    });
+    // Fit map to selected churches
+    if(count > 0){
+      const lats = selected.map(el=>parseFloat(el.dataset.lat));
+      const lngs = selected.map(el=>parseFloat(el.dataset.lng));
+      const bounds = L.latLngBounds(lats.map((lt,i)=>[lt,lngs[i]]));
+      if(A) bounds.extend([A.lat,A.lng]);
+      if(B) bounds.extend([B.lat,B.lng]);
+      map.fitBounds(bounds.pad(.15));
+    }
+  }
 
   navBar.style.display = count > 0 ? "block" : "none";
   if(count === 0) return;
@@ -3570,6 +3647,19 @@ function updateNavBar(A, B){
                    (selected.length > 1 ? " to "+encodeURIComponent(lastChurch) : "")+
                    "&dirflg=d";
   document.getElementById("nav-apple").href = appleUrl;
+
+  // ── Primary button (device-aware) ──
+  var isIOSdev = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  var primaryBtn = document.getElementById("nav-primary");
+  if(primaryBtn){
+    if(isIOSdev){
+      primaryBtn.href = appleUrl;
+      primaryBtn.textContent = "🍎 Open in Apple Maps";
+    } else {
+      primaryBtn.href = gmBase + gmParts.join("/");
+      primaryBtn.textContent = "📍 Open in Google Maps";
+    }
+  }
 
   // ── Waze ──
   // Waze only supports single destination, so navigate to first selected church
