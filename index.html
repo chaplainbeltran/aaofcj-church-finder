@@ -1472,6 +1472,149 @@ a{color:inherit;text-decoration:none}
 }
 .about-close:hover{color:#EEF2FF;background:var(--navy2)}
 
+
+/* ── MOBILE QUICK BUTTONS ───────────────────────────────────────── */
+#mobile-quick-btns{
+  display:none; /* hidden on desktop */
+  align-items:center;gap:6px;flex-shrink:0;
+}
+.mobile-quick-btn{
+  border:1.5px solid #E2E8F0;background:#F8FAFC;
+  border-radius:6px;padding:4px 10px;font-size:11px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  color:#334155;cursor:pointer;height:28px;
+  display:flex;align-items:center;gap:4px;
+  text-decoration:none;white-space:nowrap;transition:all .15s;
+}
+.mobile-quick-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ── SEARCH SUGGESTIONS DROPDOWN ───────────────────────────────── */
+#search-suggestions{
+  position:absolute;top:100%;left:0;right:0;
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);
+  z-index:2000;max-height:220px;overflow-y:auto;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  display:none;
+}
+#search-suggestions.open{display:block}
+.suggestion-item{
+  padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--navy4);
+  transition:background .1s;
+}
+.suggestion-item:last-child{border-bottom:none}
+.suggestion-item:hover,.suggestion-item.highlighted{
+  background:var(--navy3);
+}
+.sug-name{font-size:12.5px;font-weight:600;color:#EEF2FF;margin-bottom:2px}
+.sug-detail{font-size:11px;color:#6B9BD2}
+.sug-match{color:#7AABFF}
+.sug-empty{padding:12px 14px;font-size:12px;color:#4A6A9A;text-align:center}
+#search-zone{position:relative}
+
+/* ── FILTER ROW — horizontal scroll on mobile ───────────────────── */
+#filter-zone .fgrid{
+  display:flex;gap:8px;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;padding-bottom:2px;
+  margin-bottom:0 !important;
+}
+#filter-zone .fgrid::-webkit-scrollbar{display:none}
+#filter-zone .fg{min-width:130px;flex-shrink:0}
+#filter-zone .fgrid.full{min-width:unset;flex-shrink:1}
+
+/* ── POPUP TEXT VISIBILITY FIX ──────────────────────────────────── */
+.pu-row{color:#334155 !important}
+.pu-row svg{color:#64748B !important}
+.pu-row a{color:var(--blue2) !important}
+.pu-sched{color:#475569 !important}
+.pu-sched strong{color:var(--blue) !important}
+.pu-district-block p{color:#334155 !important}
+.pu-district-block span{color:#64748B !important}
+.pu-body{background:#fff !important}
+.pu-head h3{color:#fff !important}
+
+/* ── CHURCH LIST SCROLL FIX ─────────────────────────────────────── */
+#church-list{
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch;
+  flex:1;
+  min-height:0;
+}
+.church-item{
+  min-height:60px;
+}
+.ci-name{
+  white-space:normal !important;
+  word-break:break-word;
+}
+
+/* ── ROUTE RESULTS SCROLL + PINNED NAV ──────────────────────────── */
+#route-panel{
+  display:flex;flex-direction:column;
+  height:100%;overflow:hidden;
+  padding:10px 12px;
+}
+#route-results{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  flex:1;min-height:0;
+}
+#route-nav-bar{
+  flex-shrink:0;
+}
+
+/* ── MOBILE OVERRIDES ───────────────────────────────────────────── */
+@media(max-width:768px){
+  /* Show mobile quick buttons, hide a11y controls */
+  #a11y-controls{display:none !important}
+  #mobile-quick-btns{display:flex !important}
+
+  /* Hide floating feedback tab and kofi btn */
+  #feedback-tab{display:none !important}
+  #kofi-btn{display:none !important}
+
+  /* Filters — horizontal scroll */
+  #filter-zone .fgrid{
+    flex-wrap:nowrap;
+    display:flex;
+  }
+  #filter-zone .fg{min-width:120px}
+
+  /* Church list proper scroll */
+  #panel-search{
+    display:flex;flex-direction:column;
+    overflow:hidden;height:100%;
+  }
+  #church-list{
+    flex:1;min-height:0;
+    overflow-y:auto !important;
+  }
+
+  /* Route panel scroll */
+  #panel-route{
+    display:flex;flex-direction:column;
+    overflow:hidden;height:100%;
+  }
+  #route-panel{
+    flex:1;min-height:0;
+    overflow-y:auto;
+    display:flex;flex-direction:column;
+  }
+  #route-results{flex:1;min-height:0;overflow-y:auto}
+  #route-nav-bar{
+    position:sticky;bottom:0;
+    background:var(--navy2);
+    padding:8px 0 4px;
+    border-top:1px solid var(--navy4);
+  }
+
+  /* No swipe — use tap buttons only */
+  #sidebar{
+    touch-action:none;
+  }
+}
+
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -1504,6 +1647,11 @@ a{color:inherit;text-decoration:none}
         <option value="xl">Largest text</option>
       </select>
       <button id="btn-contrast" onclick="toggleContrast()" title="High contrast mode">&#9680; Contrast</button>
+    </div>
+    <!-- Mobile-only quick buttons — shown via CSS on mobile -->
+    <div id="mobile-quick-btns">
+      <button class="mobile-quick-btn" onclick="openFeedback()">&#128172; Feedback</button>
+      <a class="mobile-quick-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener">&#9749; Support</a>
     </div>
     <div id="topbar-actions">
       <button class="topbar-action-btn" onclick="openBishopDir()">👑 Bishops</button>
@@ -1538,8 +1686,15 @@ a{color:inherit;text-decoration:none}
   <!-- SEARCH -->
   <div class="section-label">&#9670; Search</div>
   <div id="search-zone">
-    <div class="search-row">
-      <input class="si" id="text-search" type="text" placeholder="Church name, city, or pastor…">
+    <div class="search-row" style="position:relative">
+      <input class="si" id="text-search" type="text" 
+        placeholder="Church name, city, or pastor…"
+        autocomplete="off"
+        oninput="showSuggestions(this.value)"
+        onkeydown="handleSuggestionKey(event)"
+        onfocus="if(this.value.length>=2)showSuggestions(this.value)"
+      >
+      <div id="search-suggestions"></div>
     </div>
     <div class="search-row">
       <input class="si" id="zip-input" type="text" placeholder="ZIP code" maxlength="5" style="width:90px;min-width:90px;flex:0 0 auto">
@@ -3849,6 +4004,151 @@ document.addEventListener("DOMContentLoaded", function(){
     var rect = sidebar.getBoundingClientRect();
     if(e.clientY - rect.top < 30) toggleMobileDrawer();
   });
+});
+
+
+// ═══════════════════════════════════════════════════════════════════════
+//  LIVE SEARCH SUGGESTIONS
+// ═══════════════════════════════════════════════════════════════════════
+var sugHighlight = -1;
+
+function showSuggestions(query){
+  const box = document.getElementById("search-suggestions");
+  if(!box) return;
+  const q = query.trim().toLowerCase();
+  if(q.length < 2){
+    box.classList.remove("open");
+    box.innerHTML="";
+    return;
+  }
+
+  // Score each church
+  const scored = [];
+  CHURCHES.forEach(function(c, idx){
+    const name    = (c.name||"").toLowerCase();
+    const city    = (c.city||"").toLowerCase();
+    const state   = (c.state||"").toLowerCase();
+    const pastor  = (c.pastor||"").toLowerCase();
+    const district= (c.district||"").toLowerCase();
+
+    let score = 0;
+    let matchField = "";
+
+    // Exact starts-with gets highest score
+    if(name.startsWith(q))       { score=100; matchField="name"; }
+    else if(city.startsWith(q))  { score=90;  matchField="city"; }
+    else if(pastor.startsWith(q)){ score=85;  matchField="pastor"; }
+    // Contains match
+    else if(name.includes(q))    { score=70;  matchField="name"; }
+    else if(city.includes(q))    { score=60;  matchField="city"; }
+    else if(pastor.includes(q))  { score=55;  matchField="pastor"; }
+    else if(state===q)           { score=50;  matchField="state"; }
+    else if(district.includes(q)){ score=40;  matchField="district"; }
+    // Word-level match
+    else {
+      const words = q.split(/\s+/);
+      let wordMatches = 0;
+      words.forEach(function(w){
+        if(name.includes(w)||city.includes(w)||pastor.includes(w)) wordMatches++;
+      });
+      if(wordMatches === words.length){ score=30; matchField="name"; }
+      else if(wordMatches > 0){ score=10*wordMatches; matchField="name"; }
+    }
+
+    if(score > 0) scored.push({c, idx, score, matchField});
+  });
+
+  // Sort by score, take top 5
+  scored.sort(function(a,b){ return b.score-a.score; });
+  const top = scored.slice(0,5);
+
+  if(!top.length){
+    box.innerHTML='<div class="sug-empty">No matches found</div>';
+    box.classList.add("open");
+    sugHighlight=-1;
+    return;
+  }
+
+  function highlight(text, q){
+    if(!text) return "";
+    const idx = text.toLowerCase().indexOf(q.toLowerCase());
+    if(idx===-1) return text;
+    return text.slice(0,idx)+'<span class="sug-match">'+text.slice(idx,idx+q.length)+'</span>'+text.slice(idx+q.length);
+  }
+
+  box.innerHTML = top.map(function(item, i){
+    const c = item.c;
+    const nameHL   = highlight(c.name, q);
+    const cityLine = c.city + (c.state ? ", " + c.state : "");
+    const pastor   = c.pastor ? " · " + c.pastor : "";
+    return '<div class="suggestion-item" data-idx="'+item.idx+'" onclick="selectSuggestion('+item.idx+')">'
+      + '<div class="sug-name">' + nameHL + '</div>'
+      + '<div class="sug-detail">' + cityLine + pastor + '</div>'
+      + '</div>';
+  }).join("");
+
+  box.classList.add("open");
+  sugHighlight = -1;
+}
+
+function selectSuggestion(idx){
+  const c = CHURCHES[idx];
+  if(!c) return;
+  // Close suggestions
+  const box = document.getElementById("search-suggestions");
+  if(box){ box.classList.remove("open"); box.innerHTML=""; }
+  // Set search input text
+  const input = document.getElementById("text-search");
+  if(input) input.value = c.name;
+  // Zoom to church on map and open popup
+  clusterGroup.zoomToShowLayer(markers[idx], function(){
+    markers[idx].openPopup();
+  });
+  // Highlight in list
+  applyFilters();
+  setTimeout(function(){ highlightItem(idx); }, 300);
+  // On mobile, collapse sidebar to show map
+  if(window.innerWidth<=768){
+    var sidebar = document.getElementById("sidebar");
+    var btn = document.getElementById("mobile-drawer-btn");
+    if(sidebar){ sidebar.classList.add("collapsed"); }
+    if(btn){ btn.innerHTML="&#128506; List"; }
+    setTimeout(function(){ if(typeof map!=="undefined") map.invalidateSize(); },320);
+  }
+}
+
+function handleSuggestionKey(e){
+  const box = document.getElementById("search-suggestions");
+  if(!box || !box.classList.contains("open")) return;
+  const items = box.querySelectorAll(".suggestion-item");
+  if(!items.length) return;
+  if(e.key==="ArrowDown"){
+    e.preventDefault();
+    sugHighlight = Math.min(sugHighlight+1, items.length-1);
+    items.forEach(function(el,i){ el.classList.toggle("highlighted", i===sugHighlight); });
+  } else if(e.key==="ArrowUp"){
+    e.preventDefault();
+    sugHighlight = Math.max(sugHighlight-1, 0);
+    items.forEach(function(el,i){ el.classList.toggle("highlighted", i===sugHighlight); });
+  } else if(e.key==="Enter"){
+    e.preventDefault();
+    if(sugHighlight>=0 && items[sugHighlight]){
+      const idx = parseInt(items[sugHighlight].dataset.idx);
+      selectSuggestion(idx);
+    }
+  } else if(e.key==="Escape"){
+    box.classList.remove("open");
+    sugHighlight=-1;
+  }
+}
+
+// Close suggestions when clicking outside
+document.addEventListener("click", function(e){
+  const box = document.getElementById("search-suggestions");
+  const input = document.getElementById("text-search");
+  if(box && !box.contains(e.target) && e.target!==input){
+    box.classList.remove("open");
+  }
 });
 
 applyFilters();
