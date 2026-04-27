@@ -1474,10 +1474,6 @@ a{color:inherit;text-decoration:none}
 
 
 /* ── MOBILE QUICK BUTTONS ───────────────────────────────────────── */
-#mobile-quick-btns{
-  display:none; /* hidden on desktop */
-  align-items:center;gap:6px;flex-shrink:0;
-}
 .mobile-quick-btn{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
   border-radius:6px;padding:4px 10px;font-size:11px;
@@ -1488,131 +1484,110 @@ a{color:inherit;text-decoration:none}
 }
 .mobile-quick-btn:hover{border-color:var(--blue);color:var(--blue)}
 
-/* ── SEARCH SUGGESTIONS DROPDOWN ───────────────────────────────── */
+/* ── INFO GRID BUTTONS ──────────────────────────────────────────── */
+.info-grid-btn{
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:14px 10px;
+  cursor:pointer;transition:all .15s;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.info-grid-btn:hover{border-color:#4A90D9;background:rgba(74,144,217,.1)}
+.igb-icon{font-size:22px;display:block;line-height:1}
+.igb-label{
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;
+  color:#EEF2FF;letter-spacing:.04em;
+}
+.igb-sub{font-size:10px;color:#6B9BD2;line-height:1.3;text-align:center}
+.info-grid-btn--feedback{border-color:rgba(74,144,217,.3)}
+.info-grid-btn--feedback:hover{border-color:#4A90D9;background:rgba(74,144,217,.15)}
+.info-grid-btn--support{
+  border-color:rgba(255,94,91,.3);
+}
+.info-grid-btn--support .igb-icon{color:#FF8C42}
+.info-grid-btn--support .igb-label{color:#FFB399}
+.info-grid-btn--support:hover{border-color:#FF5E5B;background:rgba(255,94,91,.1)}
+
+/* ── SEARCH SUGGESTIONS ─────────────────────────────────────────── */
 #search-suggestions{
   position:absolute;top:100%;left:0;right:0;
   background:var(--navy2);border:1px solid var(--navy4);
   border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);
   z-index:2000;max-height:220px;overflow-y:auto;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
-  display:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;
 }
 #search-suggestions.open{display:block}
+#route-from-suggestions,#route-to-suggestions{
+  position:absolute;top:100%;left:0;right:0;
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);
+  z-index:2000;max-height:200px;overflow-y:auto;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;
+}
+#route-from-suggestions.open,#route-to-suggestions.open{display:block}
 .suggestion-item{
   padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--navy4);
   transition:background .1s;
 }
 .suggestion-item:last-child{border-bottom:none}
-.suggestion-item:hover,.suggestion-item.highlighted{
-  background:var(--navy3);
-}
+.suggestion-item:hover,.suggestion-item.highlighted{background:var(--navy3)}
 .sug-name{font-size:12.5px;font-weight:600;color:#EEF2FF;margin-bottom:2px}
 .sug-detail{font-size:11px;color:#6B9BD2}
 .sug-match{color:#7AABFF}
 .sug-empty{padding:12px 14px;font-size:12px;color:#4A6A9A;text-align:center}
-#search-zone{position:relative}
+.route-input-row{position:relative}
 
-/* ── FILTER ROW — horizontal scroll on mobile ───────────────────── */
-#filter-zone .fgrid{
-  display:flex;gap:8px;overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;padding-bottom:2px;
-  margin-bottom:0 !important;
-}
-#filter-zone .fgrid::-webkit-scrollbar{display:none}
-#filter-zone .fg{min-width:130px;flex-shrink:0}
-#filter-zone .fgrid.full{min-width:unset;flex-shrink:1}
-
-/* ── POPUP TEXT VISIBILITY FIX ──────────────────────────────────── */
-.pu-row{color:#334155 !important}
-.pu-row svg{color:#64748B !important}
-.pu-row a{color:var(--blue2) !important}
+/* ── POPUP TEXT FIX ─────────────────────────────────────────────── */
+.leaflet-popup-content-wrapper{background:#fff !important}
+.pu-body{background:#fff !important;padding:12px 16px}
+.pu-row{color:#334155 !important;font-size:11.5px}
+.pu-row a{color:#1565C0 !important}
+.pu-row svg{opacity:.45}
 .pu-sched{color:#475569 !important}
-.pu-sched strong{color:var(--blue) !important}
-.pu-district-block p{color:#334155 !important}
-.pu-district-block span{color:#64748B !important}
-.pu-body{background:#fff !important}
-.pu-head h3{color:#fff !important}
+.pu-sched strong{color:#1565C0 !important;font-size:9.5px}
+.pu-district-block{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:7px 10px;margin-bottom:8px}
+.pu-district-block p{color:#1E3A5F !important;font-size:11px;font-weight:500}
+.pu-district-block span{color:#475569 !important;font-size:10px}
+.pu-btn.secondary{
+  background:#F1F5F9 !important;color:#334155 !important;
+  border:1px solid #CBD5E1 !important;
+}
+.pu-btn.secondary:hover{border-color:#1565C0 !important;color:#1565C0 !important}
+.pu-visit-btn{color:#1565C0 !important;border-color:rgba(21,101,192,.25) !important;background:rgba(21,101,192,.06) !important}
+.pu-closed-btn{color:#EF5350 !important}
 
-/* ── CHURCH LIST SCROLL FIX ─────────────────────────────────────── */
-#church-list{
-  overflow-y:auto !important;
-  -webkit-overflow-scrolling:touch;
-  flex:1;
-  min-height:0;
-}
-.church-item{
-  min-height:60px;
-}
-.ci-name{
-  white-space:normal !important;
-  word-break:break-word;
-}
+/* ── CHURCH LIST SCROLL ─────────────────────────────────────────── */
+#church-list{overflow-y:auto !important;-webkit-overflow-scrolling:touch;flex:1;min-height:0}
+.ci-name{white-space:normal !important;word-break:break-word}
 
-/* ── ROUTE RESULTS SCROLL + PINNED NAV ──────────────────────────── */
-#route-panel{
-  display:flex;flex-direction:column;
-  height:100%;overflow:hidden;
-  padding:10px 12px;
-}
-#route-results{
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  flex:1;min-height:0;
-}
-#route-nav-bar{
-  flex-shrink:0;
-}
+/* ── ROUTE RESULTS ──────────────────────────────────────────────── */
+#route-panel{display:flex;flex-direction:column;overflow:hidden;padding:10px 12px;height:100%}
+#route-results{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;min-height:0}
+#route-nav-bar{flex-shrink:0}
 
 /* ── MOBILE OVERRIDES ───────────────────────────────────────────── */
 @media(max-width:768px){
-  /* Show mobile quick buttons, hide a11y controls */
   #a11y-controls{display:none !important}
+  #topbar-actions{display:none !important}
   #mobile-quick-btns{display:flex !important}
-
-  /* Hide floating feedback tab and kofi btn */
   #feedback-tab{display:none !important}
   #kofi-btn{display:none !important}
 
-  /* Filters — horizontal scroll */
   #filter-zone .fgrid{
-    flex-wrap:nowrap;
-    display:flex;
+    flex-wrap:nowrap;display:flex;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
   }
-  #filter-zone .fg{min-width:120px}
+  #filter-zone .fgrid::-webkit-scrollbar{display:none}
+  #filter-zone .fg{min-width:120px;flex-shrink:0}
 
-  /* Church list proper scroll */
-  #panel-search{
-    display:flex;flex-direction:column;
-    overflow:hidden;height:100%;
-  }
-  #church-list{
-    flex:1;min-height:0;
-    overflow-y:auto !important;
-  }
-
-  /* Route panel scroll */
-  #panel-route{
-    display:flex;flex-direction:column;
-    overflow:hidden;height:100%;
-  }
-  #route-panel{
-    flex:1;min-height:0;
-    overflow-y:auto;
-    display:flex;flex-direction:column;
-  }
-  #route-results{flex:1;min-height:0;overflow-y:auto}
-  #route-nav-bar{
-    position:sticky;bottom:0;
-    background:var(--navy2);
-    padding:8px 0 4px;
-    border-top:1px solid var(--navy4);
-  }
-
-  /* No swipe — use tap buttons only */
-  #sidebar{
-    touch-action:none;
-  }
+  #panel-search{display:flex;flex-direction:column;overflow:hidden;height:100%}
+  #panel-route{display:flex;flex-direction:column;overflow:hidden;height:100%}
+  #route-nav-bar{position:sticky;bottom:0;background:var(--navy2);padding:8px 0 4px;border-top:1px solid var(--navy4)}
+  #sidebar{touch-action:pan-y}
+}
+@media(max-width:380px){
+  .logo-go{display:none}
+  #total-badge{display:none}
 }
 
 </style>
@@ -1648,17 +1623,18 @@ a{color:inherit;text-decoration:none}
       </select>
       <button id="btn-contrast" onclick="toggleContrast()" title="High contrast mode">&#9680; Contrast</button>
     </div>
-    <!-- Mobile-only quick buttons — shown via CSS on mobile -->
-    <div id="mobile-quick-btns">
+    <!-- Mobile quick buttons -->
+    <div id="mobile-quick-btns" style="display:none;align-items:center;gap:6px;flex-shrink:0">
       <button class="mobile-quick-btn" onclick="openFeedback()">&#128172; Feedback</button>
       <a class="mobile-quick-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener">&#9749; Support</a>
     </div>
+    <!-- Desktop action buttons -->
     <div id="topbar-actions">
-      <button class="topbar-action-btn" onclick="openBishopDir()">👑 Bishops</button>
-      <button class="topbar-action-btn" onclick="openStats()">📊 Stats</button>
-      <button class="topbar-action-btn" onclick="openEmbedModal()">＜/＞ Embed</button>
-      <button id="info-btn" onclick="openAboutModal()" title="About this directory">ⓘ</button>
-      <span id="total-badge">Loading…</span>
+      <button class="topbar-action-btn" onclick="openBishopDir()">&#128081; Bishops</button>
+      <button class="topbar-action-btn" onclick="openStats()">&#128202; Stats</button>
+      <button class="topbar-action-btn" onclick="openEmbedModal()">&#60;/&#62; Embed</button>
+      <button id="info-btn" onclick="openAboutModal()" title="About this directory">&#9432;</button>
+      <span id="total-badge">Loading&#8230;</span>
     </div>
   </div>
 </div>
@@ -1678,6 +1654,9 @@ a{color:inherit;text-decoration:none}
     <div class="stab" data-tab="favorites" onclick="switchTab('favorites')">
       <span class="stab-icon">❤️</span><span class="stab-label" data-i18n="tab_favs">Saved</span>
     </div>
+    <div class="stab" data-tab="info" onclick="switchTab('info')">
+      <span class="stab-icon">&#8505;</span><span class="stab-label">Info</span>
+    </div>
   </div>
 
   <!-- SEARCH PANEL -->
@@ -1692,8 +1671,7 @@ a{color:inherit;text-decoration:none}
         autocomplete="off"
         oninput="showSuggestions(this.value)"
         onkeydown="handleSuggestionKey(event)"
-        onfocus="if(this.value.length>=2)showSuggestions(this.value)"
-      >
+        onfocus="if(this.value.length>=2)showSuggestions(this.value)">
       <div id="search-suggestions"></div>
     </div>
     <div class="search-row">
@@ -1812,19 +1790,85 @@ a{color:inherit;text-decoration:none}
     </select>
   </div>
   
-  </div><!-- end panel-search -->
+  
+  <!-- INFO PANEL -->
+  <div class="panel" id="panel-info">
+    <div style="padding:14px;overflow-y:auto;flex:1">
+
+      <!-- 2x2 Button Grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+
+        <button class="info-grid-btn" onclick="switchTab('search');openBishopDir()">
+          <span class="igb-icon">&#128081;</span>
+          <span class="igb-label">Bishops</span>
+          <span class="igb-sub">All 26 district supervisors</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openStats()">
+          <span class="igb-icon">&#128202;</span>
+          <span class="igb-label">Stats</span>
+          <span class="igb-sub">Directory data & completeness</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openEmbedModal()">
+          <span class="igb-icon">&#60;/&#62;</span>
+          <span class="igb-label">Embed</span>
+          <span class="igb-sub">Add this finder to your site</span>
+        </button>
+
+        <button class="info-grid-btn" onclick="switchTab('search');openAboutModal()">
+          <span class="igb-icon">&#9432;</span>
+          <span class="igb-label">About</span>
+          <span class="igb-sub">Constitutional basis & mission</span>
+        </button>
+
+      </div>
+
+      <!-- Feedback & Support -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        <button class="info-grid-btn info-grid-btn--feedback" onclick="openFeedback()">
+          <span class="igb-icon">&#128172;</span>
+          <span class="igb-label">Feedback</span>
+          <span class="igb-sub">Suggestions & bug reports</span>
+        </button>
+        <a class="info-grid-btn info-grid-btn--support" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener" style="text-decoration:none">
+          <span class="igb-icon">&#9749;</span>
+          <span class="igb-label">Support</span>
+          <span class="igb-sub">Keep it free & accurate</span>
+        </a>
+      </div>
+
+      <!-- Constitution reference -->
+      <div style="background:rgba(21,101,192,.1);border:1px solid rgba(74,144,217,.25);border-left:3px solid var(--blue);border-radius:var(--radius-sm);padding:12px 14px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Constitutional Basis</div>
+        <div style="font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:4px">AAOFCJ Constitution (2025) — Article 2, Clause V</div>
+        <div style="font-size:11px;color:#CBD5E1;line-height:1.6;font-style:italic">"To procure, by all possible means, mutual help that form the Apostolic Assembly, and to promote the growth and expansion of the work of our Lord Jesus Christ."</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end panel-search -->
 
   <!-- ROUTE PANEL -->
   <div class="panel" id="panel-route">
     <div id="route-panel">
       <h3>&#128506; <span data-i18n="route_title">Churches Along Your Route</span></h3>
-      <div class="route-input-row">
+      <div class="route-input-row" style="position:relative">
         <label data-i18n="route_from">From</label>
-        <input class="route-input" id="route-from" placeholder="City, State or ZIP" autocomplete="off">
+        <input class="route-input" id="route-from" placeholder="City, State or ZIP" autocomplete="off"
+        oninput="showRouteSuggestions('route-from','route-from-suggestions',this.value)"
+        onkeydown="handleRouteSugKey(event,'route-from-suggestions')"
+        onfocus="if(this.value.length>=2)showRouteSuggestions('route-from','route-from-suggestions',this.value)">
+      <div id="route-from-suggestions"></div>
       </div>
-      <div class="route-input-row">
+      <div class="route-input-row" style="position:relative">
         <label data-i18n="route_to">To</label>
-        <input class="route-input" id="route-to" placeholder="City, State or ZIP" autocomplete="off">
+        <input class="route-input" id="route-to" placeholder="City, State or ZIP" autocomplete="off"
+        oninput="showRouteSuggestions('route-to','route-to-suggestions',this.value)"
+        onkeydown="handleRouteSugKey(event,'route-to-suggestions')"
+        onfocus="if(this.value.length>=2)showRouteSuggestions('route-to','route-to-suggestions',this.value)">
+      <div id="route-to-suggestions"></div>
       </div>
       <div id="route-radius-row">
         <label data-i18n="route_within">Within</label>
@@ -4008,147 +4052,195 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 // ═══════════════════════════════════════════════════════════════════════
-//  LIVE SEARCH SUGGESTIONS
+//  LIVE SEARCH SUGGESTIONS (main search)
 // ═══════════════════════════════════════════════════════════════════════
 var sugHighlight = -1;
 
-function showSuggestions(query){
-  const box = document.getElementById("search-suggestions");
-  if(!box) return;
-  const q = query.trim().toLowerCase();
-  if(q.length < 2){
-    box.classList.remove("open");
-    box.innerHTML="";
-    return;
+function highlight(text, q){
+  if(!text) return "";
+  var idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if(idx===-1) return text;
+  return text.slice(0,idx)+'<span class="sug-match">'+text.slice(idx,idx+q.length)+'</span>'+text.slice(idx+q.length);
+}
+
+function scoreChurch(c, q){
+  var name    = (c.name||"").toLowerCase();
+  var city    = (c.city||"").toLowerCase();
+  var state   = (c.state||"").toLowerCase();
+  var pastor  = (c.pastor||"").toLowerCase();
+  var district= (c.district||"").toLowerCase();
+  var score=0, matchField="";
+  if(name.startsWith(q))       {score=100;matchField="name";}
+  else if(city.startsWith(q))  {score=90; matchField="city";}
+  else if(pastor.startsWith(q)){score=85; matchField="pastor";}
+  else if(name.includes(q))    {score=70; matchField="name";}
+  else if(city.includes(q))    {score=60; matchField="city";}
+  else if(pastor.includes(q))  {score=55; matchField="pastor";}
+  else if(state===q)           {score=50; matchField="state";}
+  else if(district.includes(q)){score=40; matchField="district";}
+  else {
+    var words=q.split(" "), wm=0;
+    words.forEach(function(w){ if(w&&(name.includes(w)||city.includes(w)||pastor.includes(w)))wm++; });
+    if(wm===words.length){score=30;matchField="name";}
+    else if(wm>0){score=10*wm;matchField="name";}
   }
+  return {score:score, matchField:matchField};
+}
 
-  // Score each church
-  const scored = [];
-  CHURCHES.forEach(function(c, idx){
-    const name    = (c.name||"").toLowerCase();
-    const city    = (c.city||"").toLowerCase();
-    const state   = (c.state||"").toLowerCase();
-    const pastor  = (c.pastor||"").toLowerCase();
-    const district= (c.district||"").toLowerCase();
-
-    let score = 0;
-    let matchField = "";
-
-    // Exact starts-with gets highest score
-    if(name.startsWith(q))       { score=100; matchField="name"; }
-    else if(city.startsWith(q))  { score=90;  matchField="city"; }
-    else if(pastor.startsWith(q)){ score=85;  matchField="pastor"; }
-    // Contains match
-    else if(name.includes(q))    { score=70;  matchField="name"; }
-    else if(city.includes(q))    { score=60;  matchField="city"; }
-    else if(pastor.includes(q))  { score=55;  matchField="pastor"; }
-    else if(state===q)           { score=50;  matchField="state"; }
-    else if(district.includes(q)){ score=40;  matchField="district"; }
-    // Word-level match
-    else {
-      const words = q.split(/\s+/);
-      let wordMatches = 0;
-      words.forEach(function(w){
-        if(name.includes(w)||city.includes(w)||pastor.includes(w)) wordMatches++;
-      });
-      if(wordMatches === words.length){ score=30; matchField="name"; }
-      else if(wordMatches > 0){ score=10*wordMatches; matchField="name"; }
-    }
-
-    if(score > 0) scored.push({c, idx, score, matchField});
+function showSuggestions(query){
+  var box=document.getElementById("search-suggestions");
+  if(!box)return;
+  var q=query.trim().toLowerCase();
+  if(q.length<2){box.classList.remove("open");box.innerHTML="";return;}
+  var scored=[];
+  CHURCHES.forEach(function(c,idx){
+    var s=scoreChurch(c,q);
+    if(s.score>0) scored.push({c:c,idx:idx,score:s.score,matchField:s.matchField});
   });
-
-  // Sort by score, take top 5
-  scored.sort(function(a,b){ return b.score-a.score; });
-  const top = scored.slice(0,5);
-
+  scored.sort(function(a,b){return b.score-a.score;});
+  var top=scored.slice(0,5);
   if(!top.length){
     box.innerHTML='<div class="sug-empty">No matches found</div>';
-    box.classList.add("open");
-    sugHighlight=-1;
-    return;
+    box.classList.add("open"); sugHighlight=-1; return;
   }
-
-  function highlight(text, q){
-    if(!text) return "";
-    const idx = text.toLowerCase().indexOf(q.toLowerCase());
-    if(idx===-1) return text;
-    return text.slice(0,idx)+'<span class="sug-match">'+text.slice(idx,idx+q.length)+'</span>'+text.slice(idx+q.length);
-  }
-
-  box.innerHTML = top.map(function(item, i){
-    const c = item.c;
-    const nameHL   = highlight(c.name, q);
-    const cityLine = c.city + (c.state ? ", " + c.state : "");
-    const pastor   = c.pastor ? " · " + c.pastor : "";
+  box.innerHTML=top.map(function(item){
+    var c=item.c;
+    var nameHL=highlight(c.name||"",query.trim());
+    var cityLine=(c.city||"")+(c.state?", "+c.state:"");
+    var pastor=c.pastor?" · "+c.pastor:"";
     return '<div class="suggestion-item" data-idx="'+item.idx+'" onclick="selectSuggestion('+item.idx+')">'
-      + '<div class="sug-name">' + nameHL + '</div>'
-      + '<div class="sug-detail">' + cityLine + pastor + '</div>'
-      + '</div>';
+      +'<div class="sug-name">'+nameHL+'</div>'
+      +'<div class="sug-detail">'+cityLine+pastor+'</div>'
+      +'</div>';
   }).join("");
-
-  box.classList.add("open");
-  sugHighlight = -1;
+  box.classList.add("open"); sugHighlight=-1;
 }
 
 function selectSuggestion(idx){
-  const c = CHURCHES[idx];
-  if(!c) return;
-  // Close suggestions
-  const box = document.getElementById("search-suggestions");
-  if(box){ box.classList.remove("open"); box.innerHTML=""; }
-  // Set search input text
-  const input = document.getElementById("text-search");
-  if(input) input.value = c.name;
-  // Zoom to church on map and open popup
-  clusterGroup.zoomToShowLayer(markers[idx], function(){
-    markers[idx].openPopup();
-  });
-  // Highlight in list
+  var c=CHURCHES[idx]; if(!c)return;
+  var box=document.getElementById("search-suggestions");
+  if(box){box.classList.remove("open");box.innerHTML="";}
+  var input=document.getElementById("text-search");
+  if(input) input.value=c.name;
+  clusterGroup.zoomToShowLayer(markers[idx],function(){ markers[idx].openPopup(); });
   applyFilters();
-  setTimeout(function(){ highlightItem(idx); }, 300);
-  // On mobile, collapse sidebar to show map
+  setTimeout(function(){ highlightItem(idx); },300);
   if(window.innerWidth<=768){
-    var sidebar = document.getElementById("sidebar");
-    var btn = document.getElementById("mobile-drawer-btn");
-    if(sidebar){ sidebar.classList.add("collapsed"); }
-    if(btn){ btn.innerHTML="&#128506; List"; }
+    var sb=document.getElementById("sidebar");
+    var btn=document.getElementById("mobile-drawer-btn");
+    if(sb) sb.classList.add("collapsed");
+    if(btn) btn.innerHTML="&#128506; List";
     setTimeout(function(){ if(typeof map!=="undefined") map.invalidateSize(); },320);
   }
 }
 
 function handleSuggestionKey(e){
-  const box = document.getElementById("search-suggestions");
-  if(!box || !box.classList.contains("open")) return;
-  const items = box.querySelectorAll(".suggestion-item");
-  if(!items.length) return;
-  if(e.key==="ArrowDown"){
-    e.preventDefault();
-    sugHighlight = Math.min(sugHighlight+1, items.length-1);
-    items.forEach(function(el,i){ el.classList.toggle("highlighted", i===sugHighlight); });
-  } else if(e.key==="ArrowUp"){
-    e.preventDefault();
-    sugHighlight = Math.max(sugHighlight-1, 0);
-    items.forEach(function(el,i){ el.classList.toggle("highlighted", i===sugHighlight); });
-  } else if(e.key==="Enter"){
-    e.preventDefault();
-    if(sugHighlight>=0 && items[sugHighlight]){
-      const idx = parseInt(items[sugHighlight].dataset.idx);
-      selectSuggestion(idx);
+  var box=document.getElementById("search-suggestions");
+  if(!box||!box.classList.contains("open"))return;
+  var items=box.querySelectorAll(".suggestion-item");
+  if(!items.length)return;
+  if(e.key==="ArrowDown"){e.preventDefault();sugHighlight=Math.min(sugHighlight+1,items.length-1);items.forEach(function(el,i){el.classList.toggle("highlighted",i===sugHighlight);});}
+  else if(e.key==="ArrowUp"){e.preventDefault();sugHighlight=Math.max(sugHighlight-1,0);items.forEach(function(el,i){el.classList.toggle("highlighted",i===sugHighlight);});}
+  else if(e.key==="Enter"){e.preventDefault();if(sugHighlight>=0&&items[sugHighlight]){selectSuggestion(parseInt(items[sugHighlight].dataset.idx));}}
+  else if(e.key==="Escape"){box.classList.remove("open");sugHighlight=-1;}
+}
+
+document.addEventListener("click",function(e){
+  ["search-suggestions","route-from-suggestions","route-to-suggestions"].forEach(function(id){
+    var box=document.getElementById(id);
+    if(box&&!box.contains(e.target)) box.classList.remove("open");
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+//  ROUTE SUGGESTIONS (city/state from church data)
+// ═══════════════════════════════════════════════════════════════════════
+function showRouteSuggestions(inputId, boxId, query){
+  var box=document.getElementById(boxId);
+  if(!box)return;
+  var q=query.trim().toLowerCase();
+  if(q.length<2){box.classList.remove("open");box.innerHTML="";return;}
+
+  // Build unique city list from church data
+  var cities={};
+  CHURCHES.forEach(function(c){
+    if(!c.city||!c.state)return;
+    var key=c.city+", "+c.state;
+    var keyL=key.toLowerCase();
+    if(keyL.includes(q)){
+      if(!cities[key]) cities[key]={city:c.city,state:c.state,count:0};
+      cities[key].count++;
     }
-  } else if(e.key==="Escape"){
-    box.classList.remove("open");
-    sugHighlight=-1;
+  });
+
+  var sorted=Object.values(cities).sort(function(a,b){return b.count-a.count;}).slice(0,5);
+
+  if(!sorted.length){
+    box.innerHTML='<div class="sug-empty">No cities found — try a ZIP code</div>';
+    box.classList.add("open");return;
+  }
+
+  box.innerHTML=sorted.map(function(item){
+    var full=item.city+", "+item.state;
+    var hl=highlight(full,query.trim());
+    return '<div class="suggestion-item" onclick="selectRouteSuggestion(\''+inputId+'\',\''+boxId+'\',\''+full+'\')">'
+      +'<div class="sug-name">'+hl+'</div>'
+      +'<div class="sug-detail">'+item.count+' church'+(item.count===1?'':'es')+' in this city</div>'
+      +'</div>';
+  }).join("");
+  box.classList.add("open");
+}
+
+function selectRouteSuggestion(inputId, boxId, value){
+  var input=document.getElementById(inputId);
+  var box=document.getElementById(boxId);
+  if(input) input.value=value;
+  if(box){box.classList.remove("open");box.innerHTML="";}
+}
+
+function handleRouteSugKey(e, boxId){
+  var box=document.getElementById(boxId);
+  if(!box||!box.classList.contains("open"))return;
+  var items=box.querySelectorAll(".suggestion-item");
+  if(e.key==="Escape"){box.classList.remove("open");}
+  else if(e.key==="ArrowDown"){e.preventDefault();
+    var cur=box.querySelector(".highlighted");
+    var next=cur?cur.nextElementSibling:items[0];
+    if(cur)cur.classList.remove("highlighted");
+    if(next)next.classList.add("highlighted");
+  } else if(e.key==="ArrowUp"){e.preventDefault();
+    var cur2=box.querySelector(".highlighted");
+    var prev=cur2?cur2.previousElementSibling:null;
+    if(cur2)cur2.classList.remove("highlighted");
+    if(prev)prev.classList.add("highlighted");
+  } else if(e.key==="Enter"){e.preventDefault();
+    var hi=box.querySelector(".highlighted");
+    if(hi) hi.click();
   }
 }
 
-// Close suggestions when clicking outside
-document.addEventListener("click", function(e){
-  const box = document.getElementById("search-suggestions");
-  const input = document.getElementById("text-search");
-  if(box && !box.contains(e.target) && e.target!==input){
-    box.classList.remove("open");
-  }
+// ═══════════════════════════════════════════════════════════════════════
+//  MOBILE DRAWER
+// ═══════════════════════════════════════════════════════════════════════
+function toggleMobileDrawer(){
+  var sidebar=document.getElementById("sidebar");
+  var btn=document.getElementById("mobile-drawer-btn");
+  var isCollapsed=sidebar.classList.toggle("collapsed");
+  if(btn) btn.innerHTML=isCollapsed?"&#128506; List":"&#10005; Close";
+  setTimeout(function(){ if(typeof map!=="undefined") map.invalidateSize(); },320);
+}
+
+(function initMobile(){
+  if(window.innerWidth>768)return;
+  var btn=document.getElementById("mobile-drawer-btn");
+  if(btn){btn.style.display="flex";btn.innerHTML="&#128506; List";}
+  setTimeout(function(){ if(typeof map!=="undefined") map.invalidateSize(); },400);
+})();
+
+window.addEventListener("resize",function(){
+  var btn=document.getElementById("mobile-drawer-btn");
+  if(btn) btn.style.display=window.innerWidth<=768?"flex":"none";
+  if(typeof map!=="undefined") map.invalidateSize();
 });
 
 applyFilters();
