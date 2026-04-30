@@ -163,6 +163,32 @@ a{color:inherit;text-decoration:none}
 .fg select:focus,.fg input:focus{border-color:var(--blue)}
 .fg select option{background:var(--navy2);color:#EEF2FF}
 
+/* ── TIME FILTER BUTTONS ──────────────────────────────────────── */
+.time-filter-btn{
+  background:var(--navy3);
+  border:1.5px solid var(--navy4);
+  color:#6B9BD2;
+  padding:7px 10px;
+  border-radius:var(--radius-sm);
+  font-size:11px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:600;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:all .15s;
+  text-transform:uppercase;
+}
+.time-filter-btn:hover{
+  border-color:var(--blue);
+  color:#7AABFF;
+  background:rgba(21,101,192,.15);
+}
+.time-filter-btn.active{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+
 /* ── INFO BARS ────────────────────────────────────────────────── */
 #district-info-bar{
   display:none;padding:8px 14px;
@@ -181,6 +207,42 @@ a{color:inherit;text-decoration:none}
 }
 #sector-info-bar p{font-size:11px;color:#90B8E8;line-height:1.5;font-weight:500}
 #sector-info-bar span{color:#4A6A9A;font-size:10px}
+
+/* ── QUICK FILTERS ────────────────────────────────────────────── */
+#quick-filters{
+  display:flex;gap:6px;padding:8px 14px;
+  background:rgba(21,101,192,.05);
+  border-bottom:1px solid rgba(74,144,217,.15);
+  flex-wrap:wrap;flex-shrink:0;
+}
+.quick-filter-btn{
+  padding:5px 10px;
+  background:var(--navy3);
+  border:1.5px solid var(--navy4);
+  border-radius:16px;
+  color:#6B9BD2;
+  font-size:10px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:600;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:all .15s;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.quick-filter-btn:hover{
+  border-color:var(--blue);
+  color:#7AABFF;
+}
+.quick-filter-btn.active{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+.quick-filter-btn .qf-icon{
+  font-size:11px;
+}
 
 /* ── RESULTS BAR ──────────────────────────────────────────────── */
 #results-bar{
@@ -249,10 +311,97 @@ a{color:inherit;text-decoration:none}
   letter-spacing:.02em;
 }
 .has-social{
-  display:inline-block;width:6px;height:6px;
-  border-radius:50%;background:var(--blue3);
-  margin-left:4px;vertical-align:middle;opacity:.8;
+  display:inline;
+  font-size:10px;
+  margin-left:4px;
+  opacity:.7;
 }
+
+/* ── EXPANDABLE CHURCH CARDS ──────────────────────────────────── */
+.ci-header{
+  cursor:pointer;
+}
+.church-item.expanded{
+  background:var(--navy3);
+}
+.ci-details{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid rgba(74,144,217,.15);
+}
+.ci-detail-row{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:6px 0;
+  font-size:11px;
+  color:#CBD5E1;
+  line-height:1.5;
+}
+.ci-detail-row a{
+  color:#7AABFF;
+  text-decoration:none;
+}
+.ci-detail-row a:hover{
+  text-decoration:underline;
+}
+.ci-detail-icon{
+  font-size:12px;
+  min-width:16px;
+  opacity:.7;
+}
+.ci-actions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(80px, 1fr));
+  gap:6px;
+  margin-top:12px;
+  padding-top:8px;
+  border-top:1px solid rgba(74,144,217,.1);
+}
+.ci-action-btn{
+  padding:6px 8px;
+  background:rgba(21,101,192,.15);
+  border:1px solid rgba(74,144,217,.25);
+  border-radius:6px;
+  color:#7AABFF;
+  font-size:10px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:600;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:all .15s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+.ci-action-btn:hover{
+  background:rgba(21,101,192,.25);
+  border-color:#4A90D9;
+}
+.ci-action-icon{
+  font-size:11px;
+}
+.ci-expand-btn{
+  position:absolute;
+  bottom:8px;
+  right:12px;
+  background:none;
+  border:none;
+  color:#6B9BD2;
+  font-size:10px;
+  cursor:pointer;
+  padding:4px;
+  transition:color .15s;
+}
+.ci-expand-btn:hover{
+  color:#7AABFF;
+}
+.expand-icon{
+  display:inline-block;
+  transition:transform .2s;
+}
+
 #no-results{
   padding:50px 20px;text-align:center;
   color:#4A6A9A;font-size:13px;display:none;
@@ -478,16 +627,28 @@ a{color:inherit;text-decoration:none}
 
 /* ── LANGUAGE TOGGLE ───────────────────────────────────────────── */
 #lang-toggle{
-  display:flex;align-items:center;gap:0;
-  background:var(--navy);border:1px solid var(--navy4);
-  border-radius:6px;overflow:hidden;
+  display:flex;align-items:center;gap:6px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.05em;
 }
-.lang-btn{
-  padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;border:none;
-  font-family:"Barlow Condensed",sans-serif;letter-spacing:.05em;
-  background:transparent;color:#4A6A9A;transition:all .15s;
+.lang-word{
+  cursor:pointer;
+  color:#4A6A9A;
+  opacity:0.4;
+  transition:opacity .2s ease;
 }
-.lang-btn.active{background:var(--blue);color:#fff}
+.lang-word.active{
+  opacity:1;
+  color:#7AABFF;
+}
+.lang-word:hover{
+  opacity:0.7;
+}
+.lang-separator{
+  color:#4A6A9A;
+  opacity:0.3;
+  font-weight:400;
+}
 
 /* ── KOFI BUTTON ───────────────────────────────────────────────── */
 #kofi-btn{
@@ -775,18 +936,65 @@ a{color:inherit;text-decoration:none}
   font-family:"Barlow Condensed",sans-serif;font-weight:600;
 }
 
-/* ── LANGUAGE TOGGLE ───────────────────────────────────────────── */
-#lang-toggle{
-  display:flex;align-items:center;gap:0;
-  background:var(--navy);border:1px solid var(--navy4);
-  border-radius:6px;overflow:hidden;
+/* ── SHARE MODAL ───────────────────────────────────────────────── */
+#share-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
 }
-.lang-btn{
-  padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;border:none;
-  font-family:"Barlow Condensed",sans-serif;letter-spacing:.05em;
-  background:transparent;color:#4A6A9A;transition:all .15s;
+#share-modal.open{display:flex}
+#share-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
+  box-shadow:var(--shadow-lg);
 }
-.lang-btn.active{background:var(--blue);color:#fff}
+#share-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+#share-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
+.share-option{
+  display:flex;align-items:center;gap:12px;
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  margin-bottom:8px;cursor:pointer;transition:border-color .15s;
+}
+.share-option:hover{border-color:#4A90D9}
+.share-option .share-icon{font-size:20px}
+.share-option .share-label{font-size:12px;font-weight:600;color:#EEF2FF}
+.share-option .share-sub{font-size:10px;color:#6B9BD2}
+.share-close{
+  width:100%;margin-top:8px;padding:8px;
+  background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+}
+
+/* ── EXPORT MODAL ──────────────────────────────────────────────── */
+#export-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
+}
+#export-modal.open{display:flex}
+#export-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
+  box-shadow:var(--shadow-lg);
+}
+#export-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+#export-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
+.export-option{
+  display:flex;align-items:center;gap:12px;
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  margin-bottom:8px;cursor:pointer;transition:border-color .15s;
+}
+.export-option:hover{border-color:#4A90D9}
+.export-option .export-icon{font-size:20px}
+.export-option .export-label{font-size:12px;font-weight:600;color:#EEF2FF}
+.export-option .export-sub{font-size:10px;color:#6B9BD2}
+.export-close{
+  width:100%;margin-top:8px;padding:8px;
+  background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+}
 
 /* ── KOFI BUTTON ───────────────────────────────────────────────── */
 #kofi-btn{
@@ -830,7 +1038,6 @@ a{color:inherit;text-decoration:none}
   #topbar-controls{padding:3px 12px 4px;gap:5px}
   .logo-main{height:26px !important}
   .logo-go{height:28px !important;padding-left:10px !important;margin-left:10px !important}
-  .lang-btn{padding:3px 8px;font-size:10px}
   #text-size-select{font-size:10px;padding:3px 5px;height:24px}
   #btn-contrast{font-size:10px;padding:3px 7px;height:24px}
   #topbar-actions{gap:4px}
@@ -1598,12 +1805,12 @@ a{color:inherit;text-decoration:none}
 
   #stats-modal,#profile-modal,#bishop-dir-modal,
   #embed-modal,#correction-modal,#about-modal,
-  #feedback-modal,#cal-modal{
+  #feedback-modal,#cal-modal,#share-modal,#export-modal{
     align-items:flex-end !important;padding:0 !important;
   }
   #stats-box,#profile-box,#bishop-dir-box,
   #embed-box,#correction-box,#about-box,
-  #feedback-box,#cal-box{
+  #feedback-box,#cal-box,#share-box,#export-box{
     max-width:100% !important;width:100% !important;
     border-radius:16px 16px 0 0 !important;max-height:92vh !important;
   }
@@ -1744,8 +1951,9 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
   <!-- ROW 2: Controls -->
   <div id="topbar-controls">
     <div id="lang-toggle">
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
-      <button class="lang-btn"        data-lang="es" onclick="setLang('es')">Español</button>
+      <span class="lang-word active" data-lang="en" onclick="setLang('en')">English</span>
+      <span class="lang-separator">/</span>
+      <span class="lang-word" data-lang="es" onclick="setLang('es')">Español</span>
     </div>
     <button class="topbar-quick-btn" onclick="openFeedback()" title="Send feedback">&#128172; Feedback</button>
     <a class="topbar-quick-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener" title="Support this directory">&#9749; Support</a>
@@ -1785,6 +1993,9 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
     </div>
     <div class="stab" data-tab="favorites" onclick="switchTab('favorites')">
       <span class="stab-icon">❤️</span><span class="stab-label" data-i18n="tab_favs">Saved</span>
+    </div>
+    <div class="stab" data-tab="recent" onclick="switchTab('recent')">
+      <span class="stab-icon">🕒</span><span class="stab-label">Recent</span>
     </div>
     <div class="stab" data-tab="info" onclick="switchTab('info')">
       <span class="stab-icon">&#8505;</span><span class="stab-label">Info</span>
@@ -1910,6 +2121,32 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
         <select id="f-city"><option value="">All Cities</option></select>
       </div>
     </div>
+    
+    <!-- SERVICE TIME QUICK FILTERS -->
+    <div class="section-label" style="margin-top:12px">&#9670; Service Times</div>
+    <div style="padding:8px 14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px">
+        <button class="time-filter-btn" onclick="filterByServiceTime('tonight')">Tonight</button>
+        <button class="time-filter-btn" onclick="filterByServiceTime('sunday')">Sunday</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <button class="time-filter-btn" onclick="filterByServiceTime('wednesday')">Wednesday</button>
+        <button class="time-filter-btn" onclick="filterByServiceTime('has-schedule')">Has Schedule</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK FILTERS -->
+  <div id="quick-filters">
+    <button class="quick-filter-btn" onclick="toggleQuickFilter('bilingual')" data-filter="bilingual">
+      <span class="qf-icon">🌐</span> Bilingual
+    </button>
+    <button class="quick-filter-btn" onclick="toggleQuickFilter('website')" data-filter="website">
+      <span class="qf-icon">🌐</span> Has Website
+    </button>
+    <button class="quick-filter-btn" onclick="toggleQuickFilter('schedule')" data-filter="schedule">
+      <span class="qf-icon">🕐</span> Has Schedule
+    </button>
   </div>
 
   <!-- RESULTS -->
@@ -1981,6 +2218,11 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
 
   <!-- FAVORITES PANEL -->
   <div class="tab-panel" id="panel-favorites">
+    <div id="fav-export-bar" style="display:none;padding:8px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
+      <button onclick="openExportModal()" style="width:100%;padding:8px;background:rgba(21,101,192,.2);border:1px solid rgba(74,144,217,.3);border-radius:6px;color:#7AABFF;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.05em">
+        📥 Export Saved Churches
+      </button>
+    </div>
     <div id="fav-list"></div>
     <div id="fav-empty" style="display:none">
       <div style="font-size:32px;margin-bottom:12px">&#10084;</div>
@@ -1997,6 +2239,14 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
     </div>
   </div>
 
+  <!-- RECENT PANEL -->
+  <div class="tab-panel" id="panel-recent">
+    <div style="padding:12px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;color:#7AABFF;letter-spacing:.04em;text-transform:uppercase">Last 5 Viewed</div>
+      <div style="font-size:10px;color:#6B9BD2;margin-top:2px">Quick access to recently viewed churches</div>
+    </div>
+    <div id="recent-list"></div>
+  </div>
 
   <!-- INFO PANEL -->
   <div class="tab-panel" id="panel-info">
@@ -2052,6 +2302,7 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
 <script>
 // ─── HOISTED GLOBALS (must be before any initialization) ────────────
 var favorites = JSON.parse(localStorage.getItem("aaofcj_favs")||"[]");
+var recentlyViewed = JSON.parse(localStorage.getItem("aaofcj_recent")||"[]");
 var LANG = "en";
 var fbType = "suggestion";
 var fbRating = 0;
@@ -3095,6 +3346,11 @@ function applyFilters(){
       const d=distanceMi(zipLatLng,{lat:c.lat,lng:c.lng});
       if(d>zipRadius)return;
     }
+    // service time filter
+    if(activeTimeFilter && !matchesServiceTime(c, activeTimeFilter))return;
+    // quick filters
+    if(!matchesQuickFilters(c))return;
+    
     visibleIndices.push(idx);
     clusterGroup.addLayer(markers[idx]);
   });
@@ -3155,21 +3411,48 @@ function renderList(){
     const c=CHURCHES[idx];
     const meta=DISTRICT_META[c.district]||{};
     const d=refPt?distanceMi(refPt,{lat:c.lat,lng:c.lng}):null;
+    
+    // Calculate estimated driving time (assume average 35 mph with city/rural mix)
+    const drivingTime = d ? Math.ceil(d / 35 * 60) : null; // minutes
+    
     const langCls=c.language==="Bilingual"?"tag-lang-bilingual":c.language==="English"?"tag-lang-english":"tag-lang-spanish";
     const hasSocial=!!(c.facebook||c.instagram||c.youtube||c.tiktok);
     const div=document.createElement("div");
     div.className="church-item"+(activeIdx===idx?" active":"");
     div.dataset.idx=idx;
+    
+    // Main card content (always visible)
     div.innerHTML=`
-      <div class="ci-name">${c.name}${hasSocial?'<span class="has-social" title="Has social media"></span>':""}</div>
-      <div class="ci-loc"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>${c.city}, ${c.state} ${c.zip}</div>
-      <div class="ci-tags">
-        <span class="tag ${langCls}">${c.language}</span>
-        ${c.district?`<span class="tag tag-district">${c.district.replace(" District","").replace(" of CA/NV","")}</span>`:""}
-        ${c.sector?`<span class="tag tag-district">Sect. ${c.sector}</span>`:""}
+      <div class="ci-header">
+        <div class="ci-name">${c.name}${hasSocial?'<span class="has-social" title="Has social media">🌐</span>':""}</div>
+        <div class="ci-loc"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>${c.city}, ${c.state}</div>
+        <div class="ci-tags">
+          <span class="tag ${langCls}">${c.language}</span>
+          ${c.district?`<span class="tag tag-district">${c.district.replace(" District","").replace(" of CA/NV","")}</span>`:""}
+        </div>
+        ${d!==null?`<div class="ci-dist">${d.toFixed(1)} mi${drivingTime?` · ~${drivingTime} min`:''}</div>`:""}
       </div>
-      ${d!==null?`<div class="ci-dist">${d.toFixed(1)} mi</div>`:""}
+      
+      <div class="ci-details" style="display:none">
+        ${c.address?`<div class="ci-detail-row"><span class="ci-detail-icon">📍</span><span>${c.address}, ${c.city}, ${c.state} ${c.zip}</span></div>`:""}
+        ${c.phone?`<div class="ci-detail-row"><span class="ci-detail-icon">📞</span><span>${c.phone}</span></div>`:""}
+        ${c.pastor?`<div class="ci-detail-row"><span class="ci-detail-icon">👤</span><span>Pastor ${c.pastor}</span></div>`:""}
+        ${c.schedule?`<div class="ci-detail-row"><span class="ci-detail-icon">🕐</span><span>${c.schedule}</span></div>`:""}
+        ${c.website?`<div class="ci-detail-row"><span class="ci-detail-icon">🌐</span><span><a href="https://${c.website}" target="_blank">${c.website}</a></span></div>`:""}
+        
+        <div class="ci-actions">
+          <button class="ci-action-btn" onclick="viewOnMap(${idx});event.stopPropagation()"><span class="ci-action-icon">📍</span> Map</button>
+          ${c.phone?`<button class="ci-action-btn" onclick="window.open('tel:${c.phone}');event.stopPropagation()"><span class="ci-action-icon">📞</span> Call</button>`:""}
+          <button class="ci-action-btn" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.address+' '+c.city+' '+c.state+' '+c.zip)}');event.stopPropagation()"><span class="ci-action-icon">🗺️</span> Directions</button>
+          <button class="ci-action-btn" onclick="shareChurch(CHURCHES[${idx}]);event.stopPropagation()"><span class="ci-action-icon">↗</span> Share</button>
+        </div>
+      </div>
+      
+      <button class="ci-expand-btn">
+        <span class="expand-icon">▼</span>
+      </button>
     `;
+    
     // Fav button
     const favBtn = document.createElement("button");
     favBtn.className = "fav-btn" + (favorites.includes(String(idx))?" active":"");
@@ -3178,12 +3461,22 @@ function renderList(){
     favBtn.addEventListener("click", e=>{ e.stopPropagation(); toggleFavorite(idx, favBtn); });
     div.appendChild(favBtn);
 
-    div.addEventListener("click",()=>{
-      const m=markers[idx
-];
-      clusterGroup.zoomToShowLayer(m,()=>m.openPopup());
-      highlightItem(idx);
-    });
+    // Click handler for header - toggles expansion
+    const header = div.querySelector(".ci-header");
+    const details = div.querySelector(".ci-details");
+    const expandBtn = div.querySelector(".ci-expand-btn");
+    
+    const toggleExpand = (e) => {
+      e.stopPropagation();
+      const isExpanded = details.style.display !== "none";
+      details.style.display = isExpanded ? "none" : "block";
+      expandBtn.querySelector(".expand-icon").textContent = isExpanded ? "▼" : "▲";
+      div.classList.toggle("expanded", !isExpanded);
+    };
+    
+    header.addEventListener("click", toggleExpand);
+    expandBtn.addEventListener("click", toggleExpand);
+
     list.appendChild(div);
   });
 }
@@ -3193,6 +3486,14 @@ function highlightItem(idx){
   document.querySelectorAll(".church-item").forEach(el=>el.classList.toggle("active",+el.dataset.idx===idx));
   const el=document.querySelector(`.church-item[data-idx="${idx}"]`);
   if(el)el.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function viewOnMap(idx){
+  const m = markers[idx];
+  if(m){
+    clusterGroup.zoomToShowLayer(m, () => m.openPopup());
+    highlightItem(idx);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -3205,6 +3506,9 @@ document.getElementById("sort-select").addEventListener("change",applyFilters);
 document.getElementById("text-search").addEventListener("input",applyFilters);
 
 // Zip search
+// ZIP Search with radius visualization
+var radiusCircle = null;
+
 document.getElementById("btn-zip").addEventListener("click",()=>{
   const zip=document.getElementById("zip-input").value.trim();
   if(!/^\d{5}$/.test(zip)){alert("Please enter a valid 5-digit ZIP code.");return;}
@@ -3217,6 +3521,20 @@ document.getElementById("btn-zip").addEventListener("click",()=>{
     .then(data=>{
       if(!data.length){alert("ZIP code not found. Try a different one.");btn.textContent="Search ZIP";btn.disabled=false;return;}
       zipLatLng={lat:+data[0].lat,lng:+data[0].lon};
+      
+      // Remove old radius circle if exists
+      if(radiusCircle) map.removeLayer(radiusCircle);
+      
+      // Add new radius circle
+      radiusCircle = L.circle([zipLatLng.lat, zipLatLng.lng], {
+        radius: zipRadius * 1609.34, // miles to meters
+        color: '#4A90D9',
+        fillColor: '#1565C0',
+        fillOpacity: 0.1,
+        weight: 2,
+        dashArray: '5, 5'
+      }).addTo(map);
+      
       map.setView([zipLatLng.lat,zipLatLng.lng],9);
       showStatus(`Showing churches within ${zipRadius} miles of ZIP ${zip}.`);
       document.getElementById("sort-select").value="distance";
@@ -3257,6 +3575,11 @@ document.getElementById("btn-reset").addEventListener("click",()=>{
   document.getElementById("sort-select").value="name";
   zipLatLng=null;userLatLng=null;
   if(userMarker){userMarker.remove();userMarker=null;}
+  if(radiusCircle){map.removeLayer(radiusCircle);radiusCircle=null;}
+  activeTimeFilter=null;
+  activeQuickFilters=[];
+  document.querySelectorAll(".time-filter-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".quick-filter-btn").forEach(b=>b.classList.remove("active"));
   document.getElementById("btn-locate").innerHTML="📍 Use My Location";
   document.getElementById("btn-locate").classList.remove("active");
   document.getElementById("status-bar").style.display="none";
@@ -3393,7 +3716,7 @@ function t(k){ return (I18N[LANG]||I18N.en)[k]||k; }
 function setLang(lang){
   LANG=lang;
   localStorage.setItem("aaofcj_lang", lang);
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  document.querySelectorAll(".lang-word").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key=el.getAttribute("data-i18n");
     if(I18N[lang][key]) {
@@ -3431,6 +3754,7 @@ function switchTab(tab){
   document.querySelectorAll(".stab").forEach(t=>t.classList.toggle("active",t.dataset.tab===tab));
   document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+tab));
   if(tab==="favorites")renderFavorites();
+  if(tab==="recent")renderRecentlyViewed();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -3449,9 +3773,17 @@ function toggleFavorite(idx,btn){
 function renderFavorites(){
   const list=document.getElementById("fav-list");
   const empty=document.getElementById("fav-empty");
+  const exportBar=document.getElementById("fav-export-bar");
   list.innerHTML="";
-  if(!favorites.length){ empty.style.display="block"; list.style.display="none"; return; }
-  empty.style.display="none"; list.style.display="block";
+  if(!favorites.length){ 
+    empty.style.display="block"; 
+    list.style.display="none"; 
+    if(exportBar) exportBar.style.display="none";
+    return; 
+  }
+  empty.style.display="none"; 
+  list.style.display="block";
+  if(exportBar) exportBar.style.display="block";
   favorites.forEach(id=>{
     const c=CHURCHES[parseInt(id)]; if(!c)return;
     const d=document.createElement("div"); d.className="church-item"; d.style.position="relative";
@@ -3463,6 +3795,53 @@ function renderFavorites(){
       setTimeout(()=>{ markers[parseInt(id)].fire("click"); highlightItem(parseInt(id)); },100);
     });
     list.appendChild(d);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  RECENTLY VIEWED
+// ═══════════════════════════════════════════════════════════════════════
+function addToRecentlyViewed(idx){
+  const id = String(idx);
+  // Remove if already in list
+  const pos = recentlyViewed.indexOf(id);
+  if(pos !== -1) recentlyViewed.splice(pos, 1);
+  // Add to front
+  recentlyViewed.unshift(id);
+  // Keep only last 5
+  if(recentlyViewed.length > 5) recentlyViewed = recentlyViewed.slice(0, 5);
+  // Save
+  localStorage.setItem("aaofcj_recent", JSON.stringify(recentlyViewed));
+  // Update UI if recent tab exists
+  renderRecentlyViewed();
+}
+
+function renderRecentlyViewed(){
+  const container = document.getElementById("recent-list");
+  if(!container) return;
+  
+  container.innerHTML = "";
+  
+  if(!recentlyViewed.length){
+    container.innerHTML = '<div style="padding:20px;text-align:center;color:#4A6A9A;font-size:11px">No recent views yet</div>';
+    return;
+  }
+  
+  recentlyViewed.forEach(id => {
+    const c = CHURCHES[parseInt(id)];
+    if(!c) return;
+    
+    const d = document.createElement("div");
+    d.className = "church-item";
+    d.innerHTML = '<div class="ci-name">'+c.name+'</div><div class="ci-loc">📍 '+c.city+', '+c.state+'</div>';
+    d.addEventListener("click", () => {
+      switchTab("search");
+      setTimeout(() => { 
+        markers[parseInt(id)].fire("click"); 
+        highlightItem(parseInt(id)); 
+      }, 100);
+    });
+    container.appendChild(d);
   });
 }
 
@@ -3498,16 +3877,285 @@ function addToApple(){
 // ═══════════════════════════════════════════════════════════════════════
 //  SHARE
 // ═══════════════════════════════════════════════════════════════════════
-async function shareChurch(c){
-  const text=c.name+"\n"+c.address+", "+c.city+", "+c.state+" "+c.zip+(c.phone?"\nPhone: "+c.phone:"")+(c.website?"\nhttps://"+c.website:"");
-  if(navigator.share){ try{ await navigator.share({title:c.name,text,url:window.location.href}); return; }catch(e){} }
-  try{ await navigator.clipboard.writeText(text); showToast("Link copied!"); }
-  catch(e){ showToast("Copy the link manually"); }
+var shareChurchData = null;
+
+function shareChurch(c){
+  shareChurchData = c;
+  document.getElementById("share-church-name").textContent = c.name + " · " + c.city + ", " + c.state;
+  document.getElementById("share-modal").classList.add("open");
+}
+
+function closeShareModal(){
+  document.getElementById("share-modal").classList.remove("open");
+  shareChurchData = null;
+}
+
+function shareViaWhatsApp(){
+  if(!shareChurchData) return;
+  const c = shareChurchData;
+  const text = `*${c.name}*\n${c.address}, ${c.city}, ${c.state} ${c.zip}` +
+    (c.phone ? `\n📞 ${c.phone}` : "") +
+    (c.schedule ? `\n🕐 ${c.schedule.split('·')[0].trim()}` : "") +
+    (c.pastor ? `\n👤 ${c.pastor}` : "") +
+    (c.website ? `\n🌐 https://${c.website}` : "");
+  const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+  closeShareModal();
+}
+
+function shareViaSMS(){
+  if(!shareChurchData) return;
+  const c = shareChurchData;
+  const text = `${c.name}\n${c.address}, ${c.city}, ${c.state} ${c.zip}` +
+    (c.phone ? `\nPhone: ${c.phone}` : "") +
+    (c.website ? `\nWebsite: https://${c.website}` : "");
+  const url = `sms:?&body=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+  closeShareModal();
+}
+
+function shareViaCopy(){
+  if(!shareChurchData) return;
+  const c = shareChurchData;
+  const text = `${c.name}\n${c.address}, ${c.city}, ${c.state} ${c.zip}` +
+    (c.phone ? `\nPhone: ${c.phone}` : "") +
+    (c.schedule ? `\nSchedule: ${c.schedule}` : "") +
+    (c.pastor ? `\nPastor: ${c.pastor}` : "") +
+    (c.website ? `\nWebsite: https://${c.website}` : "");
+  navigator.clipboard.writeText(text).then(()=>{
+    showToast(t("copied"));
+    closeShareModal();
+  }).catch(()=>showToast(t("share_fail")));
+}
+
+async function shareViaNative(){
+  if(!shareChurchData) return;
+  const c = shareChurchData;
+  const text = `${c.name}\n${c.address}, ${c.city}, ${c.state} ${c.zip}` +
+    (c.phone ? `\nPhone: ${c.phone}` : "") +
+    (c.website ? `\nhttps://${c.website}` : "");
+  try{
+    await navigator.share({title: c.name, text: text});
+    closeShareModal();
+  }catch(e){}
 }
 function showToast(msg){
   const el=document.getElementById("share-toast");
   document.getElementById("share-toast-msg").textContent=msg;
   el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),2500);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  EXPORT FAVORITES
+// ═══════════════════════════════════════════════════════════════════════
+function openExportModal(){
+  const count = favorites.length;
+  document.getElementById("export-count").textContent = count;
+  document.getElementById("export-modal").classList.add("open");
+}
+
+function closeExportModal(){
+  document.getElementById("export-modal").classList.remove("open");
+}
+
+function exportAsPDF(){
+  const churches = favorites.map(id => CHURCHES[parseInt(id)]).filter(Boolean);
+  if(!churches.length) return;
+  
+  let content = `AAOFCJ CHURCH FINDER - SAVED CHURCHES\n`;
+  content += `Exported: ${new Date().toLocaleDateString()}\n`;
+  content += `Total: ${churches.length} churches\n`;
+  content += `${'='.repeat(60)}\n\n`;
+  
+  churches.forEach((c, i) => {
+    content += `${i + 1}. ${c.name}\n`;
+    content += `   ${c.address}\n`;
+    content += `   ${c.city}, ${c.state} ${c.zip}\n`;
+    if(c.phone) content += `   Phone: ${c.phone}\n`;
+    if(c.pastor) content += `   Pastor: ${c.pastor}\n`;
+    if(c.schedule) content += `   Schedule: ${c.schedule}\n`;
+    if(c.website) content += `   Website: https://${c.website}\n`;
+    if(c.district) content += `   District: ${c.district}\n`;
+    content += `\n`;
+  });
+  
+  // Create simple text-based PDF alternative (browsers don't support PDF generation natively)
+  // Download as formatted text file that can be converted to PDF
+  const blob = new Blob([content], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `AAOFCJ_Saved_Churches_${new Date().toISOString().split('T')[0]}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  
+  closeExportModal();
+  showToast("Downloaded! Open in Word/Pages to save as PDF");
+}
+
+function exportAsVCard(){
+  const churches = favorites.map(id => CHURCHES[parseInt(id)]).filter(Boolean);
+  if(!churches.length) return;
+  
+  let vcf = '';
+  churches.forEach(c => {
+    vcf += 'BEGIN:VCARD\n';
+    vcf += 'VERSION:3.0\n';
+    vcf += `FN:${c.name}\n`;
+    vcf += `ORG:AAOFCJ;${c.district || ''}\n`;
+    if(c.phone) vcf += `TEL;TYPE=CHURCH:${c.phone}\n`;
+    vcf += `ADR;TYPE=WORK:;;${c.address};${c.city};${c.state};${c.zip};USA\n`;
+    if(c.website) vcf += `URL:https://${c.website}\n`;
+    if(c.pastor) vcf += `NOTE:Pastor: ${c.pastor}`;
+    if(c.schedule) vcf += `\\nSchedule: ${c.schedule}`;
+    if(c.language) vcf += `\\nLanguage: ${c.language}`;
+    vcf += '\n';
+    vcf += 'END:VCARD\n';
+  });
+  
+  const blob = new Blob([vcf], {type: 'text/vcard'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `AAOFCJ_Churches_${new Date().toISOString().split('T')[0]}.vcf`;
+  a.click();
+  URL.revokeObjectURL(url);
+  
+  closeExportModal();
+  showToast("vCard downloaded! Import to contacts");
+}
+
+function exportAsCSV(){
+  const churches = favorites.map(id => CHURCHES[parseInt(id)]).filter(Boolean);
+  if(!churches.length) return;
+  
+  let csv = 'Name,Address,City,State,ZIP,Phone,Pastor,Schedule,Language,District,Website\n';
+  churches.forEach(c => {
+    const row = [
+      `"${c.name}"`,
+      `"${c.address}"`,
+      `"${c.city}"`,
+      `"${c.state}"`,
+      `"${c.zip}"`,
+      `"${c.phone || ''}"`,
+      `"${c.pastor || ''}"`,
+      `"${c.schedule || ''}"`,
+      `"${c.language || ''}"`,
+      `"${c.district || ''}"`,
+      `"${c.website || ''}"`
+    ];
+    csv += row.join(',') + '\n';
+  });
+  
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `AAOFCJ_Churches_${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  
+  closeExportModal();
+  showToast("CSV downloaded! Open in Excel/Sheets");
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  SERVICE TIME FILTER
+// ═══════════════════════════════════════════════════════════════════════
+var activeTimeFilter = null;
+var activeQuickFilters = [];
+
+function filterByServiceTime(type){
+  // Toggle off if clicking same button
+  if(activeTimeFilter === type){
+    activeTimeFilter = null;
+    document.querySelectorAll(".time-filter-btn").forEach(b => b.classList.remove("active"));
+    applyFilters();
+    return;
+  }
+  
+  activeTimeFilter = type;
+  
+  // Update button states
+  document.querySelectorAll(".time-filter-btn").forEach(b => b.classList.remove("active"));
+  event.target.classList.add("active");
+  
+  applyFilters();
+}
+
+function matchesServiceTime(church, filterType){
+  if(!church.schedule) return filterType === 'has-schedule' ? false : true;
+  
+  const sched = church.schedule.toLowerCase();
+  const now = new Date();
+  const day = now.getDay(); // 0=Sunday, 1=Monday, etc.
+  const hour = now.getHours();
+  
+  switch(filterType){
+    case 'tonight':
+      // Check if there's a service today after current time
+      const dayNames = ['sun','mon','tue','wed','thu','fri','sat'];
+      const today = dayNames[day];
+      if(sched.includes(today)){
+        // Has service today - consider it "tonight" if it's before 9pm or if evening/night service mentioned
+        if(hour < 21 || sched.includes('pm') || sched.includes('evening') || sched.includes('night')){
+          return true;
+        }
+      }
+      return false;
+      
+    case 'sunday':
+      return sched.includes('sun') || sched.includes('dom'); // dom = domingo (Spanish)
+      
+    case 'wednesday':
+      return sched.includes('wed') || sched.includes('mie') || sched.includes('mié'); // mié = miércoles (Spanish)
+      
+    case 'has-schedule':
+      return true; // Already filtered by having a schedule
+      
+    default:
+      return true;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  QUICK FILTERS
+// ═══════════════════════════════════════════════════════════════════════
+function toggleQuickFilter(filterType){
+  const btn = event.target.closest('.quick-filter-btn');
+  const idx = activeQuickFilters.indexOf(filterType);
+  
+  if(idx === -1){
+    // Add filter
+    activeQuickFilters.push(filterType);
+    btn.classList.add('active');
+  } else {
+    // Remove filter
+    activeQuickFilters.splice(idx, 1);
+    btn.classList.remove('active');
+  }
+  
+  applyFilters();
+}
+
+function matchesQuickFilters(church){
+  if(!activeQuickFilters.length) return true;
+  
+  for(let filter of activeQuickFilters){
+    switch(filter){
+      case 'bilingual':
+        if(church.language !== 'Bilingual') return false;
+        break;
+      case 'website':
+        if(!church.website) return false;
+        break;
+      case 'schedule':
+        if(!church.schedule) return false;
+        break;
+    }
+  }
+  
+  return true;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -3973,6 +4621,10 @@ function closePopupsAndOpen(idx){
 function openProfile(idx){
   const c = CHURCHES[idx];
   if(!c) return;
+  
+  // Track recently viewed
+  addToRecentlyViewed(idx);
+  
   // Only open profile if church has website or social
   const hasSocial = c.facebook||c.instagram||c.youtube||c.tiktok;
   if(!c.website && !hasSocial){ showToast("No website or social media on file for this church."); return; }
@@ -4858,6 +5510,81 @@ setTimeout(function(){ map.invalidateSize(true); }, 300);
     </button>
   </div>
 </div>
+
+<!-- SHARE MODAL -->
+<div id="share-modal" onclick="if(event.target===this)closeShareModal()">
+  <div id="share-box">
+    <h2>📤 Share Church</h2>
+    <p class="sub" id="share-church-name"></p>
+    <div class="share-option" onclick="shareViaWhatsApp()">
+      <span class="share-icon">💬</span>
+      <div>
+        <div class="share-label">WhatsApp</div>
+        <div class="share-sub">Share via WhatsApp message</div>
+      </div>
+    </div>
+    <div class="share-option" onclick="shareViaSMS()">
+      <span class="share-icon">💬</span>
+      <div>
+        <div class="share-label">Text Message</div>
+        <div class="share-sub">Share via SMS</div>
+      </div>
+    </div>
+    <div class="share-option" onclick="shareViaCopy()">
+      <span class="share-icon">📋</span>
+      <div>
+        <div class="share-label">Copy to Clipboard</div>
+        <div class="share-sub">Copy church details</div>
+      </div>
+    </div>
+    <div class="share-option" onclick="shareViaNative()" id="native-share-option" style="display:none">
+      <span class="share-icon">↗</span>
+      <div>
+        <div class="share-label">Share...</div>
+        <div class="share-sub">Use system share sheet</div>
+      </div>
+    </div>
+    <button class="share-close" onclick="closeShareModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- EXPORT MODAL -->
+<div id="export-modal" onclick="if(event.target===this)closeExportModal()">
+  <div id="export-box">
+    <h2>📥 Export Saved Churches</h2>
+    <p class="sub"><span id="export-count">0</span> churches saved</p>
+    <div class="export-option" onclick="exportAsPDF()">
+      <span class="export-icon">📄</span>
+      <div>
+        <div class="export-label">PDF Document</div>
+        <div class="export-sub">Printable list with all details</div>
+      </div>
+    </div>
+    <div class="export-option" onclick="exportAsVCard()">
+      <span class="export-icon">📇</span>
+      <div>
+        <div class="export-label">Contact Cards (vCard)</div>
+        <div class="export-sub">Import all churches to phone contacts</div>
+      </div>
+    </div>
+    <div class="export-option" onclick="exportAsCSV()">
+      <span class="export-icon">📊</span>
+      <div>
+        <div class="export-label">Spreadsheet (CSV)</div>
+        <div class="export-sub">Open in Excel, Google Sheets, etc.</div>
+      </div>
+    </div>
+    <button class="export-close" onclick="closeExportModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+// Show native share option only if Web Share API is available
+if(navigator.share){
+  const nso = document.getElementById("native-share-option");
+  if(nso) nso.style.display = "flex";
+}
+</script>
 
 </body>
 </html>
