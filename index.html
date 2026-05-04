@@ -2483,6 +2483,98 @@ body.visitor-mode .elder-info{
   }
 }
 
+
+/* Mobile-Only Support and Feedback Buttons */
+.mobile-help-buttons{
+  display:none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .mobile-help-buttons{
+    display:flex;
+    gap:8px;
+    padding:8px 12px;
+    background:#F8FAFC;
+    border-bottom:1px solid #E2E8F0;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  
+  .mobile-help-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#fff;
+    border:1px solid #CBD5E1;
+    color:#475569;
+    padding:8px 14px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all .2s;
+    text-decoration:none;
+  }
+  
+  .mobile-help-btn:hover,
+  .mobile-help-btn:active{
+    background:#E3F0FC;
+    border-color:#1565C0;
+    color:#1565C0;
+  }
+  
+  .mobile-help-btn .icon{
+    font-size:16px;
+  }
+}
+
+
+
+/* Mobile Collapsible Filters */
+@media (max-width: 768px) {
+  .filter-section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    background:#1E293B;
+    border-radius:6px;
+    cursor:pointer;
+    user-select:none;
+    margin-bottom:8px;
+  }
+  
+  .filter-section-header h4{
+    margin:0;
+    color:#E3F0FC;
+    font-size:14px;
+    font-weight:600;
+  }
+  
+  .filter-section-toggle{
+    color:#94A3B8;
+    font-size:20px;
+    transition:transform .2s;
+  }
+  
+  .filter-section-header.collapsed .filter-section-toggle{
+    transform:rotate(-90deg);
+  }
+  
+  .filter-section-content{
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  
+  .filter-section-content.collapsed{
+    max-height:0;
+  }
+  
+  .filter-section-content.expanded{
+    max-height:1000px;
+  }
+}
+
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -2493,6 +2585,20 @@ body.visitor-mode .elder-info{
   <meta name="apple-mobile-web-app-title" content="AAOFCJ">
 </head>
 <body>
+
+<!-- MOBILE FEEDBACK/SUPPORT BUTTONS -->
+<div class="mobile-help-buttons">
+  <a href="mailto:feedback@aaofcj.org?subject=Church%20Finder%20Feedback" class="mobile-help-btn">
+    <span class="icon">💬</span>
+    <span>Feedback</span>
+  </a>
+  <a href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener noreferrer" class="mobile-help-btn">
+    <span class="icon">☕</span>
+    <span>Support</span>
+  </a>
+</div>
+
+
 
 
 
@@ -6756,6 +6862,93 @@ window.addEventListener('load', function() {
 });
 
 console.log('Keyboard navigation enabled - ESC to close modals, Tab to navigate');
+</script>
+
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// MOBILE COLLAPSIBLE FILTERS
+// ═══════════════════════════════════════════════════════════
+
+function initCollapsibleFilters() {
+  // Only apply on mobile
+  if (window.innerWidth > 768) return;
+  
+  // Find all filter sections that need to be collapsible
+  var filterSelectors = [
+    '#language-filter',
+    '#district-filter', 
+    '#sector-filter'
+  ];
+  
+  filterSelectors.forEach(function(selector) {
+    var filterElement = document.querySelector(selector);
+    if (!filterElement) return;
+    
+    // Skip if already wrapped
+    if (filterElement.parentElement.classList.contains('filter-section-wrapper')) return;
+    
+    // Get the label text
+    var label = filterElement.previousElementSibling;
+    var labelText = label ? label.textContent : 'Filters';
+    
+    // Create wrapper
+    var wrapper = document.createElement('div');
+    wrapper.className = 'filter-section-wrapper';
+    
+    // Create header
+    var header = document.createElement('div');
+    header.className = 'filter-section-header collapsed';
+    header.innerHTML = 
+      '<h4>' + labelText + '</h4>' +
+      '<span class="filter-section-toggle">▼</span>';
+    
+    // Create content wrapper
+    var content = document.createElement('div');
+    content.className = 'filter-section-content collapsed';
+    
+    // Insert wrapper before filter
+    filterElement.parentNode.insertBefore(wrapper, filterElement);
+    
+    // Move elements into wrapper
+    wrapper.appendChild(header);
+    wrapper.appendChild(content);
+    if (label) content.appendChild(label);
+    content.appendChild(filterElement);
+    
+    // Add click handler
+    header.addEventListener('click', function() {
+      var isCollapsed = header.classList.contains('collapsed');
+      
+      if (isCollapsed) {
+        header.classList.remove('collapsed');
+        content.classList.remove('collapsed');
+        content.classList.add('expanded');
+      } else {
+        header.classList.add('collapsed');
+        content.classList.remove('expanded');
+        content.classList.add('collapsed');
+      }
+    });
+  });
+  
+  console.log('Mobile collapsible filters initialized');
+}
+
+// Initialize on page load
+window.addEventListener('load', function() {
+  initCollapsibleFilters();
+});
+
+// Re-initialize on window resize (if switching to mobile view)
+var resizeTimeout;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(function() {
+    initCollapsibleFilters();
+  }, 250);
+});
+
 </script>
 
 </body>
