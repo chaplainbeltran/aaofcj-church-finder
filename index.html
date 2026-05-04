@@ -2484,6 +2484,7 @@ body.visitor-mode .elder-info{
 }
 
 
+
 /* Mobile-Only Support and Feedback Buttons */
 .mobile-help-buttons{
   display:none; /* Hidden on desktop */
@@ -2492,24 +2493,20 @@ body.visitor-mode .elder-info{
 @media (max-width: 768px) {
   .mobile-help-buttons{
     display:flex;
-    gap:8px;
-    padding:8px 12px;
-    background:#F8FAFC;
-    border-bottom:1px solid #E2E8F0;
-    justify-content:center;
-    flex-wrap:wrap;
+    gap:6px;
+    align-items:center;
   }
   
   .mobile-help-btn{
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    background:#fff;
-    border:1px solid #CBD5E1;
-    color:#475569;
-    padding:8px 14px;
+    gap:4px;
+    background:#1E293B;
+    border:1px solid #334155;
+    color:#E3F0FC;
+    padding:6px 10px;
     border-radius:6px;
-    font-size:13px;
+    font-size:12px;
     font-weight:500;
     cursor:pointer;
     transition:all .2s;
@@ -2518,13 +2515,13 @@ body.visitor-mode .elder-info{
   
   .mobile-help-btn:hover,
   .mobile-help-btn:active{
-    background:#E3F0FC;
+    background:#2D3B52;
     border-color:#1565C0;
-    color:#1565C0;
+    color:#fff;
   }
   
   .mobile-help-btn .icon{
-    font-size:16px;
+    font-size:14px;
   }
 }
 
@@ -2586,18 +2583,6 @@ body.visitor-mode .elder-info{
 </head>
 <body>
 
-<!-- MOBILE FEEDBACK/SUPPORT BUTTONS -->
-<div class="mobile-help-buttons">
-  <a href="mailto:feedback@aaofcj.org?subject=Church%20Finder%20Feedback" class="mobile-help-btn">
-    <span class="icon">💬</span>
-    <span>Feedback</span>
-  </a>
-  <a href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener noreferrer" class="mobile-help-btn">
-    <span class="icon">☕</span>
-    <span>Support</span>
-  </a>
-</div>
-
 
 
 
@@ -2630,6 +2615,18 @@ body.visitor-mode .elder-info{
       <button id="btn-contrast" onclick="toggleContrast()" title="High contrast mode">&#9680; Contrast</button>
     </div>
     <div id="topbar-actions">
+      <!-- MOBILE FEEDBACK/SUPPORT BUTTONS -->
+      <div class="mobile-help-buttons">
+        <a href="mailto:feedback@aaofcj.org?subject=Church%20Finder%20Feedback" class="mobile-help-btn">
+          <span class="icon">💬</span>
+          <span>Feedback</span>
+        </a>
+        <a href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener noreferrer" class="mobile-help-btn">
+          <span class="icon">☕</span>
+          <span>Support</span>
+        </a>
+      </div>
+      
       <button class="new-here-btn" aria-label="Open newcomer guide - Quick start information for first-time visitors" onclick="document.getElementById('new-here-modal').classList.add('open')">👋 New Here?</button>
       
       <button aria-label="Embed church finder on your website" class="topbar-action-btn" onclick="openEmbedModal()">＜/＞ Embed</button>
