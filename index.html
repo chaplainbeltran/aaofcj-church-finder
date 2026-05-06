@@ -23,7 +23,7 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="https://www.aaofcj.org/wp-content/uploads/2021/09/AA-Cut-Logo-for-Signage-copy-copy.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
@@ -49,7 +49,7 @@ input,select,textarea{touch-action:manipulation}
   --radius:10px;--radius-sm:6px;--radius-lg:14px;
 }
 
-html,body{height:100%;width:100%;font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+html,body{height:100%;width:100%;font-family:system-ui,-apple-system,sans-serif;
   background:var(--gray-100);overflow:hidden;color:var(--text);margin:0;padding:0}
 a{color:inherit;text-decoration:none}
 
@@ -85,7 +85,7 @@ a{color:inherit;text-decoration:none}
 }
 
 #total-badge{
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
   color:#FFFFFF;letter-spacing:.03em;
   background:var(--blue);
   padding:5px 14px;border-radius:20px;
@@ -107,7 +107,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── SECTION LABELS ───────────────────────────────────────────── */
 .section-label{
-  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
   color:#6B9BD2;letter-spacing:.1em;text-transform:uppercase;
   padding:10px 16px 5px;border-top:1px solid var(--navy4);
   background:var(--navy2);flex-shrink:0;
@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none}
   border:1.5px solid var(--navy4);
   color:#EEF2FF;
   padding:8px 12px;border-radius:var(--radius-sm);
-  font-size:12.5px;font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:13px;font-family:system-ui,-apple-system,sans-serif;
   outline:none;transition:border-color .15s,box-shadow .15s;
 }
 .si:focus{border-color:#4A90D9;box-shadow:0 0 0 3px rgba(74,144,217,.2)}
@@ -137,7 +137,7 @@ a{color:inherit;text-decoration:none}
 
 #btn-zip,#btn-locate,#btn-reset{
   border:none;cursor:pointer;border-radius:var(--radius-sm);
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.04em;padding:8px 12px;
   transition:all .15s;white-space:nowrap;
 }
@@ -171,7 +171,7 @@ a{color:inherit;text-decoration:none}
   border:1.5px solid var(--navy4);
   color:#EEF2FF;
   padding:6px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:12px;font-family:system-ui,-apple-system,sans-serif;
   outline:none;transition:border-color .15s;
   appearance:none;cursor:pointer;
 }
@@ -186,7 +186,7 @@ a{color:inherit;text-decoration:none}
   padding:7px 10px;
   border-radius:var(--radius-sm);
   font-size:11px;
-  font-family:"Barlow Condensed",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -237,7 +237,7 @@ a{color:inherit;text-decoration:none}
   border-radius:16px;
   color:#6B9BD2;
   font-size:10px;
-  font-family:"Barlow Condensed",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -269,12 +269,12 @@ a{color:inherit;text-decoration:none}
 #results-bar span{font-size:12px;color:#6B9BD2}
 #results-count{
   color:#7AABFF;font-weight:700;
-  font-family:"Barlow Condensed",sans-serif;font-size:14px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:14px;
 }
 #sort-select{
   background:transparent;border:none;
-  color:#6B9BD2;font-size:11.5px;
-  font-family:"Plus Jakarta Sans",sans-serif;
+  color:#6B9BD2;font-size:12px;
+  font-family:system-ui,-apple-system,sans-serif;
   cursor:pointer;outline:none;
 }
 #sort-select option{background:var(--navy2)}
@@ -299,8 +299,8 @@ a{color:inherit;text-decoration:none}
 }
 
 .ci-name{
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:12.5px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;
+  font-size:13px;font-weight:600;
   color:#EEF2FF;line-height:1.35;
   margin-bottom:3px;padding-right:52px;
 }
@@ -308,8 +308,8 @@ a{color:inherit;text-decoration:none}
 .ci-tags{margin-top:5px;display:flex;gap:4px;flex-wrap:wrap}
 
 .tag{
-  font-family:"Barlow Condensed",sans-serif;
-  font-size:9.5px;font-weight:600;letter-spacing:.05em;
+  font-family:system-ui,-apple-system,sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:.05em;
   padding:2px 7px;border-radius:4px;text-transform:uppercase;
 }
 .tag-lang-bilingual{background:#FEF3C7;color:#92400E}
@@ -319,8 +319,8 @@ a{color:inherit;text-decoration:none}
 
 .ci-dist{
   position:absolute;top:12px;right:12px;
-  font-family:"Barlow Condensed",sans-serif;
-  font-size:10.5px;font-weight:600;color:#7AABFF;
+  font-family:system-ui,-apple-system,sans-serif;
+  font-size:11px;font-weight:600;color:#7AABFF;
   background:rgba(74,144,217,.15);
   padding:2px 8px;border-radius:12px;
   letter-spacing:.02em;
@@ -380,7 +380,7 @@ a{color:inherit;text-decoration:none}
   border-radius:6px;
   color:#7AABFF;
   font-size:10px;
-  font-family:"Barlow Condensed",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -436,7 +436,7 @@ a{color:inherit;text-decoration:none}
   position:absolute;bottom:24px;left:10px;z-index:999;
   background:#fff;border:2px solid rgba(0,0,0,.2);
   border-radius:4px;padding:5px 8px;
-  font-size:11px;font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-family:system-ui,-apple-system,sans-serif;
   font-weight:700;letter-spacing:.04em;color:#333;
   cursor:pointer;line-height:1;
   box-shadow:0 1px 5px rgba(0,0,0,.2);
@@ -461,7 +461,7 @@ a{color:inherit;text-decoration:none}
 .leaflet-popup-tip{background:var(--white)!important}
 .leaflet-popup-content{
   margin:0!important;
-  font-family:"Plus Jakarta Sans",sans-serif!important;
+  font-family:system-ui,-apple-system,sans-serif!important;
   min-width:280px;max-width:320px;
 }
 .pu-head{
@@ -469,14 +469,14 @@ a{color:inherit;text-decoration:none}
   padding:14px 16px 12px;
 }
 .pu-head h3{
-  font-family:"Playfair Display",serif;font-size:13px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;
   font-weight:600;color:var(--white);line-height:1.4;margin-bottom:7px;
 }
 .pu-tags{display:flex;gap:5px;flex-wrap:wrap}
 .pu-body{padding:12px 16px;background:var(--white)}
 .pu-row{
   display:flex;align-items:flex-start;gap:8px;
-  margin-bottom:7px;font-size:11.5px;color:var(--gray-700);
+  margin-bottom:7px;font-size:12px;color:var(--gray-700);
 }
 .pu-row svg{flex-shrink:0;margin-top:1px;opacity:.5}
 .pu-row a{color:var(--blue2)}
@@ -485,7 +485,7 @@ a{color:inherit;text-decoration:none}
 .pu-sched{font-size:11px;color:var(--gray-500);line-height:1.7}
 .pu-sched strong{
   display:block;
-  font-family:"Barlow Condensed",sans-serif;font-size:9.5px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
   color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;
 }
 .pu-district-block{
@@ -507,7 +507,7 @@ a{color:inherit;text-decoration:none}
 .pu-actions{display:flex;gap:6px;margin-top:10px}
 .pu-btn{
   flex:1;text-align:center;padding:8px 6px;border-radius:var(--radius-sm);
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;border:none;
   transition:all .15s;text-decoration:none;display:block;
   text-transform:uppercase;
@@ -525,7 +525,7 @@ a{color:inherit;text-decoration:none}
 }
 .stab{
   flex:1;padding:9px 4px;text-align:center;cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.06em;text-transform:uppercase;
   color:#4A6A9A;border-bottom:2px solid transparent;
   transition:all .15s;
@@ -553,7 +553,7 @@ a{color:inherit;text-decoration:none}
 /* ── ROUTE SEARCH ──────────────────────────────────────────────── */
 #route-panel{padding:14px;overflow-y:auto}
 #route-panel h3{
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
   color:#7AABFF;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;
 }
 .route-input-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
@@ -564,7 +564,7 @@ a{color:inherit;text-decoration:none}
 .route-input{
   flex:1;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
+  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
 }
 .route-input:focus{border-color:#4A90D9}
 .route-input::placeholder{color:#4A6A9A}
@@ -575,7 +575,7 @@ a{color:inherit;text-decoration:none}
 #btn-route{
   width:100%;background:var(--blue);color:#fff;border:none;
   padding:10px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
   letter-spacing:.05em;transition:background .15s;margin-bottom:10px;
 }
 #btn-route:hover{background:var(--blue2)}
@@ -601,7 +601,7 @@ a{color:inherit;text-decoration:none}
   box-shadow:var(--shadow-lg);
 }
 #correction-box h2{
-  font-family:"Playfair Display",serif;font-size:16px;color:#EEF2FF;
+  font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#EEF2FF;
   margin-bottom:4px;
 }
 #correction-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:16px}
@@ -611,7 +611,7 @@ a{color:inherit;text-decoration:none}
 .cf-group input,.cf-group select,.cf-group textarea{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
+  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
 }
 .cf-group input:focus,.cf-group textarea:focus{border-color:#4A90D9}
 .cf-group textarea{resize:vertical;min-height:80px}
@@ -619,7 +619,7 @@ a{color:inherit;text-decoration:none}
 .cf-btns{display:flex;gap:8px;margin-top:16px}
 .cf-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;
 }
 .cf-btn.primary{background:var(--blue);color:#fff}
@@ -640,7 +640,7 @@ a{color:inherit;text-decoration:none}
 #toast-retry{
   background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
   color:#FFF;padding:4px 12px;border-radius:12px;font-size:11px;
-  cursor:pointer;font-family:"Barlow Condensed",sans-serif;
+  cursor:pointer;font-family:system-ui,-apple-system,sans-serif;
   font-weight:600;letter-spacing:.03em;text-transform:uppercase;
 }
 #toast-retry:hover{background:rgba(255,255,255,.3)}
@@ -656,7 +656,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
   box-shadow:var(--shadow-lg);
 }
-.cal-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+.cal-box h2{font-family:system-ui,-apple-system,sans-serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
 .cal-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
 .cal-option{
   display:flex;align-items:center;gap:12px;
@@ -672,7 +672,7 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:8px;padding:8px;
   background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
   border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
-  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
 }
 
 /* ── LANGUAGE TOGGLE ───────────────────────────────────────────── */
@@ -681,7 +681,7 @@ a{color:inherit;text-decoration:none}
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.15);
   border-radius:16px;padding:3px 10px;
-  font-family:"Barlow Condensed",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
   font-size:12px;font-weight:700;letter-spacing:.06em;
   cursor:pointer;
 }
@@ -697,7 +697,7 @@ a{color:inherit;text-decoration:none}
   color:#fff;border:none;border-radius:24px;cursor:pointer;
   padding:10px 16px;display:flex;align-items:center;gap:8px;
   box-shadow:0 4px 16px rgba(255,94,91,.4);
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:700;
   letter-spacing:.05em;transition:all .2s;text-decoration:none;
 }
 #kofi-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,94,91,.5)}
@@ -708,7 +708,7 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:6px;padding:8px;
   background:rgba(21,101,192,.15);border:1px solid rgba(74,144,217,.3);
   border-radius:var(--radius-sm);color:#7AABFF;
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;
 }
 .pu-visit-btn:hover{background:rgba(21,101,192,.3);border-color:#4A90D9}
@@ -754,7 +754,7 @@ a{color:inherit;text-decoration:none}
 }
 #route-nav-bar .nav-count{
   font-size:11px;color:#7AABFF;font-weight:600;
-  font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;
+  font-family:system-ui,-apple-system,sans-serif;letter-spacing:.04em;
 }
 #route-nav-bar .nav-hint{
   font-size:10px;color:#4A6A9A;margin-top:4px;
@@ -762,7 +762,7 @@ a{color:inherit;text-decoration:none}
 .nav-btn{
   display:flex;align-items:center;justify-content:center;gap:6px;
   width:100%;padding:9px;border-radius:var(--radius-sm);
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;
   letter-spacing:.05em;cursor:pointer;border:none;transition:all .15s;
   text-transform:uppercase;text-decoration:none;margin-bottom:6px;
 }
@@ -785,7 +785,7 @@ a{color:inherit;text-decoration:none}
   background:var(--blue);color:#fff;
   writing-mode:vertical-rl;text-orientation:mixed;
   padding:14px 8px;border-radius:8px 0 0 8px;
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;
   letter-spacing:.1em;cursor:pointer;
   box-shadow:-2px 0 12px rgba(21,101,192,.4);
   transition:all .2s;border:1px solid rgba(255,255,255,.15);
@@ -811,7 +811,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px 14px;flex-shrink:0;
 }
 .fb-header h2{
-  font-family:"Playfair Display",serif;font-size:17px;color:#fff;
+  font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff;
   margin-bottom:4px;
 }
 .fb-header p{font-size:11px;color:rgba(255,255,255,.7)}
@@ -828,7 +828,7 @@ a{color:inherit;text-decoration:none}
 .fb-type.selected{border-color:#4A90D9;background:rgba(74,144,217,.15)}
 .fb-type .fb-type-icon{font-size:20px;display:block;margin-bottom:4px}
 .fb-type .fb-type-label{
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;
   font-weight:600;color:#EEF2FF;letter-spacing:.04em;
 }
 
@@ -845,7 +845,7 @@ a{color:inherit;text-decoration:none}
 .fb-group input,.fb-group textarea,.fb-group select{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
+  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
   transition:border-color .15s;
 }
 .fb-group input:focus,.fb-group textarea:focus,.fb-group select:focus{border-color:#4A90D9}
@@ -858,7 +858,7 @@ a{color:inherit;text-decoration:none}
 }
 .fb-btn{
   flex:1;padding:10px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;text-transform:uppercase;
 }
 .fb-btn.primary{background:var(--blue);color:#fff}
@@ -875,7 +875,7 @@ a{color:inherit;text-decoration:none}
   text-align:center;padding:30px 20px;
 }
 .fb-success .fb-success-icon{font-size:40px;margin-bottom:12px}
-.fb-success h3{font-family:"Playfair Display",serif;font-size:16px;color:#EEF2FF;margin-bottom:8px}
+.fb-success h3{font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#EEF2FF;margin-bottom:8px}
 .fb-success p{font-size:12px;color:#6B9BD2;line-height:1.6}
 
 
@@ -902,7 +902,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;
   position:sticky;top:0;z-index:1;
 }
-.stats-header h2{font-family:"Playfair Display",serif;font-size:17px;color:#fff;margin-bottom:2px}
+.stats-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff;margin-bottom:2px}
 .stats-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .stats-body{padding:18px 20px}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
@@ -911,12 +911,12 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:12px 10px;text-align:center;
 }
 .stat-card .stat-num{
-  font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:26px;font-weight:700;
   color:#7AABFF;line-height:1;
 }
 .stat-card .stat-label{font-size:10px;color:#6B9BD2;margin-top:4px;letter-spacing:.04em}
 .stats-section-title{
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   color:#4A6A9A;letter-spacing:.08em;text-transform:uppercase;
   margin:14px 0 8px;
 }
@@ -937,7 +937,7 @@ a{color:inherit;text-decoration:none}
 .stats-close-btn{
   width:calc(100% - 40px);margin:0 20px 18px;padding:9px;
   background:var(--navy3);border:1px solid var(--navy4);color:#6B9BD2;
-  border-radius:var(--radius-sm);cursor:pointer;font-family:"Barlow Condensed",sans-serif;
+  border-radius:var(--radius-sm);cursor:pointer;font-family:system-ui,-apple-system,sans-serif;
   font-size:12px;font-weight:600;
 }
 
@@ -957,14 +957,14 @@ a{color:inherit;text-decoration:none}
   padding:20px;border-bottom:1px solid var(--navy4);
 }
 .profile-hero h2{
-  font-family:"Playfair Display",serif;font-size:18px;color:#EEF2FF;
+  font-family:system-ui,-apple-system,sans-serif;font-size:18px;color:#EEF2FF;
   margin-bottom:6px;line-height:1.3;
 }
 .profile-hero .ph-sub{font-size:12px;color:#6B9BD2;margin-bottom:10px}
 .profile-body{padding:16px 20px}
 .profile-section{margin-bottom:16px}
 .profile-section h3{
-  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
   color:#4A6A9A;letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--navy4);
 }
@@ -975,7 +975,7 @@ a{color:inherit;text-decoration:none}
 .profile-social-btn{
   display:flex;align-items:center;gap:5px;padding:6px 12px;
   border-radius:20px;font-size:11px;font-weight:600;
-  font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;
+  font-family:system-ui,-apple-system,sans-serif;letter-spacing:.04em;
   border:1px solid var(--navy4);color:#EEF2FF;background:var(--navy3);
   cursor:pointer;text-decoration:none;
 }
@@ -985,7 +985,7 @@ a{color:inherit;text-decoration:none}
 }
 .profile-action-btn{
   padding:9px 6px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;text-align:center;
   text-transform:uppercase;
 }
@@ -1001,7 +1001,7 @@ a{color:inherit;text-decoration:none}
 .profile-url-text{flex:1;font-size:11px;color:#6B9BD2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .profile-url-copy{
   background:var(--blue);color:#fff;border:none;border-radius:4px;
-  padding:4px 10px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
+  padding:4px 10px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
   font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;
 }
 
@@ -1010,7 +1010,7 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:4px;padding:6px;
   background:transparent;border:1px solid rgba(239,83,80,.2);
   border-radius:var(--radius-sm);color:#EF5350;opacity:.6;
-  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;
 }
 .pu-closed-btn:hover{opacity:1;border-color:#EF5350;background:rgba(239,83,80,.08)}
@@ -1031,7 +1031,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px;position:sticky;top:0;z-index:1;
   border-radius:var(--radius-lg) var(--radius-lg) 0 0;
 }
-.bd-header h2{font-family:"Playfair Display",serif;font-size:17px;color:#fff}
+.bd-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff}
 .bd-header p{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px}
 .bd-body{padding:12px 16px}
 .bd-card{
@@ -1039,7 +1039,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;
 }
 .bd-district{
-  font-family:"Barlow Condensed",sans-serif;font-size:9.5px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
   color:#4A90D9;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;
 }
 .bd-name{font-size:13px;font-weight:600;color:#EEF2FF;margin-bottom:4px}
@@ -1048,7 +1048,7 @@ a{color:inherit;text-decoration:none}
   display:inline-block;background:rgba(74,144,217,.15);
   border:1px solid rgba(74,144,217,.2);
   color:#7AABFF;border-radius:10px;
-  padding:2px 8px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
+  padding:2px 8px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
   font-weight:600;margin-top:4px;
 }
 
@@ -1066,7 +1066,7 @@ a{color:inherit;text-decoration:none}
 .embed-header{
   background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px;
 }
-.embed-header h2{font-family:"Playfair Display",serif;font-size:16px;color:#fff;margin-bottom:2px}
+.embed-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#fff;margin-bottom:2px}
 .embed-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .embed-body{padding:18px 20px}
 .embed-option{
@@ -1086,14 +1086,14 @@ a{color:inherit;text-decoration:none}
   position:relative;
 }
 .embed-code{
-  font-family:monospace;font-size:10.5px;color:#7AABFF;
+  font-family:monospace;font-size:11px;color:#7AABFF;
   white-space:pre-wrap;word-break:break-all;line-height:1.5;
   max-height:120px;overflow-y:auto;
 }
 .embed-copy-btn{
   position:absolute;top:8px;right:8px;
   background:var(--blue);color:#fff;border:none;border-radius:4px;
-  padding:4px 10px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
+  padding:4px 10px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
   font-weight:700;cursor:pointer;
 }
 .embed-info{
@@ -1104,7 +1104,7 @@ a{color:inherit;text-decoration:none}
 .embed-footer{padding:0 20px 16px;display:flex;gap:8px}
 .embed-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.05em;border:none;
 }
 .embed-btn.primary{background:var(--blue);color:#fff}
@@ -1115,10 +1115,26 @@ a{color:inherit;text-decoration:none}
 .topbar-action-btn{
   background:transparent;border:1.5px solid #E2E8F0;color:#334155;
   border-radius:6px;padding:5px 10px;cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.04em;transition:all .15s;white-space:nowrap;
 }
 .topbar-action-btn:hover{border-color:var(--blue);color:var(--blue)}
+/* Mobile-only support button in topbar */
+#mobile-support-btn{
+  display:none;
+  align-items:center;gap:4px;
+  background:transparent;
+  border:1.5px solid #FF8C42;
+  border-radius:6px;padding:4px 9px;
+  font-size:11px;font-weight:600;
+  color:#FF5E5B;cursor:pointer;
+  text-decoration:none;white-space:nowrap;
+  transition:all .15s;flex-shrink:0;
+}
+#mobile-support-btn:hover{background:#FFF5F0}
+@media(max-width:768px){
+  #mobile-support-btn{display:flex}
+}
 
 /* ── ADMIN MODE ─────────────────────────────────────────────────── */
 #admin-modal{
@@ -1130,19 +1146,19 @@ a{color:inherit;text-decoration:none}
   background:var(--navy2);border:1px solid var(--navy4);
   border-radius:var(--radius-lg);padding:24px;width:90%;max-width:360px;
 }
-#admin-box h2{font-family:"Playfair Display",serif;color:#EEF2FF;margin-bottom:4px;font-size:16px}
+#admin-box h2{font-family:system-ui,-apple-system,sans-serif;color:#EEF2FF;margin-bottom:4px;font-size:16px}
 #admin-box p{font-size:11px;color:#6B9BD2;margin-bottom:16px}
 #admin-password{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:10px 12px;border-radius:var(--radius-sm);
   font-size:14px;outline:none;margin-bottom:10px;
-  font-family:"Plus Jakarta Sans",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
 }
 #admin-error{color:#EF5350;font-size:11px;margin-bottom:8px;display:none}
 .admin-btns{display:flex;gap:8px}
 .admin-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
   border:none;letter-spacing:.05em;
 }
 .admin-btn.primary{background:var(--blue);color:#fff}
@@ -1158,12 +1174,12 @@ a{color:inherit;text-decoration:none}
   margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--navy4);
 }
 .admin-panel-header h1{
-  font-family:"Playfair Display",serif;color:#EEF2FF;font-size:20px;
+  font-family:system-ui,-apple-system,sans-serif;color:#EEF2FF;font-size:20px;
 }
 .admin-close{
   background:var(--navy3);border:1px solid var(--navy4);color:#6B9BD2;
   padding:6px 14px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;
+  font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:12px;
 }
 .admin-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
 .admin-stat{
@@ -1171,14 +1187,14 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:14px;
 }
 .admin-stat .as-num{
-  font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:28px;font-weight:700;
   color:#7AABFF;
 }
 .admin-stat .as-label{font-size:11px;color:#6B9BD2;margin-top:2px}
 .admin-table{width:100%;border-collapse:collapse;font-size:11px}
 .admin-table th{
   background:var(--navy3);color:#4A6A9A;padding:8px 10px;
-  text-align:left;font-family:"Barlow Condensed",sans-serif;font-size:10px;
+  text-align:left;font-family:system-ui,-apple-system,sans-serif;font-size:10px;
   letter-spacing:.06em;text-transform:uppercase;
   position:sticky;top:0;
 }
@@ -1194,7 +1210,7 @@ a{color:inherit;text-decoration:none}
 .admin-filter{
   background:var(--navy3);border:1px solid var(--navy4);color:#EEF2FF;
   padding:6px 10px;border-radius:var(--radius-sm);font-size:11px;
-  font-family:"Plus Jakarta Sans",sans-serif;outline:none;cursor:pointer;
+  font-family:system-ui,-apple-system,sans-serif;outline:none;cursor:pointer;
 }
 
 /* ── ACCESSIBILITY CONTROLS — Option E ──────────────────────────── */
@@ -1203,8 +1219,8 @@ a{color:inherit;text-decoration:none}
 }
 #text-size-select{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
-  border-radius:6px;padding:4px 8px;font-size:11.5px;
-  font-family:"Plus Jakarta Sans",sans-serif;color:#334155;
+  border-radius:6px;padding:4px 8px;font-size:12px;
+  font-family:system-ui,-apple-system,sans-serif;color:#334155;
   cursor:pointer;outline:none;transition:border-color .15s;
   height:28px;
 }
@@ -1213,8 +1229,8 @@ a{color:inherit;text-decoration:none}
 #text-size-select option{background:#fff;color:#334155}
 #btn-contrast{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
-  border-radius:6px;padding:4px 10px;font-size:11.5px;
-  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  border-radius:6px;padding:4px 10px;font-size:12px;
+  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
   color:#334155;cursor:pointer;outline:none;
   transition:all .15s;height:28px;white-space:nowrap;
   display:flex;align-items:center;gap:5px;
@@ -1244,7 +1260,7 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px;
 }
 .about-header h2{
-  font-family:"Playfair Display",serif;font-size:16px;color:#fff;margin-bottom:2px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#fff;margin-bottom:2px;
 }
 .about-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .about-body{padding:18px 20px}
@@ -1254,7 +1270,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:16px;
 }
 .acb-label{
-  font-family:"Barlow Condensed",sans-serif;font-size:9px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:9px;font-weight:700;
   color:#4A90D9;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;
 }
 .acb-ref{font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:6px;}
@@ -1262,13 +1278,13 @@ a{color:inherit;text-decoration:none}
 .acb-spanish{font-size:11px;color:#6B9BD2;margin-top:6px;line-height:1.5;}
 .about-desc{font-size:12px;color:#CBD5E1;line-height:1.7;margin-bottom:14px}
 .about-disclaimer{
-  font-size:10.5px;color:#4A6A9A;line-height:1.6;
+  font-size:11px;color:#4A6A9A;line-height:1.6;
   padding-top:12px;border-top:1px solid var(--navy4);
 }
 .about-close{
   width:100%;padding:10px;background:var(--navy3);
   border:none;border-top:1px solid var(--navy4);color:#6B9BD2;cursor:pointer;
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
   display:block;
 }
 .about-close:hover{color:#EEF2FF;background:var(--navy2)}
@@ -1290,16 +1306,30 @@ a{color:inherit;text-decoration:none}
 }
 .info-grid-btn:hover{border-color:#4A90D9;background:rgba(74,144,217,.1)}
 .igb-icon{font-size:20px;display:block;line-height:1.1}
-.igb-label{font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;color:#EEF2FF;letter-spacing:.03em}
+.igb-label{font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;color:#EEF2FF;letter-spacing:.03em}
 .igb-sub{font-size:9px;color:#6B9BD2;text-align:center;line-height:1.3}
 .igb-support .igb-icon{color:#FF8C42}
 .igb-support .igb-label{color:#FFB399}
 .igb-support:hover{border-color:#FF5E5B;background:rgba(255,94,91,.08)}
+/* ── SATELLITE TOGGLE BUTTON (map top-right) ─────────────────────── */
+#btn-satellite{
+  position:absolute;top:10px;right:10px;z-index:999;
+  background:rgba(255,255,255,0.93);
+  border:2px solid rgba(0,0,0,.18);
+  border-radius:6px;padding:5px 10px;
+  font-size:11px;font-family:system-ui,-apple-system,sans-serif;
+  font-weight:700;letter-spacing:.05em;color:#333;
+  cursor:pointer;line-height:1;
+  box-shadow:0 1px 5px rgba(0,0,0,.2);
+  transition:all .15s;white-space:nowrap;
+}
+#btn-satellite:hover{background:#fff}
+#btn-satellite.sat-active{background:#1565C0;color:#fff;border-color:#1565C0}
 .info-constitution{
   background:rgba(21,101,192,.1);border:1px solid rgba(74,144,217,.2);
   border-left:3px solid var(--blue);border-radius:6px;padding:12px 14px;
 }
-.info-const-label{font-family:"Barlow Condensed",sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.info-const-label{font-family:system-ui,-apple-system,sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 .info-const-ref{font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:5px}
 .info-const-text{font-size:11px;color:#CBD5E1;line-height:1.65;font-style:italic}
 
@@ -1312,7 +1342,7 @@ a{color:inherit;text-decoration:none}
 .pu-head{background:linear-gradient(135deg,#1565C0,#1E3A8A) !important}
 .pu-head h3{color:#FFFFFF !important;font-size:13px !important}
 .pu-body{background:#fff !important;padding:12px 16px}
-.pu-row{color:#1E293B !important;font-size:11.5px}
+.pu-row{color:#1E293B !important;font-size:12px}
 .pu-row a{color:#1565C0 !important}
 .pu-sched{color:#475569 !important}
 .pu-sched strong{color:#1565C0 !important}
@@ -1338,7 +1368,7 @@ a{color:inherit;text-decoration:none}
   cursor:pointer;
   box-shadow:3px 0 14px rgba(21,101,192,.55);
   writing-mode:vertical-rl;
-  font-family:"Barlow Condensed",sans-serif;
+  font-family:system-ui,-apple-system,sans-serif;
   font-size:11px;font-weight:800;letter-spacing:.1em;
   padding:0;
 }
@@ -1441,16 +1471,16 @@ a{color:inherit;text-decoration:none}
 .suggestion-item:last-child{border-bottom:none}
 .suggestion-item:hover,.suggestion-item.highlighted{background:var(--navy3)}
 .sug-name{font-size:12px;font-weight:600;color:#EEF2FF;margin-bottom:2px}
-.sug-detail{font-size:10.5px;color:#6B9BD2}
+.sug-detail{font-size:11px;color:#6B9BD2}
 .sug-match{color:#7AABFF}
-.sug-empty{padding:10px 12px;font-size:11.5px;color:#4A6A9A;text-align:center}
+.sug-empty{padding:10px 12px;font-size:12px;color:#4A6A9A;text-align:center}
 
 
 /* ── TOPBAR QUICK BUTTONS (Feedback + Support) ──────────────────── */
 .topbar-quick-btn{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
   border-radius:6px;padding:4px 9px;font-size:11px;
-  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
   color:#334155;cursor:pointer;height:26px;
   display:flex;align-items:center;gap:4px;
   text-decoration:none;white-space:nowrap;transition:all .15s;
@@ -1475,17 +1505,17 @@ a{color:inherit;text-decoration:none}
 }
 .nav-bar-top{margin-bottom:6px}
 #nav-count{
-  font-family:"Barlow Condensed",sans-serif;font-size:12px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:12px;
   font-weight:700;color:#7AABFF;letter-spacing:.04em;
 }
 #nav-hint{
-  font-size:10.5px;color:#4A6A9A;margin-bottom:8px;line-height:1.5;
+  font-size:11px;color:#4A6A9A;margin-bottom:8px;line-height:1.5;
 }
 .nav-primary{
   display:block;width:100%;padding:10px;
   background:#1565C0;color:#fff !important;
   border:none;border-radius:8px;
-  font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;font-size:14px;font-weight:700;
   letter-spacing:.05em;text-align:center;text-decoration:none;
   margin-bottom:8px;transition:background .15s;
 }
@@ -1495,7 +1525,7 @@ a{color:inherit;text-decoration:none}
   display:block;padding:7px 4px;
   border:1.5px solid var(--navy4);
   background:var(--navy3);color:#CBD5E1 !important;
-  border-radius:6px;font-family:"Barlow Condensed",sans-serif;
+  border-radius:6px;font-family:system-ui,-apple-system,sans-serif;
   font-size:11px;font-weight:600;letter-spacing:.04em;
   text-align:center;text-decoration:none;transition:all .15s;
 }
@@ -1503,7 +1533,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── ACCESSIBILITY — TEXT SIZE ───────────────────────────────────── */
 body.text-sm{font-size:12px}
-body.text-sm .ci-name{font-size:12.5px}
+body.text-sm .ci-name{font-size:13px}
 body.text-sm .ci-loc{font-size:10px}
 body.text-sm .si{font-size:11px}
 body.text-sm .stab{font-size:11px}
@@ -1637,31 +1667,6 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
 }
 .nearest-indicator.show{display:block}
 
-
-/* Visitor Mode Toggle */
-.visitor-mode-toggle{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;background:#F8FAFC;border-radius:6px;
-  margin:12px 0;border:1px solid #E2E8F0;
-}
-.visitor-mode-toggle label{
-  font-size:13px;color:#0D1B35;font-weight:500;cursor:pointer;
-  display:flex;align-items:center;gap:8px;
-}
-.visitor-mode-toggle input[type="checkbox"]{
-  cursor:pointer;width:18px;height:18px;
-}
-.visitor-mode-toggle .vmt-icon{
-  font-size:16px;
-}
-
-/* Hide advanced filters in visitor mode */
-body.visitor-mode .district-filter,
-body.visitor-mode .sector-filter,
-body.visitor-mode .bishop-info,
-body.visitor-mode .elder-info{
-  display:none !important;
-}
 
 
 /* Inline Glossary Tooltips */
@@ -1857,12 +1862,6 @@ body.visitor-mode .elder-info{
     margin: 0 auto;
   }
   
-  /* Stack visitor mode toggle */
-  .visitor-mode-toggle {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
   /* Adjust service length badge */
   .service-length-badge {
     display: block;
@@ -1936,11 +1935,6 @@ body.visitor-mode .elder-info{
   .glossary-btn {
     padding: 10px 16px;
     font-size: 14px;
-  }
-  
-  /* Visitor mode toggle mobile */
-  .visitor-mode-toggle label {
-    font-size: 12px;
   }
   
   /* Nearest indicator mobile */
@@ -2040,8 +2034,7 @@ body.visitor-mode .elder-info{
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .user-type-option,
-  .visitor-mode-toggle {
+  .user-type-option {
     border-width: 3px;
   }
   
@@ -2166,7 +2159,7 @@ body.visitor-mode .elder-info{
   #results-bar,#kofi-btn,#mobile-drawer-btn,#map,
   #correction-modal,#share-modal,#cal-modal,#toast-container,
   #new-here-modal,#glossary-modal,#user-type-modal,
-  .visitor-mode-toggle,.nearest-indicator,#loc-prompt{display:none!important}
+  .nearest-indicator,#loc-prompt{display:none!important}
   html,body{overflow:visible!important;height:auto!important;background:#fff!important;color:#000!important}
   #app{display:block!important;margin-top:0!important;height:auto!important}
   #sidebar{
@@ -2197,6 +2190,110 @@ body.visitor-mode .elder-info{
   }
 }
 
+
+/* ── MOBILE TEXT SIZE REDUCTION ──────────────────────────────────── */
+@media(max-width:768px){
+  .stab{font-size:10px !important}
+  .stab-icon{font-size:12px !important}
+  .section-label{font-size:9px !important}
+  .fg label{font-size:9px !important}
+  .ci-name{font-size:12px !important}
+  .ci-loc{font-size:10px !important}
+  .ci-dist{font-size:9px !important}
+  .tag{font-size:9px !important}
+  .time-filter-btn{font-size:10px !important}
+  .quick-filter-btn{font-size:9px !important}
+  #results-bar span{font-size:11px !important}
+  #results-count{font-size:13px !important}
+  #sort-select{font-size:10px !important}
+  .si{font-size:11px !important}
+  #btn-zip,#btn-locate,#btn-reset{font-size:11px !important}
+  .ci-detail-row{font-size:10px !important}
+  .ci-action-btn{font-size:9px !important}
+  .igb-label{font-size:11px !important}
+  .igb-sub{font-size:8px !important}
+  #total-badge{font-size:12px !important}
+  .route-result-item .rri-name{font-size:11px !important}
+  .route-result-item .rri-detail{font-size:10px !important}
+  .quick-filter-btn .qf-icon{font-size:10px !important}
+  .filter-toggle-caret{font-size:8px !important}
+}
+
+/* ── MOBILE COLLAPSIBLE FILTER LABEL ─────────────────────────────── */
+@media(max-width:768px){
+  #filter-section-label{
+    cursor:pointer;
+    display:flex !important;
+    justify-content:space-between;
+    align-items:center;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .filter-toggle-caret{
+    font-size:9px;
+    color:#4A90D9;
+    transition:transform .2s;
+    display:inline-block;
+  }
+  #filter-section-label.filter-open .filter-toggle-caret{
+    transform:rotate(180deg);
+  }
+  #filter-zone.mobile-hidden,
+  #quick-filters.mobile-hidden{
+    display:none !important;
+  }
+}
+
+/* ── MOBILE FONT (Inter) ─────────────────────────────────────────── */
+/* Placed last so !important beats any earlier font-family declaration */
+@media(max-width:768px){
+  *{font-family:"Inter",system-ui,-apple-system,sans-serif !important}
+}
+
+/* ── MOBILE TRANSPARENT SIDEBAR ─────────────────────────────────── */
+@media(max-width:768px){
+  /* Sidebar shell is transparent — map shows through any empty area */
+  #sidebar{
+    background:transparent !important;
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+  }
+  /* Tab bar and section labels: always opaque chrome */
+  #sidebar-tabs{background:rgba(9,20,42,0.96) !important}
+  .section-label{background:rgba(9,20,42,0.93) !important}
+  /* Search/filter content zones get their own dark blocks */
+  #search-zone,#filter-zone,#quick-filters,#results-bar,
+  #district-info-bar,#sector-info-bar{
+    background:rgba(13,27,53,0.93) !important;
+  }
+  .nearest-indicator{background:rgba(16,185,129,0.88) !important}
+  /* Church cards: solid so text stays readable */
+  #church-list{background:transparent !important}
+  .church-item{background:rgba(13,27,53,0.92) !important}
+  .church-item:hover,.church-item.active{background:rgba(21,42,80,0.96) !important}
+  /* All panels transparent — only content blocks carry a bg */
+  .tab-panel{background:transparent !important}
+  /* Route: shrink to content so empty bottom shows map */
+  #route-panel{
+    background:rgba(13,27,53,0.92) !important;
+    flex:0 0 auto !important;
+  }
+  /* Favorites */
+  #fav-list{background:transparent !important}
+  #fav-export-bar{background:rgba(13,27,53,0.92) !important}
+  #fav-empty{
+    background:rgba(13,27,53,0.88) !important;
+    margin:8px;border-radius:8px;
+  }
+  /* Recent: header strip + transparent list (items have their own bg) */
+  #panel-recent>div:first-child{background:rgba(13,27,53,0.92) !important}
+  #recent-list{background:transparent !important}
+  /* Info: shrink to content so empty bottom shows map */
+  #info-panel-body{
+    background:rgba(13,27,53,0.92) !important;
+    flex:0 0 auto !important;
+  }
+}
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -2223,6 +2320,7 @@ body.visitor-mode .elder-info{
   </div>
   <!-- ROW 2: Controls -->
   <div id="topbar-controls">
+    <a id="mobile-support-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener noreferrer">&#9749; Support</a>
     <div id="lang-toggle" title="Switch language / Cambiar idioma">
       <span class="lang-word active" data-lang="en" onclick="setLang('en')">EN</span>
       <span class="lang-separator">|</span>
@@ -2322,7 +2420,7 @@ body.visitor-mode .elder-info{
   </div>
 
   <!-- FILTERS -->
-  <div class="section-label">&#9670; Filter</div>
+  <div class="section-label" id="filter-section-label">&#9670; Filter <span class="filter-toggle-caret">&#9660;</span></div>
   <div id="filter-zone">
     <div class="fgrid full">
       <div class="fg">
@@ -2408,19 +2506,6 @@ body.visitor-mode .elder-info{
       </div>
     </div>
     
-    <!-- SERVICE TIME QUICK FILTERS -->
-    <div class="section-label" style="margin-top:12px">&#9670; Service Times</div>
-    <div style="padding:8px 14px">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px">
-        <button class="time-filter-btn" id="btn-today-filter" onclick="filterByServiceTime('today')">Today</button>
-        <button class="time-filter-btn" onclick="filterByServiceTime('this-evening')">This Evening</button>
-        <button class="time-filter-btn" onclick="filterByServiceTime('sunday')">Sunday</button>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-        <button class="time-filter-btn" onclick="filterByServiceTime('wednesday')">Wednesday</button>
-        <button class="time-filter-btn" onclick="filterByServiceTime('has-schedule')">Has Schedule</button>
-      </div>
-    </div>
   </div>
 
   <!-- QUICK FILTERS -->
@@ -2446,16 +2531,6 @@ body.visitor-mode .elder-info{
   
   
 <div id="status-bar"></div>
-
-
-<!-- VISITOR MODE TOGGLE -->
-<div class="visitor-mode-toggle">
-  <input type="checkbox" id="visitor-mode-checkbox" aria-label="Toggle simplified view mode - Hides advanced filters for easier navigation" onchange="toggleVisitorMode(this.checked)">
-  <label for="visitor-mode-checkbox">
-    <span class="vmt-icon">👁️</span>
-    <span>Simplified View (hide advanced filters)</span>
-  </label>
-</div>
 
 <!-- NEAREST CHURCHES INDICATOR -->
 <div class="nearest-indicator" id="nearest-indicator"></div>
@@ -2507,7 +2582,7 @@ body.visitor-mode .elder-info{
       </div>
       <div style="display:flex;gap:6px;margin-bottom:8px">
         <button id="btn-route" onclick="searchRoute()" style="flex:1">&#128269; Find Churches</button>
-        <button onclick="clearRouteSearch()" style="background:transparent;border:1.5px solid var(--navy4);color:#4A6A9A;border-radius:6px;padding:7px 12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600">&#10005; Clear</button>
+        <button onclick="clearRouteSearch()" style="background:transparent;border:1.5px solid var(--navy4);color:#4A6A9A;border-radius:6px;padding:7px 12px;cursor:pointer;font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600">&#10005; Clear</button>
       </div>
       <div id="route-status"></div>
       <div id="route-results"></div>
@@ -2517,7 +2592,7 @@ body.visitor-mode .elder-info{
   <!-- FAVORITES PANEL -->
   <div class="tab-panel" id="panel-favorites">
     <div id="fav-export-bar" style="display:none;padding:8px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
-      <button onclick="openExportModal()" style="width:100%;padding:8px;background:rgba(21,101,192,.2);border:1px solid rgba(74,144,217,.3);border-radius:6px;color:#7AABFF;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.05em">
+      <button onclick="openExportModal()" style="width:100%;padding:8px;background:rgba(21,101,192,.2);border:1px solid rgba(74,144,217,.3);border-radius:6px;color:#7AABFF;font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.05em">
         📥 Export Saved Churches
       </button>
     </div>
@@ -2526,7 +2601,7 @@ body.visitor-mode .elder-info{
       <div style="font-size:32px;margin-bottom:12px">&#10084;</div>
       <div style="margin-bottom:14px">No saved churches yet.<br>Tap &#10084; on any church to save it.</div>
       <div id="pwa-prompt" style="background:rgba(21,101,192,.12);border:1px solid rgba(74,144,217,.25);border-radius:8px;padding:12px 14px;font-size:11px;color:#7AABFF;line-height:1.6;text-align:left;margin:0 14px">
-        <div style="font-weight:700;margin-bottom:4px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.04em">&#128241; SAVE ACROSS VISITS</div>
+        <div style="font-weight:700;margin-bottom:4px;font-family:system-ui,-apple-system,sans-serif;font-size:12px;letter-spacing:.04em">&#128241; SAVE ACROSS VISITS</div>
         Add to your home screen to keep saved churches every visit.
         <div style="margin-top:6px;font-size:10px;color:#4A90D9;line-height:1.6">
           iPhone: Share &#8599; then "Add to Home Screen"<br>
@@ -2540,7 +2615,7 @@ body.visitor-mode .elder-info{
   <!-- RECENT PANEL -->
   <div class="tab-panel" id="panel-recent">
     <div style="padding:12px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;color:#7AABFF;letter-spacing:.04em;text-transform:uppercase">Last 5 Viewed</div>
+      <div style="font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;color:#7AABFF;letter-spacing:.04em;text-transform:uppercase">Last 5 Viewed</div>
       <div style="font-size:10px;color:#6B9BD2;margin-top:2px">Quick access to recently viewed churches</div>
     </div>
     <div id="recent-list"></div>
@@ -2587,7 +2662,7 @@ body.visitor-mode .elder-info{
 
 </div><!-- /sidebar -->
 
-<div id="map" role="application" aria-label="Church locations map"><button id="btn-fit-map" title="Fit map to results">&#8864; Fit Results</button></div>
+<div id="map" role="application" aria-label="Church locations map"><button id="btn-fit-map" title="Fit map to results">&#8864; Fit Results</button><button id="btn-satellite" onclick="toggleSatellite()" title="Toggle satellite view">&#128752; Satellite</button></div>
 </div><!-- /app -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -3439,7 +3514,23 @@ const SECTOR_META = {
 //  MAP
 // ═══════════════════════════════════════════════════════════════════════
 const map = L.map("map",{center:[37.5,-98.5],zoom:5,zoomControl:true});
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© <a href='https://openstreetmap.org'>OpenStreetMap</a>",maxZoom:19}).addTo(map);
+const streetLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© <a href='https://openstreetmap.org'>OpenStreetMap</a>",maxZoom:19});
+const satelliteLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{attribution:"© Esri, DigitalGlobe, GeoEye, i-cubed, USDA FSA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",maxZoom:19});
+let satelliteActive=false;
+streetLayer.addTo(map);
+function toggleSatellite(){
+  const btn=document.getElementById('btn-satellite');
+  if(satelliteActive){
+    map.removeLayer(satelliteLayer);
+    streetLayer.addTo(map);
+    if(btn){btn.classList.remove('sat-active');btn.innerHTML='&#128752; Satellite';}
+  }else{
+    map.removeLayer(streetLayer);
+    satelliteLayer.addTo(map);
+    if(btn){btn.classList.add('sat-active');btn.innerHTML='&#128507; Street';}
+  }
+  satelliteActive=!satelliteActive;
+}
 
 function makeIcon(color){
   color = color||"#1565C0";
@@ -3459,7 +3550,7 @@ const clusterGroup = L.markerClusterGroup({
   iconCreateFunction(cluster){
     const n=cluster.getChildCount();
     return L.divIcon({
-      html:`<div style="background:#1565C0;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,.4)">${n}</div>`,
+      html:`<div style="background:#1565C0;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;font-weight:700;font-size:13px;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,.4)">${n}</div>`,
       iconSize:[34,34],iconAnchor:[17,17],className:""
     });
   }
@@ -3502,7 +3593,7 @@ function buildPopup(c,idx){
 
   const districtBlock = c.district ? `
     <div class="pu-district-block">
-      <p><strong style="color:var(--blue);font-family:'Barlow Condensed',sans-serif;font-size:10px">${c.district}</strong></p>
+      <p><strong style="color:var(--blue);font-family:system-ui,-apple-system,sans-serif;font-size:10px">${c.district}</strong></p>
       ${c.bishop||meta.bishop ? `<span>Bishop: <strong style="color:var(--blue2)">${c.bishop||meta.bishop}</strong></span><br>` : ""}
       ${c.sector ? `<span>Sector: ${c.sector}</span><br>` : ""}
       ${c.elder ? `<span>Elder: <strong style="color:var(--blue2)">${c.elder}</strong></span>` : ""}
@@ -3725,7 +3816,7 @@ function restoreFiltersFromURL(){
 function getNoResultsMessage(){
   const f=getFilters();
   const hasZip=!!zipLatLng;
-  if(hasZip && zipRadius<=25) return 'No churches within '+zipRadius+' miles.<br><button onclick="document.getElementById(\'zip-radius\').value=50;zipRadius=50;applyFilters()" style="margin-top:8px;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:11px;font-family:\'Barlow Condensed\',sans-serif;font-weight:700;cursor:pointer;letter-spacing:.04em">Try 50 Miles</button>';
+  if(hasZip && zipRadius<=25) return 'No churches within '+zipRadius+' miles.<br><button onclick="document.getElementById(\'zip-radius\').value=50;zipRadius=50;applyFilters()" style="margin-top:8px;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:11px;font-family:system-ui,-apple-system,sans-serif;font-weight:700;cursor:pointer;letter-spacing:.04em">Try 50 Miles</button>';
   if(f.lang) return 'No '+f.lang+' services match.<br><small style="color:#4A6A9A">Try removing the language filter</small>';
   if(f.district) return 'No results in '+f.district+'.<br><small style="color:#4A6A9A">Try clearing the district filter</small>';
   if(f.text) return 'No churches match "'+f.text+'".<br><small style="color:#4A6A9A">Try a city name, ZIP, or pastor name</small>';
@@ -3927,7 +4018,7 @@ document.getElementById("btn-locate").addEventListener("click",()=>{
     userMarker=L.marker([userLatLng.lat,userLatLng.lng],{
       icon:L.divIcon({html:'<div class="user-pin"></div>',iconSize:[18,18],iconAnchor:[9,9],className:""}),
       zIndexOffset:9999
-    }).addTo(map).bindPopup('<div style="font-family:Barlow Condensed,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
+    }).addTo(map).bindPopup('<div style="font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
     map.setView([userLatLng.lat,userLatLng.lng],10);
     document.getElementById("sort-select").value="distance";
     btn.innerHTML="✓ Location Set";btn.classList.add("active");btn.disabled=false;
@@ -6182,27 +6273,6 @@ function hideNearestIndicator() {
 // FEATURES 8-11: Visitor Mode, Tooltips, Service Length
 // ═══════════════════════════════════════════════════════════
 
-// FEATURE #8: Visitor Mode Toggle
-function toggleVisitorMode(enabled) {
-  if (enabled) {
-    document.body.classList.add('visitor-mode');
-    localStorage.setItem('aaofcj_visitor_mode', 'true');
-  } else {
-    document.body.classList.remove('visitor-mode');
-    localStorage.removeItem('aaofcj_visitor_mode');
-  }
-}
-
-// Load visitor mode preference on page load
-window.addEventListener('load', function() {
-  var visitorMode = localStorage.getItem('aaofcj_visitor_mode');
-  if (visitorMode === 'true') {
-    document.body.classList.add('visitor-mode');
-    var checkbox = document.getElementById('visitor-mode-checkbox');
-    if (checkbox) checkbox.checked = true;
-  }
-  
-});
 
 </script>
 
@@ -6250,9 +6320,6 @@ function selectUserType(type) {
   
   // Customize experience based on user type
   if (type === 'new-to-church') {
-    // Enable visitor mode automatically
-    document.getElementById('visitor-mode-checkbox').checked = true;
-    toggleVisitorMode(true);
     // Show New Here modal
     setTimeout(function() {
       document.getElementById('new-here-modal').classList.add('open');
@@ -6287,7 +6354,7 @@ window.addEventListener('load', function() {
           userMarker = L.marker([userLatLng.lat, userLatLng.lng], {
             icon: L.divIcon({html:'<div class="user-pin"></div>',iconSize:[18,18],iconAnchor:[9,9],className:""}),
             zIndexOffset:9999
-          }).addTo(map).bindPopup('<div style="font-family:Barlow Condensed,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
+          }).addTo(map).bindPopup('<div style="font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
           zipLatLng = userLatLng;
           map.setView([userLatLng.lat, userLatLng.lng], 10);
           document.getElementById('sort-select').value = 'distance';
@@ -6314,8 +6381,8 @@ function showLocationPrompt(onAllow) {
   banner.innerHTML =
     '<span style="font-size:20px">📍</span>' +
     '<span style="flex:1;font-size:13px;color:#EEF2FF;min-width:160px"><strong>Find churches near you</strong><br><span style="font-size:11px;color:#8BA3CC">Allow location access to see the 25 closest churches first</span></span>' +
-    '<button id="loc-allow" style="background:#1565C0;color:#fff;border:none;border-radius:6px;padding:9px 18px;font-family:Barlow Condensed,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;white-space:nowrap;">Allow Location</button>' +
-    '<button id="loc-deny" style="background:transparent;color:#6B9BD2;border:1px solid #1E3460;border-radius:6px;padding:9px 14px;font-family:Barlow Condensed,sans-serif;font-size:12px;cursor:pointer;white-space:nowrap;">Not Now</button>';
+    '<button id="loc-allow" style="background:#1565C0;color:#fff;border:none;border-radius:6px;padding:9px 18px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;white-space:nowrap;">Allow Location</button>' +
+    '<button id="loc-deny" style="background:transparent;color:#6B9BD2;border:1px solid #1E3460;border-radius:6px;padding:9px 14px;font-family:system-ui,-apple-system,sans-serif;font-size:12px;cursor:pointer;white-space:nowrap;">Not Now</button>';
   document.body.appendChild(banner);
   document.getElementById('loc-allow').onclick = function() {
     banner.remove();
@@ -6506,68 +6573,23 @@ console.log('Keyboard navigation enabled - ESC to close modals, Tab to navigate'
 // ═══════════════════════════════════════════════════════════
 
 function initCollapsibleFilters() {
-  // Only apply on mobile
   if (window.innerWidth > 768) return;
-  
-  // Find all filter sections that need to be collapsible
-  var filterSelectors = [
-    '#language-filter',
-    '#district-filter', 
-    '#sector-filter'
-  ];
-  
-  filterSelectors.forEach(function(selector) {
-    var filterElement = document.querySelector(selector);
-    if (!filterElement) return;
-    
-    // Skip if already wrapped
-    if (filterElement.parentElement.classList.contains('filter-section-wrapper')) return;
-    
-    // Get the label text
-    var label = filterElement.previousElementSibling;
-    var labelText = label ? label.textContent : 'Filters';
-    
-    // Create wrapper
-    var wrapper = document.createElement('div');
-    wrapper.className = 'filter-section-wrapper';
-    
-    // Create header
-    var header = document.createElement('div');
-    header.className = 'filter-section-header collapsed';
-    header.innerHTML = 
-      '<h4>' + labelText + '</h4>' +
-      '<span class="filter-section-toggle">▼</span>';
-    
-    // Create content wrapper
-    var content = document.createElement('div');
-    content.className = 'filter-section-content collapsed';
-    
-    // Insert wrapper before filter
-    filterElement.parentNode.insertBefore(wrapper, filterElement);
-    
-    // Move elements into wrapper
-    wrapper.appendChild(header);
-    wrapper.appendChild(content);
-    if (label) content.appendChild(label);
-    content.appendChild(filterElement);
-    
-    // Add click handler
-    header.addEventListener('click', function() {
-      var isCollapsed = header.classList.contains('collapsed');
-      
-      if (isCollapsed) {
-        header.classList.remove('collapsed');
-        content.classList.remove('collapsed');
-        content.classList.add('expanded');
-      } else {
-        header.classList.add('collapsed');
-        content.classList.remove('expanded');
-        content.classList.add('collapsed');
-      }
-    });
+
+  var label = document.getElementById('filter-section-label');
+  var filterZone = document.getElementById('filter-zone');
+  var quickFilters = document.getElementById('quick-filters');
+  if (!label || !filterZone || label.dataset.initialized) return;
+  label.dataset.initialized = 'true';
+
+  // Start collapsed on mobile to maximise map space
+  filterZone.classList.add('mobile-hidden');
+  quickFilters.classList.add('mobile-hidden');
+
+  label.addEventListener('click', function() {
+    var open = label.classList.toggle('filter-open');
+    filterZone.classList.toggle('mobile-hidden', !open);
+    quickFilters.classList.toggle('mobile-hidden', !open);
   });
-  
-  console.log('Mobile collapsible filters initialized');
 }
 
 // Initialize on page load
