@@ -2,35 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0D1B35">
-<title>AAOFCJ Church Finder — Find Apostolic Assembly Churches Near You</title>
-<meta name="description" content="Find Apostolic Assembly of the Faith in Christ Jesus (AAOFCJ) churches near you. Search 780+ congregations by location, district, language, and service times.">
-<!-- Open Graph (Facebook, WhatsApp, iMessage, LinkedIn) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="AAOFCJ Church Finder">
-<meta property="og:description" content="Find Apostolic Assembly churches near you. 780+ congregations searchable by location, district, and language.">
-<meta property="og:image" content="https://www.aaofcj.org/wp-content/uploads/2021/09/AA-Cut-Logo-for-Signage-copy-copy.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
-<!-- Twitter / X Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AAOFCJ Church Finder">
-<meta name="twitter:description" content="Find Apostolic Assembly churches near you. 780+ congregations searchable by location, district, and language.">
-<meta name="twitter:image" content="https://www.aaofcj.org/wp-content/uploads/2021/09/AA-Cut-Logo-for-Signage-copy-copy.png">
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://www.aaofcj.org/wp-content/uploads/2021/09/AA-Cut-Logo-for-Signage-copy-copy.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAOFCJ Church Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-button,a,[role="button"]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-input,select,textarea{touch-action:manipulation}
 :root{
   /* AAOFCJ Brand Colors */
   --blue:#1565C0;--blue2:#1976D2;--blue3:#1E88E5;--blue-light:#E3F0FC;
@@ -49,7 +29,7 @@ input,select,textarea{touch-action:manipulation}
   --radius:10px;--radius-sm:6px;--radius-lg:14px;
 }
 
-html,body{height:100%;width:100%;font-family:system-ui,-apple-system,sans-serif;
+html,body{height:100%;width:100%;font-family:"Plus Jakarta Sans",system-ui,sans-serif;
   background:var(--gray-100);overflow:hidden;color:var(--text);margin:0;padding:0}
 a{color:inherit;text-decoration:none}
 
@@ -63,6 +43,7 @@ a{color:inherit;text-decoration:none}
   box-shadow:0 2px 12px rgba(0,0,0,.1);
 }
 #topbar-logos{
+.us-coverage-badge{font-size:9px;color:#7AABFF;opacity:0.7;margin-left:8px;font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.05em}
   display:flex;align-items:center;gap:0;
   padding:6px 20px 4px;
   border-bottom:1px solid #F1F5F9;
@@ -85,7 +66,7 @@ a{color:inherit;text-decoration:none}
 }
 
 #total-badge{
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
   color:#FFFFFF;letter-spacing:.03em;
   background:var(--blue);
   padding:5px 14px;border-radius:20px;
@@ -107,7 +88,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── SECTION LABELS ───────────────────────────────────────────── */
 .section-label{
-  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
   color:#6B9BD2;letter-spacing:.1em;text-transform:uppercase;
   padding:10px 16px 5px;border-top:1px solid var(--navy4);
   background:var(--navy2);flex-shrink:0;
@@ -128,7 +109,7 @@ a{color:inherit;text-decoration:none}
   border:1.5px solid var(--navy4);
   color:#EEF2FF;
   padding:8px 12px;border-radius:var(--radius-sm);
-  font-size:13px;font-family:system-ui,-apple-system,sans-serif;
+  font-size:12.5px;font-family:"Plus Jakarta Sans",sans-serif;
   outline:none;transition:border-color .15s,box-shadow .15s;
 }
 .si:focus{border-color:#4A90D9;box-shadow:0 0 0 3px rgba(74,144,217,.2)}
@@ -137,7 +118,7 @@ a{color:inherit;text-decoration:none}
 
 #btn-zip,#btn-locate,#btn-reset{
   border:none;cursor:pointer;border-radius:var(--radius-sm);
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.04em;padding:8px 12px;
   transition:all .15s;white-space:nowrap;
 }
@@ -171,7 +152,7 @@ a{color:inherit;text-decoration:none}
   border:1.5px solid var(--navy4);
   color:#EEF2FF;
   padding:6px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:system-ui,-apple-system,sans-serif;
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;
   outline:none;transition:border-color .15s;
   appearance:none;cursor:pointer;
 }
@@ -186,7 +167,7 @@ a{color:inherit;text-decoration:none}
   padding:7px 10px;
   border-radius:var(--radius-sm);
   font-size:11px;
-  font-family:system-ui,-apple-system,sans-serif;
+  font-family:"Barlow Condensed",sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -237,7 +218,7 @@ a{color:inherit;text-decoration:none}
   border-radius:16px;
   color:#6B9BD2;
   font-size:10px;
-  font-family:system-ui,-apple-system,sans-serif;
+  font-family:"Barlow Condensed",sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -269,12 +250,12 @@ a{color:inherit;text-decoration:none}
 #results-bar span{font-size:12px;color:#6B9BD2}
 #results-count{
   color:#7AABFF;font-weight:700;
-  font-family:system-ui,-apple-system,sans-serif;font-size:14px;
+  font-family:"Barlow Condensed",sans-serif;font-size:14px;
 }
 #sort-select{
   background:transparent;border:none;
-  color:#6B9BD2;font-size:12px;
-  font-family:system-ui,-apple-system,sans-serif;
+  color:#6B9BD2;font-size:11.5px;
+  font-family:"Plus Jakarta Sans",sans-serif;
   cursor:pointer;outline:none;
 }
 #sort-select option{background:var(--navy2)}
@@ -299,8 +280,8 @@ a{color:inherit;text-decoration:none}
 }
 
 .ci-name{
-  font-family:system-ui,-apple-system,sans-serif;
-  font-size:13px;font-weight:600;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:12.5px;font-weight:600;
   color:#EEF2FF;line-height:1.35;
   margin-bottom:3px;padding-right:52px;
 }
@@ -308,8 +289,8 @@ a{color:inherit;text-decoration:none}
 .ci-tags{margin-top:5px;display:flex;gap:4px;flex-wrap:wrap}
 
 .tag{
-  font-family:system-ui,-apple-system,sans-serif;
-  font-size:10px;font-weight:600;letter-spacing:.05em;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:9.5px;font-weight:600;letter-spacing:.05em;
   padding:2px 7px;border-radius:4px;text-transform:uppercase;
 }
 .tag-lang-bilingual{background:#FEF3C7;color:#92400E}
@@ -319,8 +300,8 @@ a{color:inherit;text-decoration:none}
 
 .ci-dist{
   position:absolute;top:12px;right:12px;
-  font-family:system-ui,-apple-system,sans-serif;
-  font-size:11px;font-weight:600;color:#7AABFF;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:10.5px;font-weight:600;color:#7AABFF;
   background:rgba(74,144,217,.15);
   padding:2px 8px;border-radius:12px;
   letter-spacing:.02em;
@@ -380,7 +361,7 @@ a{color:inherit;text-decoration:none}
   border-radius:6px;
   color:#7AABFF;
   font-size:10px;
-  font-family:system-ui,-apple-system,sans-serif;
+  font-family:"Barlow Condensed",sans-serif;
   font-weight:600;
   letter-spacing:.04em;
   cursor:pointer;
@@ -417,33 +398,6 @@ a{color:inherit;text-decoration:none}
   transition:transform .2s;
 }
 
-/* ── FAV TAB COUNT BADGE ──────────────────────────────────────── */
-#fav-tab-count{
-  background:var(--blue);color:#fff;font-size:9px;
-  padding:1px 5px;border-radius:8px;margin-left:3px;vertical-align:middle;
-}
-
-/* ── CHURCH CARD CLICKABLE AFFORDANCE ─────────────────────────── */
-.church-item:not(.expanded) .ci-header:hover{
-  background:rgba(74,144,217,.08);
-  border-bottom:1px solid rgba(74,144,217,.18);
-  margin-bottom:-1px;
-}
-.church-item:not(.expanded) .ci-header{cursor:pointer;}
-
-/* ── FIT MAP BUTTON ───────────────────────────────────────────── */
-#btn-fit-map{
-  position:absolute;bottom:24px;left:10px;z-index:999;
-  background:#fff;border:2px solid rgba(0,0,0,.2);
-  border-radius:4px;padding:5px 8px;
-  font-size:11px;font-family:system-ui,-apple-system,sans-serif;
-  font-weight:700;letter-spacing:.04em;color:#333;
-  cursor:pointer;line-height:1;
-  box-shadow:0 1px 5px rgba(0,0,0,.2);
-  transition:background .15s;
-}
-#btn-fit-map:hover{background:#f4f4f4}
-
 #no-results{
   padding:50px 20px;text-align:center;
   color:#4A6A9A;font-size:13px;display:none;
@@ -461,7 +415,7 @@ a{color:inherit;text-decoration:none}
 .leaflet-popup-tip{background:var(--white)!important}
 .leaflet-popup-content{
   margin:0!important;
-  font-family:system-ui,-apple-system,sans-serif!important;
+  font-family:"Plus Jakarta Sans",sans-serif!important;
   min-width:280px;max-width:320px;
 }
 .pu-head{
@@ -469,14 +423,14 @@ a{color:inherit;text-decoration:none}
   padding:14px 16px 12px;
 }
 .pu-head h3{
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;
+  font-family:"Playfair Display",serif;font-size:13px;
   font-weight:600;color:var(--white);line-height:1.4;margin-bottom:7px;
 }
 .pu-tags{display:flex;gap:5px;flex-wrap:wrap}
 .pu-body{padding:12px 16px;background:var(--white)}
 .pu-row{
   display:flex;align-items:flex-start;gap:8px;
-  margin-bottom:7px;font-size:12px;color:var(--gray-700);
+  margin-bottom:7px;font-size:11.5px;color:var(--gray-700);
 }
 .pu-row svg{flex-shrink:0;margin-top:1px;opacity:.5}
 .pu-row a{color:var(--blue2)}
@@ -485,7 +439,7 @@ a{color:inherit;text-decoration:none}
 .pu-sched{font-size:11px;color:var(--gray-500);line-height:1.7}
 .pu-sched strong{
   display:block;
-  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:9.5px;font-weight:600;
   color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;
 }
 .pu-district-block{
@@ -507,7 +461,7 @@ a{color:inherit;text-decoration:none}
 .pu-actions{display:flex;gap:6px;margin-top:10px}
 .pu-btn{
   flex:1;text-align:center;padding:8px 6px;border-radius:var(--radius-sm);
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;border:none;
   transition:all .15s;text-decoration:none;display:block;
   text-transform:uppercase;
@@ -525,7 +479,7 @@ a{color:inherit;text-decoration:none}
 }
 .stab{
   flex:1;padding:9px 4px;text-align:center;cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.06em;text-transform:uppercase;
   color:#4A6A9A;border-bottom:2px solid transparent;
   transition:all .15s;
@@ -553,7 +507,7 @@ a{color:inherit;text-decoration:none}
 /* ── ROUTE SEARCH ──────────────────────────────────────────────── */
 #route-panel{padding:14px;overflow-y:auto}
 #route-panel h3{
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
   color:#7AABFF;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;
 }
 .route-input-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
@@ -564,7 +518,7 @@ a{color:inherit;text-decoration:none}
 .route-input{
   flex:1;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
 }
 .route-input:focus{border-color:#4A90D9}
 .route-input::placeholder{color:#4A6A9A}
@@ -575,7 +529,7 @@ a{color:inherit;text-decoration:none}
 #btn-route{
   width:100%;background:var(--blue);color:#fff;border:none;
   padding:10px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
   letter-spacing:.05em;transition:background .15s;margin-bottom:10px;
 }
 #btn-route:hover{background:var(--blue2)}
@@ -601,7 +555,7 @@ a{color:inherit;text-decoration:none}
   box-shadow:var(--shadow-lg);
 }
 #correction-box h2{
-  font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#EEF2FF;
+  font-family:"Playfair Display",serif;font-size:16px;color:#EEF2FF;
   margin-bottom:4px;
 }
 #correction-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:16px}
@@ -611,7 +565,7 @@ a{color:inherit;text-decoration:none}
 .cf-group input,.cf-group select,.cf-group textarea{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
 }
 .cf-group input:focus,.cf-group textarea:focus{border-color:#4A90D9}
 .cf-group textarea{resize:vertical;min-height:80px}
@@ -619,7 +573,7 @@ a{color:inherit;text-decoration:none}
 .cf-btns{display:flex;gap:8px;margin-top:16px}
 .cf-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;
 }
 .cf-btn.primary{background:var(--blue);color:#fff}
@@ -640,7 +594,7 @@ a{color:inherit;text-decoration:none}
 #toast-retry{
   background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
   color:#FFF;padding:4px 12px;border-radius:12px;font-size:11px;
-  cursor:pointer;font-family:system-ui,-apple-system,sans-serif;
+  cursor:pointer;font-family:"Barlow Condensed",sans-serif;
   font-weight:600;letter-spacing:.03em;text-transform:uppercase;
 }
 #toast-retry:hover{background:rgba(255,255,255,.3)}
@@ -656,7 +610,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
   box-shadow:var(--shadow-lg);
 }
-.cal-box h2{font-family:system-ui,-apple-system,sans-serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+.cal-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
 .cal-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
 .cal-option{
   display:flex;align-items:center;gap:12px;
@@ -672,23 +626,58 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:8px;padding:8px;
   background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
   border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
-  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
 }
 
 /* ── LANGUAGE TOGGLE ───────────────────────────────────────────── */
 #lang-toggle{
-  display:flex;align-items:center;gap:4px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:16px;padding:3px 10px;
-  font-family:system-ui,-apple-system,sans-serif;
-  font-size:12px;font-weight:700;letter-spacing:.06em;
-  cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.05em;
 }
-.lang-word{cursor:pointer;color:#8BA3CC;transition:color .2s;}
-.lang-word.active{color:#EEF2FF;}
-.lang-word:hover{color:#B8CFEE;}
-.lang-separator{color:#4A6A9A;opacity:.5;}
+.lang-word{
+  cursor:pointer;
+  color:#4A6A9A;
+  opacity:0.4;
+  transition:opacity .2s ease;
+}
+.lang-word.active{
+  opacity:1;
+  color:#7AABFF;
+}
+.lang-word:hover{
+  opacity:0.7;
+}
+.lang-separator{
+  color:#4A6A9A;
+  opacity:0.3;
+  font-weight:400;
+}
+
+/* ── MOBILE QUICK ACTIONS ──────────────────────────────────────── */
+.mobile-quick-actions{
+  display:none;
+  gap:6px;
+  align-items:center;
+}
+.mobile-quick-btn{
+  background:rgba(21,101,192,.15);
+  border:1px solid rgba(74,144,217,.25);
+  border-radius:6px;
+  color:#7AABFF;
+  padding:4px 8px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.mobile-quick-btn:hover{
+  background:rgba(21,101,192,.25);
+  border-color:#4A90D9;
+}
 
 /* ── KOFI BUTTON ───────────────────────────────────────────────── */
 #kofi-btn{
@@ -697,7 +686,7 @@ a{color:inherit;text-decoration:none}
   color:#fff;border:none;border-radius:24px;cursor:pointer;
   padding:10px 16px;display:flex;align-items:center;gap:8px;
   box-shadow:0 4px 16px rgba(255,94,91,.4);
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;
   letter-spacing:.05em;transition:all .2s;text-decoration:none;
 }
 #kofi-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,94,91,.5)}
@@ -708,7 +697,7 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:6px;padding:8px;
   background:rgba(21,101,192,.15);border:1px solid rgba(74,144,217,.3);
   border-radius:var(--radius-sm);color:#7AABFF;
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;
 }
 .pu-visit-btn:hover{background:rgba(21,101,192,.3);border-color:#4A90D9}
@@ -728,6 +717,457 @@ a{color:inherit;text-decoration:none}
   box-shadow:0 -2px 8px rgba(0,0,0,.06);
 }
 #status-bar span{color:#7AABFF;font-weight:600}
+
+/* ── DISTRICT META COLORS override ───────────────────────────── */
+/* district info bar */
+#sector-info-bar{
+  padding:4px 14px 6px;background:rgba(122,171,255,.06);
+  border-bottom:1px solid var(--border);display:none;flex-shrink:0;
+}
+#sector-info-bar p{font-size:11px;color:var(--gold2);line-height:1.5}
+#sector-info-bar span{color:var(--muted);font-size:10px}
+#district-info-bar{
+  display:none;padding:6px 12px;background:rgba(201,168,76,.08);
+  border-bottom:1px solid rgba(201,168,76,.2);flex-shrink:0;
+}
+#district-info-bar p{font-size:11px;color:var(--gold2);line-height:1.5}
+#district-info-bar span{color:var(--muted);font-size:10px}
+
+/* ── RESULTS BAR ─────────────────── */
+#results-bar{
+  padding:6px 12px;background:var(--navy);flex-shrink:0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+#results-bar span{font-size:11px;color:var(--muted)}
+#results-count{color:var(--blue);font-weight:600;font-family:'Barlow Condensed',sans-serif}
+#sort-select{background:transparent;border:none;color:var(--muted);font-size:11px;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;outline:none}
+#sort-select option{background:var(--navy2)}
+
+/* ── CHURCH LIST ─────────────────── */
+#church-list{overflow-y:auto;flex:1}
+#church-list::-webkit-scrollbar{width:3px}
+#church-list::-webkit-scrollbar-track{background:var(--navy)}
+#church-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.church-item{
+  padding:11px 14px 10px;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .12s;position:relative;
+}
+.church-item:hover{background:var(--navy3)}
+.church-item.active{background:var(--navy3);border-left:3px solid var(--gold);padding-left:11px}
+.ci-name{font-family:'Barlow Condensed',sans-serif;font-size:11.5px;font-weight:600;color:var(--cream);line-height:1.35;margin-bottom:3px;padding-right:50px}
+.ci-loc{font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.ci-tags{margin-top:4px;display:flex;gap:4px;flex-wrap:wrap}
+.tag{font-size:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.04em;
+  padding:1px 6px;border-radius:3px;text-transform:uppercase}
+.tag-lang-bilingual{background:rgba(201,168,76,.12);color:var(--blue)}
+.tag-lang-spanish{background:rgba(90,150,255,.12);color:#7aabff}
+.tag-lang-english{background:rgba(74,180,120,.12);color:#6adf9a}
+.tag-district{background:rgba(201,168,76,.08);color:var(--muted);border:1px solid rgba(201,168,76,.15)}
+.ci-dist{position:absolute;top:11px;right:12px;font-size:10px;color:var(--blue);font-family:'Barlow Condensed',sans-serif;font-weight:600;background:rgba(201,168,76,.1);padding:2px 7px;border-radius:10px}
+.has-social{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-left:4px;vertical-align:middle;opacity:.7}
+#no-results{padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;display:none}
+#no-results svg{opacity:.25;margin-bottom:12px}
+
+/* ── POPUP ─────────────────────── */
+.leaflet-popup-content-wrapper{
+  background:var(--navy2)!important;border:1px solid var(--gold)!important;
+  border-radius:10px!important;box-shadow:0 12px 40px rgba(0,0,0,.7)!important;
+  padding:0!important;
+}
+.leaflet-popup-tip{background:var(--gold)!important}
+.leaflet-popup-content{margin:0!important;font-family:'Plus Jakarta Sans',sans-serif!important;min-width:280px;max-width:320px}
+.pu-head{
+  background:linear-gradient(135deg,var(--navy3),var(--navy4));
+  padding:14px 16px 12px;border-radius:9px 9px 0 0;
+  border-bottom:1px solid var(--border);
+}
+.pu-head h3{font-family:'Barlow Condensed',sans-serif;font-size:12.5px;font-weight:700;color:var(--gold2);line-height:1.4;margin-bottom:6px}
+.pu-tags{display:flex;gap:5px;flex-wrap:wrap}
+.pu-body{padding:12px 16px}
+.pu-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;font-size:11.5px;color:var(--cream2)}
+.pu-row svg{flex-shrink:0;margin-top:1px;opacity:.65}
+.pu-row a{color:var(--gold2)}
+.pu-row a:hover{color:var(--gold3);text-decoration:underline}
+.pu-divider{border:none;border-top:1px solid var(--border);margin:8px 0}
+.pu-sched{font-size:11px;color:var(--muted);line-height:1.7}
+.pu-sched strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:9px;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.pu-district-block{
+  background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);
+  border-radius:5px;padding:7px 10px;margin-bottom:8px;
+}
+.pu-district-block p{font-size:11px;color:var(--cream2);margin-bottom:2px}
+.pu-district-block span{font-size:10px;color:var(--muted)}
+.pu-social{display:flex;gap:8px;margin-top:8px}
+.pu-social a{
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:6px;border:1px solid var(--border);
+  background:var(--navy3);transition:all .15s;
+}
+.pu-social a:hover{border-color:var(--blue);background:rgba(201,168,76,.1)}
+.pu-social svg{width:14px;height:14px}
+.pu-actions{display:flex;gap:6px;margin-top:10px}
+.pu-btn{flex:1;text-align:center;padding:8px 6px;border-radius:6px;
+  font-size:10.5px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.04em;
+  cursor:pointer;border:none;transition:all .15s;text-decoration:none;display:block}
+.pu-btn.primary{background:var(--gold);color:var(--navy)}
+.pu-btn.primary:hover{background:var(--gold2)}
+.pu-btn.secondary{background:var(--navy3);color:var(--muted);border:1px solid var(--border)}
+.pu-btn.secondary:hover{border-color:var(--blue);color:var(--blue)}
+
+
+/* ── SIDEBAR TABS ──────────────────────────────────────────────── */
+#sidebar-tabs{
+  display:flex;border-bottom:1px solid var(--navy4);
+  background:var(--navy2);flex-shrink:0;
+}
+.stab{
+  flex:1;padding:9px 4px;text-align:center;cursor:pointer;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#4A6A9A;border-bottom:2px solid transparent;
+  transition:all .15s;
+}
+.stab:hover{color:#7AABFF}
+.stab.active{color:#7AABFF;border-bottom-color:#4A90D9}
+.stab-icon{font-size:14px;display:block;margin-bottom:2px}
+
+/* ── PANEL SYSTEM ──────────────────────────────────────────────── */
+/* panel css removed */
+/* ── FAVORITES ─────────────────────────────────────────────────── */
+.fav-btn{
+  position:absolute;bottom:10px;right:10px;
+  background:none;border:none;cursor:pointer;
+  font-size:15px;opacity:.5;transition:all .15s;z-index:10;
+}
+.fav-btn:hover{opacity:1;transform:scale(1.2)}
+.fav-btn.active{opacity:1;color:#F59E0B}
+#fav-empty{
+  padding:50px 20px;text-align:center;
+  color:#4A6A9A;font-size:13px;
+}
+#fav-list{overflow-y:auto;flex:1;background:var(--navy)}
+
+/* ── ROUTE SEARCH ──────────────────────────────────────────────── */
+#route-panel{padding:14px;overflow-y:auto}
+#route-panel h3{
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  color:#7AABFF;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;
+}
+.route-input-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
+.route-input-row label{
+  font-size:10px;font-weight:600;color:#4A6A9A;letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap;width:40px;flex-shrink:0;
+}
+.route-input{
+  flex:1;background:var(--navy3);border:1.5px solid var(--navy4);
+  color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
+}
+.route-input:focus{border-color:#4A90D9}
+.route-input::placeholder{color:#4A6A9A}
+#route-radius-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+#route-radius-row label{font-size:11px;color:#6B9BD2}
+#route-radius{background:var(--navy3);border:1.5px solid var(--navy4);
+  color:#EEF2FF;padding:6px 8px;border-radius:var(--radius-sm);font-size:12px;outline:none}
+#btn-route{
+  width:100%;background:var(--blue);color:#fff;border:none;
+  padding:10px;border-radius:var(--radius-sm);cursor:pointer;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:.05em;transition:background .15s;margin-bottom:10px;
+}
+#btn-route:hover{background:var(--blue2)}
+#route-results{margin-top:8px}
+.route-result-item{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:6px;cursor:pointer;
+}
+.route-result-item:hover{border-color:#4A90D9}
+.route-result-item .rri-name{font-size:12px;font-weight:600;color:#EEF2FF;margin-bottom:2px}
+.route-result-item .rri-detail{font-size:11px;color:#6B9BD2}
+#route-status{font-size:11px;color:#6B9BD2;text-align:center;padding:10px 0}
+
+/* ── CORRECTION FORM ───────────────────────────────────────────── */
+#correction-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
+}
+#correction-modal.open{display:flex}
+#correction-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:24px;width:90%;max-width:440px;
+  box-shadow:var(--shadow-lg);
+}
+#correction-box h2{
+  font-family:"Playfair Display",serif;font-size:16px;color:#EEF2FF;
+  margin-bottom:4px;
+}
+#correction-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:16px}
+.cf-group{margin-bottom:12px}
+.cf-group label{display:block;font-size:10px;font-weight:600;color:#6B9BD2;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.cf-group input,.cf-group select,.cf-group textarea{
+  width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
+  color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
+}
+.cf-group input:focus,.cf-group textarea:focus{border-color:#4A90D9}
+.cf-group textarea{resize:vertical;min-height:80px}
+.cf-group select option{background:var(--navy2)}
+.cf-btns{display:flex;gap:8px;margin-top:16px}
+.cf-btn{
+  flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.05em;border:none;transition:all .15s;
+}
+.cf-btn.primary{background:var(--blue);color:#fff}
+.cf-btn.primary:hover{background:var(--blue2)}
+.cf-btn.secondary{background:var(--navy3);color:#6B9BD2;border:1px solid var(--navy4)}
+.cf-btn.secondary:hover{color:#EEF2FF}
+
+/* ── SHARE POPUP ───────────────────────────────────────────────── */
+#toast-container{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#1E3460;border:1px solid #4A90D9;color:#EEF2FF;
+  padding:12px 20px;border-radius:20px;font-size:13px;
+  z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;
+  box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;
+}
+#toast-container.show{opacity:1;pointer-events:auto}
+#toast-container.error{background:#C62828;border-color:#D32F2F}
+#toast-retry{
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
+  color:#FFF;padding:4px 12px;border-radius:12px;font-size:11px;
+  cursor:pointer;font-family:"Barlow Condensed",sans-serif;
+  font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+}
+#toast-retry:hover{background:rgba(255,255,255,.3)}
+
+/* ── PLAN MY VISIT ─────────────────────────────────────────────── */
+.cal-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
+}
+.cal-modal.open{display:flex}
+.cal-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
+  box-shadow:var(--shadow-lg);
+}
+.cal-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+.cal-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
+.cal-option{
+  display:flex;align-items:center;gap:12px;
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  margin-bottom:8px;cursor:pointer;transition:border-color .15s;
+}
+.cal-option:hover{border-color:#4A90D9}
+.cal-option .cal-icon{font-size:22px}
+.cal-option .cal-label{font-size:12px;font-weight:600;color:#EEF2FF}
+.cal-option .cal-sub{font-size:10px;color:#6B9BD2}
+.cal-close{
+  width:100%;margin-top:8px;padding:8px;
+  background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+}
+
+/* ── SHARE MODAL ───────────────────────────────────────────────── */
+#share-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
+}
+#share-modal.open{display:flex}
+#share-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
+  box-shadow:var(--shadow-lg);
+}
+#share-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+#share-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
+.share-option{
+  display:flex;align-items:center;gap:12px;
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  margin-bottom:8px;cursor:pointer;transition:border-color .15s;
+}
+.share-option:hover{border-color:#4A90D9}
+.share-option .share-icon{font-size:20px}
+.share-option .share-label{font-size:12px;font-weight:600;color:#EEF2FF}
+.share-option .share-sub{font-size:10px;color:#6B9BD2}
+.share-close{
+  width:100%;margin-top:8px;padding:8px;
+  background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+}
+
+/* ── EXPORT MODAL ──────────────────────────────────────────────── */
+#export-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.7);align-items:center;justify-content:center;
+}
+#export-modal.open{display:flex}
+#export-box{
+  background:var(--navy2);border:1px solid var(--navy4);
+  border-radius:var(--radius-lg);padding:22px;width:90%;max-width:360px;
+  box-shadow:var(--shadow-lg);
+}
+#export-box h2{font-family:"Playfair Display",serif;font-size:15px;color:#EEF2FF;margin-bottom:4px}
+#export-box .sub{font-size:11px;color:#6B9BD2;margin-bottom:14px}
+.export-option{
+  display:flex;align-items:center;gap:12px;
+  background:var(--navy3);border:1px solid var(--navy4);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  margin-bottom:8px;cursor:pointer;transition:border-color .15s;
+}
+.export-option:hover{border-color:#4A90D9}
+.export-option .export-icon{font-size:20px}
+.export-option .export-label{font-size:12px;font-weight:600;color:#EEF2FF}
+.export-option .export-sub{font-size:10px;color:#6B9BD2}
+.export-close{
+  width:100%;margin-top:8px;padding:8px;
+  background:transparent;border:1px solid var(--navy4);color:#6B9BD2;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+}
+
+/* ── KOFI BUTTON ───────────────────────────────────────────────── */
+#kofi-btn{
+  position:fixed;bottom:20px;right:20px;z-index:3000;
+  background:linear-gradient(135deg,#FF5E5B,#FF8C42);
+  color:#fff;border:none;border-radius:24px;cursor:pointer;
+  padding:10px 16px;display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 16px rgba(255,94,91,.4);
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.05em;transition:all .2s;text-decoration:none;
+}
+#kofi-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,94,91,.5)}
+#kofi-btn .kofi-icon{font-size:16px}
+
+/* ── POPUP ADDITIONS ───────────────────────────────────────────── */
+.pu-visit-btn{
+  width:100%;margin-top:6px;padding:8px;
+  background:rgba(21,101,192,.15);border:1px solid rgba(74,144,217,.3);
+  border-radius:var(--radius-sm);color:#7AABFF;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;
+}
+.pu-visit-btn:hover{background:rgba(21,101,192,.3);border-color:#4A90D9}
+
+/* ── CLUSTER ─────────────────────── */
+.user-pin{background:var(--gold);border:3px solid white;border-radius:50%;width:18px;height:18px;box-shadow:0 0 0 4px rgba(201,168,76,.35)}
+
+/* ── STATUS BAR ─────────────────── */
+#status-bar{
+  display:none;position:absolute;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(13,27,53,.95);border-top:1px solid var(--border);
+  padding:7px 14px;font-size:11px;color:var(--muted);flex-shrink:0;
+}
+#status-bar span{color:#7AABFF;font-weight:600}
+
+@media(max-width:768px){
+  :root{--topbar:76px}
+
+  /* Topbar 2-row compact */
+  #topbar-logos{padding:5px 12px 3px}
+  #topbar-controls{padding:3px 12px 4px;gap:5px}
+  .logo-main{height:26px !important}
+  
+  /* Show mobile quick action buttons */
+  .mobile-quick-actions{display:flex}
+  
+  #text-size-select{font-size:10px;padding:3px 5px;height:24px}
+  #btn-contrast{font-size:10px;padding:3px 7px;height:24px}
+  #topbar-actions{gap:4px}
+  .topbar-action-btn{font-size:9px;padding:3px 5px}
+  #info-btn{width:22px;height:22px;font-size:10px}
+  #total-badge{font-size:10px;padding:2px 7px}
+
+  /* App layout */
+  #app{
+    flex-direction:column;position:relative;
+    height:calc(100vh - 76px);margin-top:76px;
+  }
+  #map{
+    position:absolute;inset:0;
+    height:100% !important;width:100% !important;z-index:1;
+  }
+
+  /* Sidebar drawer */
+  #sidebar{
+    position:absolute;bottom:0;left:0;right:0;
+    width:100% !important;min-width:unset !important;max-width:100% !important;
+    height:48px;max-height:82vh;
+    border-right:none;border-top:2px solid var(--blue);
+    border-radius:16px 16px 0 0;
+    z-index:500;transition:height .3s cubic-bezier(.4,0,.2,1);
+    overflow:hidden;box-shadow:0 -4px 24px rgba(0,0,0,.3);
+  }
+  #sidebar.expanded{height:78vh}
+  #sidebar::before{
+    content:"";display:block;width:40px;height:4px;
+    background:rgba(255,255,255,.3);border-radius:2px;
+    margin:10px auto 6px;cursor:pointer;
+  }
+
+  /* Mobile drawer button */
+  #mobile-drawer-btn{
+    display:flex !important;
+    position:absolute;bottom:56px;right:12px;z-index:600;
+    background:var(--blue);color:#fff;
+    border:2px solid #fff;border-radius:50%;
+    width:48px;height:48px;
+    align-items:center;justify-content:center;
+    font-size:20px;cursor:pointer;
+    box-shadow:0 4px 16px rgba(21,101,192,.5);
+  }
+
+  /* Sidebar elements */
+  .stab{font-size:10px;padding:7px 2px}
+  .stab-icon{font-size:12px}
+  .church-item{padding:14px 12px;min-height:64px}
+  .ci-name{font-size:13px;padding-right:44px}
+  .ci-loc{font-size:12px}
+  .fav-btn{font-size:18px}
+  #search-zone{padding:8px 10px}
+  .search-row{gap:6px;margin-bottom:6px}
+  .si{padding:8px 10px;font-size:13px}
+  #filter-zone{padding:8px 10px}
+  .fgrid{gap:6px;margin-bottom:6px}
+  .fg label{font-size:9px}
+  .fg select,.fg input{font-size:12px;padding:6px 8px}
+  #route-panel{padding:10px 12px}
+
+  /* Modals as bottom sheets */
+  #stats-box,#profile-box,#bishop-dir-box,
+  #embed-box,#correction-box,/* mobile-only box sizing moved to @media block */
+  #stats-modal,#profile-modal,#bishop-dir-modal,
+  #embed-modal,#correction-modal,/* mobile-only modal positioning moved to @media block */
+
+  /* Ko-fi + Feedback tab */
+  #kofi-btn{bottom:60px;right:8px;padding:8px 12px;font-size:11px}
+  #feedback-tab{top:auto;bottom:120px;right:-2px;font-size:10px;padding:10px 6px}
+  .profile-actions{grid-template-columns:1fr 1fr}
+  .admin-grid{grid-template-columns:1fr 1fr}
+
+  /* Modals as bottom sheets — MOBILE ONLY */
+  #stats-box,#profile-box,#bishop-dir-box,
+  #embed-box,#correction-box,#about-box,
+  #feedback-box,#cal-box{
+    max-width:100% !important;width:100% !important;
+    border-radius:16px 16px 0 0 !important;max-height:92vh !important;
+  }
+  #stats-modal,#profile-modal,#bishop-dir-modal,
+  #embed-modal,#correction-modal,
+}
+
+@media(max-width:380px){
+  
+  #total-badge{display:none}
+  .topbar-action-btn{font-size:8px;padding:3px 4px}
+}
 
 
 /* ── ROUTE CHURCH SELECTION ────────────────────────────────────── */
@@ -754,7 +1194,7 @@ a{color:inherit;text-decoration:none}
 }
 #route-nav-bar .nav-count{
   font-size:11px;color:#7AABFF;font-weight:600;
-  font-family:system-ui,-apple-system,sans-serif;letter-spacing:.04em;
+  font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;
 }
 #route-nav-bar .nav-hint{
   font-size:10px;color:#4A6A9A;margin-top:4px;
@@ -762,7 +1202,7 @@ a{color:inherit;text-decoration:none}
 .nav-btn{
   display:flex;align-items:center;justify-content:center;gap:6px;
   width:100%;padding:9px;border-radius:var(--radius-sm);
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;
   letter-spacing:.05em;cursor:pointer;border:none;transition:all .15s;
   text-transform:uppercase;text-decoration:none;margin-bottom:6px;
 }
@@ -785,7 +1225,7 @@ a{color:inherit;text-decoration:none}
   background:var(--blue);color:#fff;
   writing-mode:vertical-rl;text-orientation:mixed;
   padding:14px 8px;border-radius:8px 0 0 8px;
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;
   letter-spacing:.1em;cursor:pointer;
   box-shadow:-2px 0 12px rgba(21,101,192,.4);
   transition:all .2s;border:1px solid rgba(255,255,255,.15);
@@ -811,7 +1251,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px 14px;flex-shrink:0;
 }
 .fb-header h2{
-  font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff;
+  font-family:"Playfair Display",serif;font-size:17px;color:#fff;
   margin-bottom:4px;
 }
 .fb-header p{font-size:11px;color:rgba(255,255,255,.7)}
@@ -828,7 +1268,7 @@ a{color:inherit;text-decoration:none}
 .fb-type.selected{border-color:#4A90D9;background:rgba(74,144,217,.15)}
 .fb-type .fb-type-icon{font-size:20px;display:block;margin-bottom:4px}
 .fb-type .fb-type-label{
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;
   font-weight:600;color:#EEF2FF;letter-spacing:.04em;
 }
 
@@ -845,7 +1285,7 @@ a{color:inherit;text-decoration:none}
 .fb-group input,.fb-group textarea,.fb-group select{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:8px 10px;border-radius:var(--radius-sm);
-  font-size:12px;font-family:system-ui,-apple-system,sans-serif;outline:none;
+  font-size:12px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;
   transition:border-color .15s;
 }
 .fb-group input:focus,.fb-group textarea:focus,.fb-group select:focus{border-color:#4A90D9}
@@ -858,7 +1298,7 @@ a{color:inherit;text-decoration:none}
 }
 .fb-btn{
   flex:1;padding:10px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;text-transform:uppercase;
 }
 .fb-btn.primary{background:var(--blue);color:#fff}
@@ -875,7 +1315,7 @@ a{color:inherit;text-decoration:none}
   text-align:center;padding:30px 20px;
 }
 .fb-success .fb-success-icon{font-size:40px;margin-bottom:12px}
-.fb-success h3{font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#EEF2FF;margin-bottom:8px}
+.fb-success h3{font-family:"Playfair Display",serif;font-size:16px;color:#EEF2FF;margin-bottom:8px}
 .fb-success p{font-size:12px;color:#6B9BD2;line-height:1.6}
 
 
@@ -902,7 +1342,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;
   position:sticky;top:0;z-index:1;
 }
-.stats-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff;margin-bottom:2px}
+.stats-header h2{font-family:"Playfair Display",serif;font-size:17px;color:#fff;margin-bottom:2px}
 .stats-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .stats-body{padding:18px 20px}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
@@ -911,12 +1351,12 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:12px 10px;text-align:center;
 }
 .stat-card .stat-num{
-  font-family:system-ui,-apple-system,sans-serif;font-size:26px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:700;
   color:#7AABFF;line-height:1;
 }
 .stat-card .stat-label{font-size:10px;color:#6B9BD2;margin-top:4px;letter-spacing:.04em}
 .stats-section-title{
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   color:#4A6A9A;letter-spacing:.08em;text-transform:uppercase;
   margin:14px 0 8px;
 }
@@ -937,7 +1377,7 @@ a{color:inherit;text-decoration:none}
 .stats-close-btn{
   width:calc(100% - 40px);margin:0 20px 18px;padding:9px;
   background:var(--navy3);border:1px solid var(--navy4);color:#6B9BD2;
-  border-radius:var(--radius-sm);cursor:pointer;font-family:system-ui,-apple-system,sans-serif;
+  border-radius:var(--radius-sm);cursor:pointer;font-family:"Barlow Condensed",sans-serif;
   font-size:12px;font-weight:600;
 }
 
@@ -957,14 +1397,14 @@ a{color:inherit;text-decoration:none}
   padding:20px;border-bottom:1px solid var(--navy4);
 }
 .profile-hero h2{
-  font-family:system-ui,-apple-system,sans-serif;font-size:18px;color:#EEF2FF;
+  font-family:"Playfair Display",serif;font-size:18px;color:#EEF2FF;
   margin-bottom:6px;line-height:1.3;
 }
 .profile-hero .ph-sub{font-size:12px;color:#6B9BD2;margin-bottom:10px}
 .profile-body{padding:16px 20px}
 .profile-section{margin-bottom:16px}
 .profile-section h3{
-  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
   color:#4A6A9A;letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--navy4);
 }
@@ -975,7 +1415,7 @@ a{color:inherit;text-decoration:none}
 .profile-social-btn{
   display:flex;align-items:center;gap:5px;padding:6px 12px;
   border-radius:20px;font-size:11px;font-weight:600;
-  font-family:system-ui,-apple-system,sans-serif;letter-spacing:.04em;
+  font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;
   border:1px solid var(--navy4);color:#EEF2FF;background:var(--navy3);
   cursor:pointer;text-decoration:none;
 }
@@ -985,7 +1425,7 @@ a{color:inherit;text-decoration:none}
 }
 .profile-action-btn{
   padding:9px 6px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.05em;border:none;transition:all .15s;text-align:center;
   text-transform:uppercase;
 }
@@ -1001,7 +1441,7 @@ a{color:inherit;text-decoration:none}
 .profile-url-text{flex:1;font-size:11px;color:#6B9BD2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .profile-url-copy{
   background:var(--blue);color:#fff;border:none;border-radius:4px;
-  padding:4px 10px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
+  padding:4px 10px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
   font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;
 }
 
@@ -1010,7 +1450,7 @@ a{color:inherit;text-decoration:none}
   width:100%;margin-top:4px;padding:6px;
   background:transparent;border:1px solid rgba(239,83,80,.2);
   border-radius:var(--radius-sm);color:#EF5350;opacity:.6;
-  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:10px;font-weight:600;
   letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;
 }
 .pu-closed-btn:hover{opacity:1;border-color:#EF5350;background:rgba(239,83,80,.08)}
@@ -1031,7 +1471,7 @@ a{color:inherit;text-decoration:none}
   padding:18px 20px;position:sticky;top:0;z-index:1;
   border-radius:var(--radius-lg) var(--radius-lg) 0 0;
 }
-.bd-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:17px;color:#fff}
+.bd-header h2{font-family:"Playfair Display",serif;font-size:17px;color:#fff}
 .bd-header p{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px}
 .bd-body{padding:12px 16px}
 .bd-card{
@@ -1039,7 +1479,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;
 }
 .bd-district{
-  font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:9.5px;font-weight:600;
   color:#4A90D9;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;
 }
 .bd-name{font-size:13px;font-weight:600;color:#EEF2FF;margin-bottom:4px}
@@ -1048,7 +1488,7 @@ a{color:inherit;text-decoration:none}
   display:inline-block;background:rgba(74,144,217,.15);
   border:1px solid rgba(74,144,217,.2);
   color:#7AABFF;border-radius:10px;
-  padding:2px 8px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
+  padding:2px 8px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
   font-weight:600;margin-top:4px;
 }
 
@@ -1066,7 +1506,7 @@ a{color:inherit;text-decoration:none}
 .embed-header{
   background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px;
 }
-.embed-header h2{font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#fff;margin-bottom:2px}
+.embed-header h2{font-family:"Playfair Display",serif;font-size:16px;color:#fff;margin-bottom:2px}
 .embed-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .embed-body{padding:18px 20px}
 .embed-option{
@@ -1086,14 +1526,14 @@ a{color:inherit;text-decoration:none}
   position:relative;
 }
 .embed-code{
-  font-family:monospace;font-size:11px;color:#7AABFF;
+  font-family:monospace;font-size:10.5px;color:#7AABFF;
   white-space:pre-wrap;word-break:break-all;line-height:1.5;
   max-height:120px;overflow-y:auto;
 }
 .embed-copy-btn{
   position:absolute;top:8px;right:8px;
   background:var(--blue);color:#fff;border:none;border-radius:4px;
-  padding:4px 10px;font-size:10px;font-family:system-ui,-apple-system,sans-serif;
+  padding:4px 10px;font-size:10px;font-family:"Barlow Condensed",sans-serif;
   font-weight:700;cursor:pointer;
 }
 .embed-info{
@@ -1104,7 +1544,7 @@ a{color:inherit;text-decoration:none}
 .embed-footer{padding:0 20px 16px;display:flex;gap:8px}
 .embed-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
   letter-spacing:.05em;border:none;
 }
 .embed-btn.primary{background:var(--blue);color:#fff}
@@ -1115,26 +1555,10 @@ a{color:inherit;text-decoration:none}
 .topbar-action-btn{
   background:transparent;border:1.5px solid #E2E8F0;color:#334155;
   border-radius:6px;padding:5px 10px;cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.04em;transition:all .15s;white-space:nowrap;
 }
 .topbar-action-btn:hover{border-color:var(--blue);color:var(--blue)}
-/* Mobile-only support button in topbar */
-#mobile-support-btn{
-  display:none;
-  align-items:center;gap:4px;
-  background:transparent;
-  border:1.5px solid #FF8C42;
-  border-radius:6px;padding:4px 9px;
-  font-size:11px;font-weight:600;
-  color:#FF5E5B;cursor:pointer;
-  text-decoration:none;white-space:nowrap;
-  transition:all .15s;flex-shrink:0;
-}
-#mobile-support-btn:hover{background:#FFF5F0}
-@media(max-width:768px){
-  #mobile-support-btn{display:flex}
-}
 
 /* ── ADMIN MODE ─────────────────────────────────────────────────── */
 #admin-modal{
@@ -1146,19 +1570,19 @@ a{color:inherit;text-decoration:none}
   background:var(--navy2);border:1px solid var(--navy4);
   border-radius:var(--radius-lg);padding:24px;width:90%;max-width:360px;
 }
-#admin-box h2{font-family:system-ui,-apple-system,sans-serif;color:#EEF2FF;margin-bottom:4px;font-size:16px}
+#admin-box h2{font-family:"Playfair Display",serif;color:#EEF2FF;margin-bottom:4px;font-size:16px}
 #admin-box p{font-size:11px;color:#6B9BD2;margin-bottom:16px}
 #admin-password{
   width:100%;background:var(--navy3);border:1.5px solid var(--navy4);
   color:#EEF2FF;padding:10px 12px;border-radius:var(--radius-sm);
   font-size:14px;outline:none;margin-bottom:10px;
-  font-family:system-ui,-apple-system,sans-serif;
+  font-family:"Plus Jakarta Sans",sans-serif;
 }
 #admin-error{color:#EF5350;font-size:11px;margin-bottom:8px;display:none}
 .admin-btns{display:flex;gap:8px}
 .admin-btn{
   flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
   border:none;letter-spacing:.05em;
 }
 .admin-btn.primary{background:var(--blue);color:#fff}
@@ -1174,12 +1598,12 @@ a{color:inherit;text-decoration:none}
   margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--navy4);
 }
 .admin-panel-header h1{
-  font-family:system-ui,-apple-system,sans-serif;color:#EEF2FF;font-size:20px;
+  font-family:"Playfair Display",serif;color:#EEF2FF;font-size:20px;
 }
 .admin-close{
   background:var(--navy3);border:1px solid var(--navy4);color:#6B9BD2;
   padding:6px 14px;border-radius:var(--radius-sm);cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;
 }
 .admin-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
 .admin-stat{
@@ -1187,14 +1611,14 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:14px;
 }
 .admin-stat .as-num{
-  font-family:system-ui,-apple-system,sans-serif;font-size:28px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;
   color:#7AABFF;
 }
 .admin-stat .as-label{font-size:11px;color:#6B9BD2;margin-top:2px}
 .admin-table{width:100%;border-collapse:collapse;font-size:11px}
 .admin-table th{
   background:var(--navy3);color:#4A6A9A;padding:8px 10px;
-  text-align:left;font-family:system-ui,-apple-system,sans-serif;font-size:10px;
+  text-align:left;font-family:"Barlow Condensed",sans-serif;font-size:10px;
   letter-spacing:.06em;text-transform:uppercase;
   position:sticky;top:0;
 }
@@ -1210,7 +1634,7 @@ a{color:inherit;text-decoration:none}
 .admin-filter{
   background:var(--navy3);border:1px solid var(--navy4);color:#EEF2FF;
   padding:6px 10px;border-radius:var(--radius-sm);font-size:11px;
-  font-family:system-ui,-apple-system,sans-serif;outline:none;cursor:pointer;
+  font-family:"Plus Jakarta Sans",sans-serif;outline:none;cursor:pointer;
 }
 
 /* ── ACCESSIBILITY CONTROLS — Option E ──────────────────────────── */
@@ -1219,8 +1643,8 @@ a{color:inherit;text-decoration:none}
 }
 #text-size-select{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
-  border-radius:6px;padding:4px 8px;font-size:12px;
-  font-family:system-ui,-apple-system,sans-serif;color:#334155;
+  border-radius:6px;padding:4px 8px;font-size:11.5px;
+  font-family:"Plus Jakarta Sans",sans-serif;color:#334155;
   cursor:pointer;outline:none;transition:border-color .15s;
   height:28px;
 }
@@ -1229,8 +1653,8 @@ a{color:inherit;text-decoration:none}
 #text-size-select option{background:#fff;color:#334155}
 #btn-contrast{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
-  border-radius:6px;padding:4px 10px;font-size:12px;
-  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
+  border-radius:6px;padding:4px 10px;font-size:11.5px;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
   color:#334155;cursor:pointer;outline:none;
   transition:all .15s;height:28px;white-space:nowrap;
   display:flex;align-items:center;gap:5px;
@@ -1260,7 +1684,7 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px;
 }
 .about-header h2{
-  font-family:system-ui,-apple-system,sans-serif;font-size:16px;color:#fff;margin-bottom:2px;
+  font-family:"Playfair Display",serif;font-size:16px;color:#fff;margin-bottom:2px;
 }
 .about-header p{font-size:11px;color:rgba(255,255,255,.65)}
 .about-body{padding:18px 20px}
@@ -1270,7 +1694,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:16px;
 }
 .acb-label{
-  font-family:system-ui,-apple-system,sans-serif;font-size:9px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:9px;font-weight:700;
   color:#4A90D9;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;
 }
 .acb-ref{font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:6px;}
@@ -1278,13 +1702,13 @@ a{color:inherit;text-decoration:none}
 .acb-spanish{font-size:11px;color:#6B9BD2;margin-top:6px;line-height:1.5;}
 .about-desc{font-size:12px;color:#CBD5E1;line-height:1.7;margin-bottom:14px}
 .about-disclaimer{
-  font-size:11px;color:#4A6A9A;line-height:1.6;
+  font-size:10.5px;color:#4A6A9A;line-height:1.6;
   padding-top:12px;border-top:1px solid var(--navy4);
 }
 .about-close{
   width:100%;padding:10px;background:var(--navy3);
   border:none;border-top:1px solid var(--navy4);color:#6B9BD2;cursor:pointer;
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
   display:block;
 }
 .about-close:hover{color:#EEF2FF;background:var(--navy2)}
@@ -1293,6 +1717,15 @@ a{color:inherit;text-decoration:none}
 /* ── TAB-PANEL SYSTEM (replaces .panel) ────────────────────────── */
 .tab-panel{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0}
 .tab-panel.active{display:flex}
+.tab-panel #church-list,
+.tab-panel #fav-list,
+.tab-panel #recent-list,
+.tab-panel #route-results{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  flex:1;
+  min-height:0;
+}
 
 /* ── INFO PANEL ─────────────────────────────────────────────────── */
 #info-panel-body{padding:14px;overflow-y:auto;flex:1}
@@ -1306,32 +1739,38 @@ a{color:inherit;text-decoration:none}
 }
 .info-grid-btn:hover{border-color:#4A90D9;background:rgba(74,144,217,.1)}
 .igb-icon{font-size:20px;display:block;line-height:1.1}
-.igb-label{font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:700;color:#EEF2FF;letter-spacing:.03em}
+.igb-label{font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:700;color:#EEF2FF;letter-spacing:.03em}
 .igb-sub{font-size:9px;color:#6B9BD2;text-align:center;line-height:1.3}
 .igb-support .igb-icon{color:#FF8C42}
 .igb-support .igb-label{color:#FFB399}
 .igb-support:hover{border-color:#FF5E5B;background:rgba(255,94,91,.08)}
-/* ── SATELLITE TOGGLE BUTTON (map top-right) ─────────────────────── */
-#btn-satellite{
-  position:absolute;top:10px;right:10px;z-index:999;
-  background:rgba(255,255,255,0.93);
-  border:2px solid rgba(0,0,0,.18);
-  border-radius:6px;padding:5px 10px;
-  font-size:11px;font-family:system-ui,-apple-system,sans-serif;
-  font-weight:700;letter-spacing:.05em;color:#333;
-  cursor:pointer;line-height:1;
-  box-shadow:0 1px 5px rgba(0,0,0,.2);
-  transition:all .15s;white-space:nowrap;
-}
-#btn-satellite:hover{background:#fff}
-#btn-satellite.sat-active{background:#1565C0;color:#fff;border-color:#1565C0}
 .info-constitution{
   background:rgba(21,101,192,.1);border:1px solid rgba(74,144,217,.2);
   border-left:3px solid var(--blue);border-radius:6px;padding:12px 14px;
 }
-.info-const-label{font-family:system-ui,-apple-system,sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.info-const-label{font-family:"Barlow Condensed",sans-serif;font-size:9px;font-weight:700;color:#4A90D9;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 .info-const-ref{font-size:11px;font-weight:600;color:#7AABFF;margin-bottom:5px}
 .info-const-text{font-size:11px;color:#CBD5E1;line-height:1.65;font-style:italic}
+
+/* ── COVERAGE NOTICE ──────────────────────────────────────────────── */
+.info-coverage-notice{
+  background:rgba(21,101,192,.08);
+  border:1px solid rgba(74,144,217,.15);
+  border-radius:6px;padding:12px 14px;
+  margin-top:12px;
+  text-align:center;
+}
+.icn-icon{font-size:24px;margin-bottom:6px}
+.icn-title{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-weight:700;
+  color:#4A90D9;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:4px;
+}
+.icn-text{
+  font-size:10.5px;color:#8BA3CC;
+  line-height:1.6;
+}
 
 /* ── FILTER 3-COLUMN ─────────────────────────────────────────────── */
 .fgrid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px}
@@ -1342,7 +1781,7 @@ a{color:inherit;text-decoration:none}
 .pu-head{background:linear-gradient(135deg,#1565C0,#1E3A8A) !important}
 .pu-head h3{color:#FFFFFF !important;font-size:13px !important}
 .pu-body{background:#fff !important;padding:12px 16px}
-.pu-row{color:#1E293B !important;font-size:12px}
+.pu-row{color:#1E293B !important;font-size:11.5px}
 .pu-row a{color:#1565C0 !important}
 .pu-sched{color:#475569 !important}
 .pu-sched strong{color:#1565C0 !important}
@@ -1368,7 +1807,7 @@ a{color:inherit;text-decoration:none}
   cursor:pointer;
   box-shadow:3px 0 14px rgba(21,101,192,.55);
   writing-mode:vertical-rl;
-  font-family:system-ui,-apple-system,sans-serif;
+  font-family:"Barlow Condensed",sans-serif;
   font-size:11px;font-weight:800;letter-spacing:.1em;
   padding:0;
 }
@@ -1445,15 +1884,6 @@ a{color:inherit;text-decoration:none}
     border-radius:16px 16px 0 0 !important;max-height:92vh !important;
   }
   #admin-box{max-width:100% !important;border-radius:16px 16px 0 0 !important}
-
-  /* Prevent iOS Safari auto-zoom on input focus (requires >= 16px) */
-  input,select,textarea,.si,.fg select,.fg input,.route-input,.cf-group input,.cf-group select,.cf-group textarea{font-size:16px !important}
-
-  /* Safe area insets for iPhone notch / home bar */
-  #topbar{padding-top:env(safe-area-inset-top)}
-  #sidebar{padding-bottom:env(safe-area-inset-bottom)}
-  #kofi-btn{bottom:calc(20px + env(safe-area-inset-bottom))}
-  #btn-fit-map{bottom:60px;left:10px;}
 }
 @media(max-width:380px){
   
@@ -1471,16 +1901,16 @@ a{color:inherit;text-decoration:none}
 .suggestion-item:last-child{border-bottom:none}
 .suggestion-item:hover,.suggestion-item.highlighted{background:var(--navy3)}
 .sug-name{font-size:12px;font-weight:600;color:#EEF2FF;margin-bottom:2px}
-.sug-detail{font-size:11px;color:#6B9BD2}
+.sug-detail{font-size:10.5px;color:#6B9BD2}
 .sug-match{color:#7AABFF}
-.sug-empty{padding:10px 12px;font-size:12px;color:#4A6A9A;text-align:center}
+.sug-empty{padding:10px 12px;font-size:11.5px;color:#4A6A9A;text-align:center}
 
 
 /* ── TOPBAR QUICK BUTTONS (Feedback + Support) ──────────────────── */
 .topbar-quick-btn{
   border:1.5px solid #E2E8F0;background:#F8FAFC;
   border-radius:6px;padding:4px 9px;font-size:11px;
-  font-family:system-ui,-apple-system,sans-serif;font-weight:600;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
   color:#334155;cursor:pointer;height:26px;
   display:flex;align-items:center;gap:4px;
   text-decoration:none;white-space:nowrap;transition:all .15s;
@@ -1505,17 +1935,17 @@ a{color:inherit;text-decoration:none}
 }
 .nav-bar-top{margin-bottom:6px}
 #nav-count{
-  font-family:system-ui,-apple-system,sans-serif;font-size:12px;
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;
   font-weight:700;color:#7AABFF;letter-spacing:.04em;
 }
 #nav-hint{
-  font-size:11px;color:#4A6A9A;margin-bottom:8px;line-height:1.5;
+  font-size:10.5px;color:#4A6A9A;margin-bottom:8px;line-height:1.5;
 }
 .nav-primary{
   display:block;width:100%;padding:10px;
   background:#1565C0;color:#fff !important;
   border:none;border-radius:8px;
-  font-family:system-ui,-apple-system,sans-serif;font-size:14px;font-weight:700;
+  font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;
   letter-spacing:.05em;text-align:center;text-decoration:none;
   margin-bottom:8px;transition:background .15s;
 }
@@ -1525,7 +1955,7 @@ a{color:inherit;text-decoration:none}
   display:block;padding:7px 4px;
   border:1.5px solid var(--navy4);
   background:var(--navy3);color:#CBD5E1 !important;
-  border-radius:6px;font-family:system-ui,-apple-system,sans-serif;
+  border-radius:6px;font-family:"Barlow Condensed",sans-serif;
   font-size:11px;font-weight:600;letter-spacing:.04em;
   text-align:center;text-decoration:none;transition:all .15s;
 }
@@ -1533,7 +1963,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── ACCESSIBILITY — TEXT SIZE ───────────────────────────────────── */
 body.text-sm{font-size:12px}
-body.text-sm .ci-name{font-size:13px}
+body.text-sm .ci-name{font-size:12.5px}
 body.text-sm .ci-loc{font-size:10px}
 body.text-sm .si{font-size:11px}
 body.text-sm .stab{font-size:11px}
@@ -1667,6 +2097,31 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
 }
 .nearest-indicator.show{display:block}
 
+
+/* Visitor Mode Toggle */
+.visitor-mode-toggle{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;background:#F8FAFC;border-radius:6px;
+  margin:12px 0;border:1px solid #E2E8F0;
+}
+.visitor-mode-toggle label{
+  font-size:13px;color:#0D1B35;font-weight:500;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+}
+.visitor-mode-toggle input[type="checkbox"]{
+  cursor:pointer;width:18px;height:18px;
+}
+.visitor-mode-toggle .vmt-icon{
+  font-size:16px;
+}
+
+/* Hide advanced filters in visitor mode */
+body.visitor-mode .district-filter,
+body.visitor-mode .sector-filter,
+body.visitor-mode .bishop-info,
+body.visitor-mode .elder-info{
+  display:none !important;
+}
 
 
 /* Inline Glossary Tooltips */
@@ -1862,6 +2317,12 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
     margin: 0 auto;
   }
   
+  /* Stack visitor mode toggle */
+  .visitor-mode-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
   /* Adjust service length badge */
   .service-length-badge {
     display: block;
@@ -1935,6 +2396,11 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   .glossary-btn {
     padding: 10px 16px;
     font-size: 14px;
+  }
+  
+  /* Visitor mode toggle mobile */
+  .visitor-mode-toggle label {
+    font-size: 12px;
   }
   
   /* Nearest indicator mobile */
@@ -2034,7 +2500,8 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .user-type-option {
+  .user-type-option,
+  .visitor-mode-toggle {
     border-width: 3px;
   }
   
@@ -2062,6 +2529,17 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   }
 }
 
+/* Print styles */
+@media print {
+  #new-here-modal,
+  #glossary-modal,
+  #user-type-modal,
+  .visitor-mode-toggle,
+  .nearest-indicator,
+  button {
+    display: none !important;
+  }
+}
 
 
 
@@ -2152,148 +2630,6 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   }
 }
 
-/* ── PRINT STYLESHEET ─────────────────────────────────────────────── */
-@media print{
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #topbar,#sidebar-tabs,#search-zone,#filter-zone,#quick-filters,
-  #results-bar,#kofi-btn,#mobile-drawer-btn,#map,
-  #correction-modal,#share-modal,#cal-modal,#toast-container,
-  #new-here-modal,#glossary-modal,#user-type-modal,
-  .nearest-indicator,#loc-prompt{display:none!important}
-  html,body{overflow:visible!important;height:auto!important;background:#fff!important;color:#000!important}
-  #app{display:block!important;margin-top:0!important;height:auto!important}
-  #sidebar{
-    width:100%!important;min-width:unset!important;max-width:100%!important;
-    position:static!important;height:auto!important;overflow:visible!important;
-    background:#fff!important;border:none!important;box-shadow:none!important;
-    transform:none!important;
-  }
-  #church-list{overflow:visible!important;height:auto!important;columns:2;column-gap:16px}
-  .church-item{
-    break-inside:avoid;page-break-inside:avoid;
-    background:#fff!important;border:1px solid #ccc!important;
-    border-left:3px solid #1565C0!important;
-    margin-bottom:8px;padding:8px 10px!important;border-radius:4px;
-  }
-  .ci-name{color:#000!important;font-size:11pt!important}
-  .ci-loc{color:#333!important;font-size:9pt!important}
-  .ci-dist{color:#1565C0!important;font-size:8pt!important}
-  .ci-details{display:block!important}
-  .ci-detail-row{font-size:8.5pt!important;color:#222!important;padding:2px 0!important}
-  .ci-expand-btn,.fav-btn,.ci-actions{display:none!important}
-  .tag{border:1px solid #999!important;color:#333!important;background:#f5f5f5!important}
-  #church-list::before{
-    content:"AAOFCJ Church Directory — aaofcj.org";
-    display:block;font-size:16pt;font-weight:700;color:#1565C0;
-    text-align:center;margin-bottom:12px;padding-bottom:8px;
-    border-bottom:2px solid #1565C0;column-span:all;
-  }
-}
-
-
-/* ── MOBILE TEXT SIZE REDUCTION ──────────────────────────────────── */
-@media(max-width:768px){
-  .stab{font-size:10px !important}
-  .stab-icon{font-size:12px !important}
-  .section-label{font-size:9px !important}
-  .fg label{font-size:9px !important}
-  .ci-name{font-size:12px !important}
-  .ci-loc{font-size:10px !important}
-  .ci-dist{font-size:9px !important}
-  .tag{font-size:9px !important}
-  .time-filter-btn{font-size:10px !important}
-  .quick-filter-btn{font-size:9px !important}
-  #results-bar span{font-size:11px !important}
-  #results-count{font-size:13px !important}
-  #sort-select{font-size:10px !important}
-  .si{font-size:11px !important}
-  #btn-zip,#btn-locate,#btn-reset{font-size:11px !important}
-  .ci-detail-row{font-size:10px !important}
-  .ci-action-btn{font-size:9px !important}
-  .igb-label{font-size:11px !important}
-  .igb-sub{font-size:8px !important}
-  #total-badge{font-size:12px !important}
-  .route-result-item .rri-name{font-size:11px !important}
-  .route-result-item .rri-detail{font-size:10px !important}
-  .quick-filter-btn .qf-icon{font-size:10px !important}
-  .filter-toggle-caret{font-size:8px !important}
-}
-
-/* ── MOBILE COLLAPSIBLE FILTER LABEL ─────────────────────────────── */
-@media(max-width:768px){
-  #filter-section-label{
-    cursor:pointer;
-    display:flex !important;
-    justify-content:space-between;
-    align-items:center;
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .filter-toggle-caret{
-    font-size:9px;
-    color:#4A90D9;
-    transition:transform .2s;
-    display:inline-block;
-  }
-  #filter-section-label.filter-open .filter-toggle-caret{
-    transform:rotate(180deg);
-  }
-  #filter-zone.mobile-hidden,
-  #quick-filters.mobile-hidden{
-    display:none !important;
-  }
-}
-
-/* ── MOBILE FONT (Inter) ─────────────────────────────────────────── */
-/* Placed last so !important beats any earlier font-family declaration */
-@media(max-width:768px){
-  *{font-family:"Inter",system-ui,-apple-system,sans-serif !important}
-}
-
-/* ── MOBILE TRANSPARENT SIDEBAR ─────────────────────────────────── */
-@media(max-width:768px){
-  /* Sidebar shell is transparent — map shows through any empty area */
-  #sidebar{
-    background:transparent !important;
-    backdrop-filter:blur(3px);
-    -webkit-backdrop-filter:blur(3px);
-  }
-  /* Tab bar and section labels: always opaque chrome */
-  #sidebar-tabs{background:rgba(9,20,42,0.96) !important}
-  .section-label{background:rgba(9,20,42,0.93) !important}
-  /* Search/filter content zones get their own dark blocks */
-  #search-zone,#filter-zone,#quick-filters,#results-bar,
-  #district-info-bar,#sector-info-bar{
-    background:rgba(13,27,53,0.93) !important;
-  }
-  .nearest-indicator{background:rgba(16,185,129,0.88) !important}
-  /* Church cards: solid so text stays readable */
-  #church-list{background:transparent !important}
-  .church-item{background:rgba(13,27,53,0.92) !important}
-  .church-item:hover,.church-item.active{background:rgba(21,42,80,0.96) !important}
-  /* All panels transparent — only content blocks carry a bg */
-  .tab-panel{background:transparent !important}
-  /* Route: shrink to content so empty bottom shows map */
-  #route-panel{
-    background:rgba(13,27,53,0.92) !important;
-    flex:0 0 auto !important;
-  }
-  /* Favorites */
-  #fav-list{background:transparent !important}
-  #fav-export-bar{background:rgba(13,27,53,0.92) !important}
-  #fav-empty{
-    background:rgba(13,27,53,0.88) !important;
-    margin:8px;border-radius:8px;
-  }
-  /* Recent: header strip + transparent list (items have their own bg) */
-  #panel-recent>div:first-child{background:rgba(13,27,53,0.92) !important}
-  #recent-list{background:transparent !important}
-  /* Info: shrink to content so empty bottom shows map */
-  #info-panel-body{
-    background:rgba(13,27,53,0.92) !important;
-    flex:0 0 auto !important;
-  }
-}
 </style>
 
   <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22AAOFCJ%20Church%20Finder%22%2C%22short_name%22%3A%22Church%20Finder%22%2C%22description%22%3A%22Find%20Apostolic%20Assembly%20churches%20nationwide%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1B35%22%2C%22theme_color%22%3A%22%231565C0%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fwww.aaofcj.org%2Fwp-content%2Fuploads%2F2021%2F09%2FAA-Cut-Logo-for-Signage-copy-copy.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
@@ -2317,16 +2653,25 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   <div id="topbar-logos">
     <img class="logo-main" src="data:image/png;base64,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2f13nud10gXfi7F2HIeNGzfygx/8IO9d55FHHv9dBhtgxowZ6o033tgvnrZSivLyckpKSvapaUGvlLs9LAaFhYWdxv+9etfXX399fnbkkUce/50GG+CQQw5Rc+bMwXVdwjB8zye11pJKpTrj0vsSQtlX7neHwNS+HntXY++6Li+99BJ33XVX3rvOI488/nsNNsC0adPUc88910N1b1/R8dkOedQOFse+eNgFBfsmL9rRY9L3/c5j74vh7gi5ZDIZLrroovzMyCOPPP77DTbAscceq/785z93lpt3jy/v00m1JgxDXNfdpziz4zi79W/sC0qpTk/53YREoijCcRwuv/xyFi5cmPeu88gjj/8bBhvgvPPOU9/85jcRkU4DvK/ettYax3H2+fMdPPB99eKVUqRSqX1miXRQFu+66y5++ctf5o11Hnnk8X/LYAPceuut6thjj2XevHl4ntfp3e7NEHdniewLt9sY864TiHaX7jh9oYMy+Nhjj3HhhRfmjXUeeeTxf9NgA7zwwgtq8uTJ6rrrrqO5uRnHcfZquNPpdKen3Z133fHTvZy8N+Pb/XPdv989LLK3haCjW43necyePZtTTjklb6zzyCOP/9sGuwPXX3+9Ovjgg7nzzjvJZDKdhrujtVd3dPCnrbW4rtuDT93x/47jdFL+Omh93WVTOz7X8fcOg95By+tumHsz1sYYPM/jkUceYebMmXljnUceefzHw92fB1uxYoX64he/yE9+8hO5/PLLOe+88zrZHR3cba01xhja29vJZrM0NzfT3t5OY2Mj2WyWxsZGWltbcRyHIUOGcMABB9DU1NTZJ7KtrY0wDMlkMjQ3N3eGVgoKCigrK6OwsJCCgoI+C3yMMZ2LwZ133skXv/jFvLHOI488/ivwgRqrsWPHysUXX8wnP/lJKioqOj3gN954g6985SukUinOPvtsqqqqcF23s0FBR9ikoaGBjRs3orVm8uTJbNy4kX79+tG/f38qKipQSnVqaBtj2LZtG88++ywDBgygtLSUSy+9tDMJ2RE+cV2XtrY2rrzySn71q1/ljXUeeeSRN9i74uqrr5bzzz+fsWPHUl9fz2233YYxhmw2S2FhISJCNpslmUzi+z6pVKqzFL6yspItW7bQ0NDQqcoXhmFnOTvE1L/GxkZWrVpFY2MjZ511FldccUWnZ98RXnn22We54oormDdvXt5Y55FHHnnsCR/60IfkwQcflDAM97kz+rJly2Tr1q0iIhKGoURRJJlMRlpbW3v8tLS0dP6ZyWR6nGPlypVywQUX5Ft95ZFHHnm8WwwbNky+8pWvyGOPPSY7duwQERFjzH5v9Lt48WK57LLL8oY6jzzyyGN/4Yc//KEYYzoN966edsePMUaiKJIwDCUIAgnDcDcj39TUJP/4xz/k7LPPzhvqPPLII48PAqeccors3Lmzh6fdYZz35HkbY2TlypVy7733ymc+85m8kc4jjzz+T+I/LvF2yimnyEMPPdRZLNOdU93a2sq2bdvYuHEj69atY+XKlSxatIhFixaxYMGCfBIxjzzyyOP/b9xzzz2dnvPzzz8vX/va12TmzJl5zzmPPPLI4z/Ry549e7ZMnz49b6TzyCOPPPLII4888sgjjzzyyCOPDwD/H1LrhFFKs1VXAAAAAElFTkSuQmCC" alt="AAOFCJ">
     
+    <span class="us-coverage-badge">🇺🇸 US Only</span>
   </div>
   <!-- ROW 2: Controls -->
   <div id="topbar-controls">
-    <a id="mobile-support-btn" href="https://ko-fi.com/apostolicchurchfinder" target="_blank" rel="noopener noreferrer">&#9749; Support</a>
-    <div id="lang-toggle" title="Switch language / Cambiar idioma">
-      <span class="lang-word active" data-lang="en" onclick="setLang('en')">EN</span>
-      <span class="lang-separator">|</span>
-      <span class="lang-word" data-lang="es" onclick="setLang('es')">ES</span>
+    <div id="lang-toggle">
+      <span class="lang-word active" data-lang="en" onclick="setLang('en')">English</span>
+      <span class="lang-separator">/</span>
+      <span class="lang-word" data-lang="es" onclick="setLang('es')">Español</span>
     </div>
     
+    <!-- Mobile Quick Actions -->
+    <div class="mobile-quick-actions">
+      <button class="mobile-quick-btn" onclick="switchTab('info');document.getElementById('sidebar').classList.add('open');document.getElementById('mobile-drawer-btn').textContent='CLOSE'" title="New to the directory?">
+        ℹ️ New Here
+      </button>
+      <button class="mobile-quick-btn" onclick="window.open('https://ko-fi.com/apostolicchurchfinder','_blank')" title="Support this directory">
+        ☕ Support
+      </button>
+    </div>
     
     <div id="a11y-controls">
       <select id="text-size-select" onchange="setTextSize(this.value)" title="Text size">
@@ -2367,20 +2712,20 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
 <div id="sidebar">
 
   <!-- TABS -->
-  <div id="sidebar-tabs" role="tablist" aria-label="Sidebar sections">
-    <div class="stab active" data-tab="search" onclick="switchTab('search')" role="tab" aria-selected="true">
+  <div id="sidebar-tabs">
+    <div class="stab active" data-tab="search" onclick="switchTab('search')">
       <span class="stab-icon">🔍</span><span class="stab-label" data-i18n="tab_search">Search</span>
     </div>
-    <div class="stab" data-tab="route" onclick="switchTab('route')" role="tab" aria-selected="false">
+    <div class="stab" data-tab="route" onclick="switchTab('route')">
       <span class="stab-icon">🗺️</span><span class="stab-label" data-i18n="tab_route">Route</span>
     </div>
-    <div class="stab" data-tab="favorites" onclick="switchTab('favorites')" role="tab" aria-selected="false">
-      <span class="stab-icon">❤️</span><span class="stab-label" data-i18n="tab_favs">Saved</span><span id="fav-tab-count" style="display:none"></span>
+    <div class="stab" data-tab="favorites" onclick="switchTab('favorites')">
+      <span class="stab-icon">❤️</span><span class="stab-label" data-i18n="tab_favs">Saved</span>
     </div>
-    <div class="stab" data-tab="recent" onclick="switchTab('recent')" role="tab" aria-selected="false">
+    <div class="stab" data-tab="recent" onclick="switchTab('recent')">
       <span class="stab-icon">🕒</span><span class="stab-label">Recent</span>
     </div>
-    <div class="stab" data-tab="info" onclick="switchTab('info')" role="tab" aria-selected="false">
+    <div class="stab" data-tab="info" onclick="switchTab('info')">
       <span class="stab-icon">&#8505;</span><span class="stab-label">Info</span>
     </div>
   </div>
@@ -2396,50 +2741,49 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
         data-i18n="search_placeholder"
         placeholder="Church name, city, or pastor&#8230;"
         autocomplete="off"
-        aria-label="Search churches by name, city, or pastor"
         oninput="showSuggestions(this.value)"
         onkeydown="sugKey(event)"
         onfocus="if(this.value.length>=2)showSuggestions(this.value)">
       <div id="search-suggestions" class=""></div>
     </div>
     <div class="search-row">
-      <input class="si" id="zip-input" type="text" data-i18n="zip_placeholder" placeholder="ZIP code" maxlength="5" style="width:90px;min-width:90px;flex:0 0 auto" aria-label="Enter ZIP code">
-      <select class="si" id="zip-radius" style="width:100px;min-width:100px;flex:0 0 auto" aria-label="Search radius in miles">
+      <input class="si" id="zip-input" type="text" data-i18n="zip_placeholder" placeholder="ZIP code" maxlength="5" style="width:90px;min-width:90px;flex:0 0 auto">
+      <select class="si" id="zip-radius" style="width:100px;min-width:100px;flex:0 0 auto">
         <option value="10">10 <span data-i18n="zip_radius_label">mi</span></option>
-        <option value="25" selected>25 <span data-i18n="zip_radius_label">mi</span></option>
-        <option value="50">50 <span data-i18n="zip_radius_label">mi</span></option>
+        <option value="25">25 <span data-i18n="zip_radius_label">mi</span></option>
+        <option value="50" selected>50 <span data-i18n="zip_radius_label">mi</span></option>
         <option value="100">100 <span data-i18n="zip_radius_label">mi</span></option>
         <option value="200">200 <span data-i18n="zip_radius_label">mi</span></option>
       </select>
-      <button id="btn-zip" data-i18n="btn_zip" aria-label="Search by ZIP code">Search ZIP</button>
+      <button id="btn-zip" data-i18n="btn_zip">Search ZIP</button>
     </div>
     <div class="search-row">
       <button id="btn-locate" data-i18n="btn_locate" style="flex:1">&#127358; Use My Location</button>
-      <button id="btn-reset" data-i18n="btn_reset" aria-label="Clear all filters">&#10005; Clear</button>
+      <button id="btn-reset" data-i18n="btn_reset">&#10005; Clear</button>
     </div>
   </div>
 
   <!-- FILTERS -->
-  <div class="section-label" id="filter-section-label">&#9670; Filter <span class="filter-toggle-caret">&#9660;</span></div>
+  <div class="section-label">&#9670; Filter</div>
   <div id="filter-zone">
     <div class="fgrid full">
       <div class="fg">
         <label><span class="has-tooltip" data-tooltip="Regional grouping of churches">District</span></label>
-        <select id="f-district" aria-label="Filter by district"><option value="">All Districts</option></select>
+        <select id="f-district"><option value="">All Districts</option></select>
       </div>
     </div>
     <div id="district-info-bar"></div>
     <div class="fgrid full">
       <div class="fg">
         <label><span class="has-tooltip" data-tooltip="Local zone within a district">Sector</span></label>
-        <select id="f-sector" aria-label="Filter by sector"><option value="">All Sectors</option></select>
+        <select id="f-sector"><option value="">All Sectors</option></select>
       </div>
     </div>
     <div id="sector-info-bar"></div>
     <div class="fgrid">
       <div class="fg">
         <label>State</label>
-        <select id="f-state" aria-label="Filter by state">
+        <select id="f-state">
           <option value="">All</option>
           <option value="CA">CA</option>
           <option value="AZ">AZ</option>
@@ -2487,7 +2831,7 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
       </div>
       <div class="fg">
         <label>Language</label>
-        <select id="f-lang" aria-label="Filter by language">
+        <select id="f-lang">
           <option value="">All</option>
           <option value="Bilingual">Bilingual</option>
           <option value="Spanish">Spanish</option>
@@ -2498,14 +2842,26 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
     <div class="fgrid">
       <div class="fg">
         <label>County</label>
-        <select id="f-county" aria-label="Filter by county"><option value="">All Counties</option></select>
+        <select id="f-county"><option value="">All Counties</option></select>
       </div>
       <div class="fg">
         <label>City</label>
-        <select id="f-city" aria-label="Filter by city"><option value="">All Cities</option></select>
+        <select id="f-city"><option value="">All Cities</option></select>
       </div>
     </div>
     
+    <!-- SERVICE TIME QUICK FILTERS -->
+    <div class="section-label" style="margin-top:12px">&#9670; Service Times</div>
+    <div style="padding:8px 14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px">
+        <button class="time-filter-btn" onclick="filterByServiceTime('tonight')">Tonight</button>
+        <button class="time-filter-btn" onclick="filterByServiceTime('sunday')">Sunday</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <button class="time-filter-btn" onclick="filterByServiceTime('wednesday')">Wednesday</button>
+        <button class="time-filter-btn" onclick="filterByServiceTime('has-schedule')">Has Schedule</button>
+      </div>
+    </div>
   </div>
 
   <!-- QUICK FILTERS -->
@@ -2516,12 +2872,15 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
     <button class="quick-filter-btn" onclick="toggleQuickFilter('website')" data-filter="website">
       <span class="qf-icon">🌐</span> Has Website
     </button>
+    <button class="quick-filter-btn" onclick="toggleQuickFilter('schedule')" data-filter="schedule">
+      <span class="qf-icon">🕐</span> Has Schedule
+    </button>
   </div>
 
   <!-- RESULTS -->
   <div id="results-bar">
-    <span><span id="results-count">—</span> congregations</span>
-    <select id="sort-select" aria-label="Sort churches by">
+    <span><span id="results-count">0</span> congregations</span>
+    <select id="sort-select">
       <option value="name">Sort: A–Z</option>
       <option value="city">Sort: City</option>
       <option value="district">Sort: District</option>
@@ -2531,6 +2890,16 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   
   
 <div id="status-bar"></div>
+
+
+<!-- VISITOR MODE TOGGLE -->
+<div class="visitor-mode-toggle">
+  <input type="checkbox" id="visitor-mode-checkbox" aria-label="Toggle simplified view mode - Hides advanced filters for easier navigation" onchange="toggleVisitorMode(this.checked)">
+  <label for="visitor-mode-checkbox">
+    <span class="vmt-icon">👁️</span>
+    <span>Simplified View (hide advanced filters)</span>
+  </label>
+</div>
 
 <!-- NEAREST CHURCHES INDICATOR -->
 <div class="nearest-indicator" id="nearest-indicator"></div>
@@ -2582,7 +2951,7 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
       </div>
       <div style="display:flex;gap:6px;margin-bottom:8px">
         <button id="btn-route" onclick="searchRoute()" style="flex:1">&#128269; Find Churches</button>
-        <button onclick="clearRouteSearch()" style="background:transparent;border:1.5px solid var(--navy4);color:#4A6A9A;border-radius:6px;padding:7px 12px;cursor:pointer;font-family:system-ui,-apple-system,sans-serif;font-size:12px;font-weight:600">&#10005; Clear</button>
+        <button onclick="clearRouteSearch()" style="background:transparent;border:1.5px solid var(--navy4);color:#4A6A9A;border-radius:6px;padding:7px 12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600">&#10005; Clear</button>
       </div>
       <div id="route-status"></div>
       <div id="route-results"></div>
@@ -2592,7 +2961,7 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   <!-- FAVORITES PANEL -->
   <div class="tab-panel" id="panel-favorites">
     <div id="fav-export-bar" style="display:none;padding:8px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
-      <button onclick="openExportModal()" style="width:100%;padding:8px;background:rgba(21,101,192,.2);border:1px solid rgba(74,144,217,.3);border-radius:6px;color:#7AABFF;font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.05em">
+      <button onclick="openExportModal()" style="width:100%;padding:8px;background:rgba(21,101,192,.2);border:1px solid rgba(74,144,217,.3);border-radius:6px;color:#7AABFF;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.05em">
         📥 Export Saved Churches
       </button>
     </div>
@@ -2601,7 +2970,7 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
       <div style="font-size:32px;margin-bottom:12px">&#10084;</div>
       <div style="margin-bottom:14px">No saved churches yet.<br>Tap &#10084; on any church to save it.</div>
       <div id="pwa-prompt" style="background:rgba(21,101,192,.12);border:1px solid rgba(74,144,217,.25);border-radius:8px;padding:12px 14px;font-size:11px;color:#7AABFF;line-height:1.6;text-align:left;margin:0 14px">
-        <div style="font-weight:700;margin-bottom:4px;font-family:system-ui,-apple-system,sans-serif;font-size:12px;letter-spacing:.04em">&#128241; SAVE ACROSS VISITS</div>
+        <div style="font-weight:700;margin-bottom:4px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.04em">&#128241; SAVE ACROSS VISITS</div>
         Add to your home screen to keep saved churches every visit.
         <div style="margin-top:6px;font-size:10px;color:#4A90D9;line-height:1.6">
           iPhone: Share &#8599; then "Add to Home Screen"<br>
@@ -2615,7 +2984,7 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
   <!-- RECENT PANEL -->
   <div class="tab-panel" id="panel-recent">
     <div style="padding:12px 14px;background:rgba(21,101,192,.1);border-bottom:1px solid rgba(74,144,217,.2);margin-bottom:8px">
-      <div style="font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;color:#7AABFF;letter-spacing:.04em;text-transform:uppercase">Last 5 Viewed</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;color:#7AABFF;letter-spacing:.04em;text-transform:uppercase">Last 5 Viewed</div>
       <div style="font-size:10px;color:#6B9BD2;margin-top:2px">Quick access to recently viewed churches</div>
     </div>
     <div id="recent-list"></div>
@@ -2662,12 +3031,31 @@ a.phone-link:hover{background:#E3F0FC;text-decoration:none}
 
 </div><!-- /sidebar -->
 
-<div id="map" role="application" aria-label="Church locations map"><button id="btn-fit-map" title="Fit map to results">&#8864; Fit Results</button><button id="btn-satellite" onclick="toggleSatellite()" title="Toggle satellite view">&#128752; Satellite</button></div>
+<div id="map"></div>
 </div><!-- /app -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
 <script>
+// ─── HOISTED GLOBALS (must be before any initialization) ────────────
+var favorites = JSON.parse(localStorage.getItem("aaofcj_favs")||"[]");
+var recentlyViewed = JSON.parse(localStorage.getItem("aaofcj_recent")||"[]");
+var LANG = "en";
+var fbType = "suggestion";
+var fbRating = 0;
+
+// ═══════════════════════════════════════════════════════════════════════
+//  CHURCH DATA
+//  Fields: name, address, city, county, state, zip, phone, website,
+//          schedule, language, pastor, lat, lng,
+//          district, sector, bishop, elder,
+//          facebook, instagram, youtube, tiktok, denomination
+//
+//  TO ADD A CHURCH: copy any entry, fill in fields, set denomination:"AAOFCJ"
+//  DISTRICTS (current): Los Angeles District | Interior District of CA/NV |
+//    San Diego District | Arizona/Imperial District | Central Valley District |
+//    Northern California District | Central Coast District
+// ═══════════════════════════════════════════════════════════════════════
 const CHURCHES = [
   {name:"Calexico Apostolic Church El Buen Olivo",address:"304 Encinas Ave",city:"Calexico",county:"Imperial",state:"CA",zip:"92231",phone:"(760) 336-9135",website:"",schedule:"Prayer Tues 7pm · Cell Groups Wed 7pm · Service Thurs 7pm · Service Sun 11am",language:"Bilingual",pastor:"Amadeo Lopez",lat:32.6812,lng:-115.5012,district:"Southern CA",sector:"",bishop:"Bishop Mario Alas",elder:"",facebook:"",instagram:"",youtube:"",tiktok:"",denomination:"AAOFCJ"},
   {name:"Fuente de Misericordia",address:"427 S Hope St",city:"El Centro",county:"Imperial",state:"CA",zip:"92243",phone:"(760) 592-4740",website:"",schedule:"",language:"Spanish",pastor:"",lat:32.7885,lng:-115.5605,district:"Southern CA",sector:"",bishop:"Bishop Mario Alas",elder:"",facebook:"",instagram:"",youtube:"",tiktok:"",denomination:"AAOFCJ"},
@@ -3455,15 +3843,6 @@ const CHURCHES = [
   {name:"Easton Apostolic Church",address:"129 E Fantz Ave",city:"Easton",county:"Fresno",state:"CA",zip:"93706",phone:"(559) 970-1516",website:"",schedule:"",language:"Spanish",pastor:"Pedro Espitia",lat:36.6011,lng:-119.7997,district:"North Central CA",sector:"",bishop:"Bishop Moises Ruiz",elder:"",facebook:"",instagram:"",youtube:"",tiktok:"",denomination:"AAOFCJ"},
   {name:"Fresno Apostolic Church #1 (Centro Familiar de Adoracion)",address:"4546 E Thomas Ave",city:"Fresno",county:"Fresno",state:"CA",zip:"93702",phone:"(559) 251-5541",website:"",schedule:"",language:"Spanish",pastor:"Felipe Gaxiola",lat:36.7317,lng:-119.7428,district:"North Central CA",sector:"",bishop:"Bishop Moises Ruiz",elder:"",facebook:"",instagram:"",youtube:"",tiktok:"",denomination:"AAOFCJ"}
 ];
-</script>
-<script>
-// ─── HOISTED GLOBALS (must be before any initialization) ────────────
-var favorites = JSON.parse(localStorage.getItem("aaofcj_favs")||"[]");
-var recentlyViewed = JSON.parse(localStorage.getItem("aaofcj_recent")||"[]");
-var LANG = "en";
-var fbType = "suggestion";
-var fbRating = 0;
-
 
 // ═══════════════════════════════════════════════════════════════════════
 //  DISTRICT META — add bishop/color info here as it becomes available
@@ -3513,24 +3892,27 @@ const SECTOR_META = {
 // ═══════════════════════════════════════════════════════════════════════
 //  MAP
 // ═══════════════════════════════════════════════════════════════════════
-const map = L.map("map",{center:[37.5,-98.5],zoom:5,zoomControl:true});
-const streetLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© <a href='https://openstreetmap.org'>OpenStreetMap</a>",maxZoom:19});
-const satelliteLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{attribution:"© Esri, DigitalGlobe, GeoEye, i-cubed, USDA FSA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",maxZoom:19});
-let satelliteActive=false;
+const map = L.map("map",{
+  center:[37.5,-98.5],
+  zoom:5,
+  zoomControl:true,
+  maxBounds: [[15,-130], [52,-65]], // Restrict to continental US + buffer
+  maxBoundsViscosity: 1.0 // Prevent dragging outside bounds
+});
+
+// Create base layers
+var streetLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© <a href='https://openstreetmap.org'>OpenStreetMap</a>",maxZoom:19});
+var satelliteLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{attribution:"© Esri",maxZoom:19});
+
+// Add street layer by default
 streetLayer.addTo(map);
-function toggleSatellite(){
-  const btn=document.getElementById('btn-satellite');
-  if(satelliteActive){
-    map.removeLayer(satelliteLayer);
-    streetLayer.addTo(map);
-    if(btn){btn.classList.remove('sat-active');btn.innerHTML='&#128752; Satellite';}
-  }else{
-    map.removeLayer(streetLayer);
-    satelliteLayer.addTo(map);
-    if(btn){btn.classList.add('sat-active');btn.innerHTML='&#128507; Street';}
-  }
-  satelliteActive=!satelliteActive;
-}
+
+// Add layer control
+var baseMaps = {
+  "Street": streetLayer,
+  "Satellite": satelliteLayer
+};
+L.control.layers(baseMaps).addTo(map);
 
 function makeIcon(color){
   color = color||"#1565C0";
@@ -3550,7 +3932,7 @@ const clusterGroup = L.markerClusterGroup({
   iconCreateFunction(cluster){
     const n=cluster.getChildCount();
     return L.divIcon({
-      html:`<div style="background:#1565C0;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;font-weight:700;font-size:13px;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,.4)">${n}</div>`,
+      html:`<div style="background:#1565C0;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,.4)">${n}</div>`,
       iconSize:[34,34],iconAnchor:[17,17],className:""
     });
   }
@@ -3560,23 +3942,15 @@ map.addLayer(clusterGroup);
 // ═══════════════════════════════════════════════════════════════════════
 //  STATE
 // ═══════════════════════════════════════════════════════════════════════
-let userLatLng=null, userMarker=null, zipLatLng=null, zipRadius=25;
-var lastSelectedIdx = null;
+let userLatLng=null, userMarker=null, zipLatLng=null, zipRadius=50;
 let activeIdx=null;
 const markers=[];
-
-const selectedMarkerIcon = L.divIcon({
-  html: '<div style="background:#F59E0B;border:3px solid #fff;border-radius:50%;width:16px;height:16px;box-shadow:0 0 0 3px rgba(245,158,11,.4)"></div>',
-  iconSize:[16,16],iconAnchor:[8,8],className:""
-});
 
 // Build markers
 CHURCHES.forEach((c,idx)=>{
   const meta = DISTRICT_META[c.district]||{};
   const color = meta.color||"#c9a84c";
-  const icon = makeIcon(color);
-  const m = L.marker([c.lat,c.lng],{icon:icon});
-  m._defaultIcon = icon;
+  const m = L.marker([c.lat,c.lng],{icon:makeIcon(color)});
   m.bindPopup(buildPopup(c,idx),{maxWidth:330});
   m.on("click",()=>highlightItem(idx));
   markers.push(m);
@@ -3593,11 +3967,11 @@ function buildPopup(c,idx){
 
   const districtBlock = c.district ? `
     <div class="pu-district-block">
-      <p><strong style="color:var(--blue);font-family:system-ui,-apple-system,sans-serif;font-size:10px">${c.district}</strong></p>
+      <p><strong style="color:var(--blue);font-family:'Barlow Condensed',sans-serif;font-size:10px">${c.district}</strong></p>
       ${c.bishop||meta.bishop ? `<span>Bishop: <strong style="color:var(--blue2)">${c.bishop||meta.bishop}</strong></span><br>` : ""}
       ${c.sector ? `<span>Sector: ${c.sector}</span><br>` : ""}
       ${c.elder ? `<span>Elder: <strong style="color:var(--blue2)">${c.elder}</strong></span>` : ""}
-      ${meta.website ? `<br><a href="https://${meta.website}" target="_blank" style="font-size:10px;color:var(--blue2)">${meta.website}</a>` : ""}
+      ${meta.website ? `<br><a href="https://${meta.website}" target="_blank" style="font-size:10px;color:var(--gold2)">${meta.website}</a>` : ""}
     </div>` : "";
 
   const phone = c.phone ? `<div class="pu-row">
@@ -3776,70 +4150,19 @@ function applyFilters(){
   const visibleChurches=visibleIndices.map(i=>CHURCHES[i]);
   populateDropdown(document.getElementById("f-county"),visibleChurches.map(c=>c.county),"All Counties");
   populateDropdown(document.getElementById("f-city"),visibleChurches.map(c=>c.city),"All Cities");
-
-  // Sync filter state to URL for shareable links
-  syncFiltersToURL();
-}
-
-function syncFiltersToURL(){
-  const f=getFilters();
-  const p=new URLSearchParams();
-  if(f.district) p.set("district",f.district);
-  if(f.sector)   p.set("sector",f.sector);
-  if(f.state)    p.set("state",f.state);
-  if(f.county)   p.set("county",f.county);
-  if(f.city)     p.set("city",f.city);
-  if(f.lang)     p.set("lang",f.lang);
-  if(f.text)     p.set("q",f.text);
-  if(activeTimeFilter) p.set("time",activeTimeFilter);
-  const zip=document.getElementById("zip-input").value.trim();
-  if(zip){p.set("zip",zip);p.set("radius",document.getElementById("zip-radius").value);}
-  const str=p.toString();
-  history.replaceState(null,"",str?"?"+str:window.location.pathname);
-}
-
-function restoreFiltersFromURL(){
-  const p=new URLSearchParams(window.location.search);
-  if(p.get("district")) document.getElementById("f-district").value=p.get("district");
-  if(p.get("sector"))   document.getElementById("f-sector").value=p.get("sector");
-  if(p.get("state"))    document.getElementById("f-state").value=p.get("state");
-  if(p.get("lang"))     document.getElementById("f-lang").value=p.get("lang");
-  if(p.get("q"))        document.getElementById("text-search").value=p.get("q");
-  if(p.get("zip")){
-    document.getElementById("zip-input").value=p.get("zip");
-    if(p.get("radius")) document.getElementById("zip-radius").value=p.get("radius");
-    document.getElementById("btn-zip").click();
-  }
-  if(p.get("time")) filterByServiceTime(p.get("time"));
-}
-
-function getNoResultsMessage(){
-  const f=getFilters();
-  const hasZip=!!zipLatLng;
-  if(hasZip && zipRadius<=25) return 'No churches within '+zipRadius+' miles.<br><button onclick="document.getElementById(\'zip-radius\').value=50;zipRadius=50;applyFilters()" style="margin-top:8px;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:11px;font-family:system-ui,-apple-system,sans-serif;font-weight:700;cursor:pointer;letter-spacing:.04em">Try 50 Miles</button>';
-  if(f.lang) return 'No '+f.lang+' services match.<br><small style="color:#4A6A9A">Try removing the language filter</small>';
-  if(f.district) return 'No results in '+f.district+'.<br><small style="color:#4A6A9A">Try clearing the district filter</small>';
-  if(f.text) return 'No churches match "'+f.text+'".<br><small style="color:#4A6A9A">Try a city name, ZIP, or pastor name</small>';
-  return 'No congregations match.<br><small style="color:#4A6A9A">Try adjusting your filters</small>';
 }
 
 function renderList(){
   const list=document.getElementById("church-list");
   const refPt=userLatLng||zipLatLng;
-  Array.from(list.querySelectorAll(".church-item")).forEach(el=>el.remove());
+  list.querySelectorAll(".church-item").forEach(el=>el.remove());
   const noRes=list.querySelector("#no-results")||document.getElementById("no-results");
   if(visibleIndices.length===0){
-    if(noRes){
-      const p=noRes.querySelector("p");
-      if(p)p.innerHTML=getNoResultsMessage();
-      noRes.style.display="block";
-      if(!list.contains(noRes))list.prepend(noRes);
-    }
+    if(noRes){noRes.style.display="block";if(!list.contains(noRes))list.prepend(noRes);}
     return;
   }
   if(noRes)noRes.style.display="none";
 
-  const frag=document.createDocumentFragment();
   visibleIndices.forEach(idx=>{
     const c=CHURCHES[idx];
     const meta=DISTRICT_META[c.district]||{};
@@ -3878,15 +4201,14 @@ function renderList(){
           ${c.phone?`<button class="ci-action-btn" onclick="window.open('tel:${c.phone}');event.stopPropagation()"><span class="ci-action-icon">📞</span> Call</button>`:""}
           <button class="ci-action-btn" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.address+' '+c.city+' '+c.state+' '+c.zip)}');event.stopPropagation()"><span class="ci-action-icon">🗺️</span> Directions</button>
           <button class="ci-action-btn" onclick="shareChurch(CHURCHES[${idx}]);event.stopPropagation()"><span class="ci-action-icon">↗</span> Share</button>
-          <button class="ci-action-btn" onclick="copyAddress(CHURCHES[${idx}]);event.stopPropagation()"><span class="ci-action-icon">📋</span> Address</button>
         </div>
       </div>
-
+      
       <button class="ci-expand-btn">
-        <span class="expand-icon">Details ▼</span>
+        <span class="expand-icon">▼</span>
       </button>
     `;
-
+    
     // Fav button
     const favBtn = document.createElement("button");
     favBtn.className = "fav-btn" + (favorites.includes(String(idx))?" active":"");
@@ -3899,21 +4221,20 @@ function renderList(){
     const header = div.querySelector(".ci-header");
     const details = div.querySelector(".ci-details");
     const expandBtn = div.querySelector(".ci-expand-btn");
-
+    
     const toggleExpand = (e) => {
       e.stopPropagation();
       const isExpanded = details.style.display !== "none";
       details.style.display = isExpanded ? "none" : "block";
-      expandBtn.querySelector(".expand-icon").textContent = isExpanded ? "Details ▼" : "Close ▲";
+      expandBtn.querySelector(".expand-icon").textContent = isExpanded ? "▼" : "▲";
       div.classList.toggle("expanded", !isExpanded);
     };
     
     header.addEventListener("click", toggleExpand);
     expandBtn.addEventListener("click", toggleExpand);
 
-    frag.appendChild(div);
+    list.appendChild(div);
   });
-  list.appendChild(frag);
 }
 
 function highlightItem(idx){
@@ -3921,15 +4242,6 @@ function highlightItem(idx){
   document.querySelectorAll(".church-item").forEach(el=>el.classList.toggle("active",+el.dataset.idx===idx));
   const el=document.querySelector(`.church-item[data-idx="${idx}"]`);
   if(el)el.scrollIntoView({behavior:"smooth",block:"nearest"});
-  // Reset previous selected marker icon
-  if(lastSelectedIdx !== null && lastSelectedIdx !== idx && markers[lastSelectedIdx]){
-    markers[lastSelectedIdx].setIcon(markers[lastSelectedIdx]._defaultIcon);
-  }
-  // Set new selected marker icon
-  if(markers[idx]){
-    markers[idx].setIcon(selectedMarkerIcon);
-    lastSelectedIdx = idx;
-  }
 }
 
 function viewOnMap(idx){
@@ -3940,13 +4252,6 @@ function viewOnMap(idx){
   }
 }
 
-// Fit Results button
-document.getElementById("btn-fit-map").addEventListener("click", function(){
-  if(clusterGroup.getLayers().length > 0){
-    map.fitBounds(clusterGroup.getBounds().pad(0.1));
-  }
-});
-
 // ═══════════════════════════════════════════════════════════════════════
 //  EVENTS
 // ═══════════════════════════════════════════════════════════════════════
@@ -3954,7 +4259,7 @@ document.getElementById("btn-fit-map").addEventListener("click", function(){
   document.getElementById(id).addEventListener("change",applyFilters);
 });
 document.getElementById("sort-select").addEventListener("change",applyFilters);
-(()=>{let t;document.getElementById("text-search").addEventListener("input",()=>{clearTimeout(t);t=setTimeout(applyFilters,200);});})();
+document.getElementById("text-search").addEventListener("input",applyFilters);
 
 // Zip search
 // ZIP Search with radius visualization
@@ -4018,7 +4323,7 @@ document.getElementById("btn-locate").addEventListener("click",()=>{
     userMarker=L.marker([userLatLng.lat,userLatLng.lng],{
       icon:L.divIcon({html:'<div class="user-pin"></div>',iconSize:[18,18],iconAnchor:[9,9],className:""}),
       zIndexOffset:9999
-    }).addTo(map).bindPopup('<div style="font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
+    }).addTo(map).bindPopup('<div style="font-family:Barlow Condensed,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
     map.setView([userLatLng.lat,userLatLng.lng],10);
     document.getElementById("sort-select").value="distance";
     btn.innerHTML="✓ Location Set";btn.classList.add("active");btn.disabled=false;
@@ -4216,10 +4521,7 @@ function setLang(lang){
 //  TABS
 // ═══════════════════════════════════════════════════════════════════════
 function switchTab(tab){
-  document.querySelectorAll(".stab").forEach(t=>{
-    t.classList.toggle("active",t.dataset.tab===tab);
-    t.setAttribute("aria-selected",t.dataset.tab===tab?"true":"false");
-  });
+  document.querySelectorAll(".stab").forEach(t=>t.classList.toggle("active",t.dataset.tab===tab));
   document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+tab));
   if(tab==="favorites")renderFavorites();
   if(tab==="recent")renderRecentlyViewed();
@@ -4229,21 +4531,10 @@ function switchTab(tab){
 //  FAVORITES
 // ═══════════════════════════════════════════════════════════════════════
 function saveFavorites(){ localStorage.setItem("aaofcj_favs",JSON.stringify(favorites)); }
-function updateFavBadge(){
-  const badge=document.getElementById("fav-tab-count");
-  if(!badge)return;
-  if(favorites.length>0){
-    badge.textContent=favorites.length;
-    badge.style.display="inline";
-  } else {
-    badge.style.display="none";
-  }
-}
 function toggleFavorite(idx,btn){
   const id=String(idx), pos=favorites.indexOf(id);
   if(pos===-1){ favorites.push(id); } else { favorites.splice(pos,1); }
   saveFavorites();
-  updateFavBadge();
   document.querySelectorAll('.fav-btn[data-idx="'+idx+'"]').forEach(b=>{
     b.textContent=favorites.includes(id)?"❤️":"🤍";
     b.classList.toggle("active",favorites.includes(id));
@@ -4254,14 +4545,13 @@ function renderFavorites(){
   const empty=document.getElementById("fav-empty");
   const exportBar=document.getElementById("fav-export-bar");
   list.innerHTML="";
-  updateFavBadge();
-  if(!favorites.length){
-    empty.style.display="block";
-    list.style.display="none";
+  if(!favorites.length){ 
+    empty.style.display="block"; 
+    list.style.display="none"; 
     if(exportBar) exportBar.style.display="none";
-    return;
+    return; 
   }
-  empty.style.display="none";
+  empty.style.display="none"; 
   list.style.display="block";
   if(exportBar) exportBar.style.display="block";
   favorites.forEach(id=>{
@@ -4356,13 +4646,6 @@ function addToApple(){
 
 // ═══════════════════════════════════════════════════════════════════════
 //  SHARE
-function copyAddress(c){
-  const addr = c.address + ', ' + c.city + ', ' + c.state + ' ' + c.zip;
-  navigator.clipboard.writeText(addr)
-    .then(()=>showToast('Address copied!'))
-    .catch(()=>showToast('Could not copy address', true));
-}
-
 // ═══════════════════════════════════════════════════════════════════════
 var shareChurchData = null;
 
@@ -4597,15 +4880,13 @@ function matchesServiceTime(church, filterType){
   const day = now.getDay(); // 0=Sunday, 1=Monday, etc.
   const hour = now.getHours();
   
-  const dayNames = ['sun','mon','tue','wed','thu','fri','sat'];
-  const todayKey = dayNames[day];
   switch(filterType){
-    case 'today':
-      return sched.includes(todayKey);
     case 'tonight':
-    case 'this-evening':
       // Check if there's a service today after current time
-      if(sched.includes(todayKey)){
+      const dayNames = ['sun','mon','tue','wed','thu','fri','sat'];
+      const today = dayNames[day];
+      if(sched.includes(today)){
+        // Has service today - consider it "tonight" if it's before 9pm or if evening/night service mentioned
         if(hour < 21 || sched.includes('pm') || sched.includes('evening') || sched.includes('night')){
           return true;
         }
@@ -5473,6 +5754,18 @@ function applyContrast(on, silent){
   if(saved&&saved!=="en") setTimeout(()=>setLang(saved),500);
 })();
 
+// Ensure app initializes properly
+setTimeout(function(){
+  // Force tabs to be visible
+  document.querySelectorAll('.stab').forEach(function(tab){
+    tab.style.display = 'flex';
+  });
+  // Ensure search tab is active
+  switchTab('search');
+  // Invalidate map size
+  if(typeof map !== 'undefined') map.invalidateSize();
+}, 100);
+
 
 function openAboutModal(){
   var m = document.getElementById("about-modal");
@@ -5501,6 +5794,20 @@ document.addEventListener("click", function(e){
   var sb  = document.getElementById("sidebar");
   var btn = document.getElementById("mobile-drawer-btn");
   if(!sb || !sb.classList.contains("open")) return;
+  
+  // Don't close if clicking inputs, buttons, suggestion boxes, or suggestion items
+  if(e.target.tagName === 'INPUT' || 
+     e.target.tagName === 'SELECT' || 
+     e.target.tagName === 'BUTTON' ||
+     e.target.tagName === 'TEXTAREA' ||
+     e.target.closest('.search-sug-box') ||
+     e.target.closest('.suggestion-item') ||
+     e.target.closest('.sug-name') ||
+     e.target.closest('.sug-detail') ||
+     e.target.closest('#sidebar')) {
+    return;
+  }
+  
   if(!sb.contains(e.target) && e.target !== btn){
     sb.classList.remove("open");
     btn.textContent = "LIST";
@@ -5682,8 +5989,6 @@ function pickRouteSug(inputId, boxId, el){
 }
 
 applyFilters();
-updateFavBadge();
-restoreFiltersFromURL();
 // Force Leaflet to recalculate map size after everything renders
 setTimeout(function(){ map.invalidateSize(true); }, 300);
 </script>
@@ -6186,6 +6491,24 @@ if(navigator.share){
 </div>
 
 
+<script>
+// Make phone numbers tap-to-call (runs after page load)
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var phonePattern = /\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g;
+    
+    document.querySelectorAll('.church-detail-row').forEach(function(row) {
+      var html = row.innerHTML;
+      if (html.match(phonePattern)) {
+        row.innerHTML = html.replace(phonePattern, function(phone) {
+          var cleaned = phone.replace(/[^0-9]/g, '');
+          return '<a href="tel:+1' + cleaned + '" class="phone-link" onclick="event.stopPropagation()"><span class="phone-icon">📞</span>' + phone + '</a>';
+        });
+      }
+    });
+  }, 500);
+});
+</script>
 
 
 <!-- NEW HERE MODAL -->
@@ -6264,6 +6587,21 @@ function hideNearestIndicator() {
   }
 }
 
+// Automatically show nearest indicator when location is detected
+// Hook into existing location detection if available
+if (typeof geolocateUser === 'function') {
+  var originalGeolocate = geolocateUser;
+  geolocateUser = function() {
+    originalGeolocate();
+    // After geolocation, show indicator
+    setTimeout(function() {
+      var visibleChurches = document.querySelectorAll('.church-item:not([style*="display: none"])').length;
+      if (visibleChurches > 0) {
+        updateNearestIndicator(visibleChurches);
+      }
+    }, 1000);
+  };
+}
 
 </script>
 
@@ -6273,6 +6611,52 @@ function hideNearestIndicator() {
 // FEATURES 8-11: Visitor Mode, Tooltips, Service Length
 // ═══════════════════════════════════════════════════════════
 
+// FEATURE #8: Visitor Mode Toggle
+function toggleVisitorMode(enabled) {
+  if (enabled) {
+    document.body.classList.add('visitor-mode');
+    localStorage.setItem('aaofcj_visitor_mode', 'true');
+  } else {
+    document.body.classList.remove('visitor-mode');
+    localStorage.removeItem('aaofcj_visitor_mode');
+  }
+}
+
+// Load visitor mode preference on page load
+window.addEventListener('load', function() {
+  var visitorMode = localStorage.getItem('aaofcj_visitor_mode');
+  if (visitorMode === 'true') {
+    document.body.classList.add('visitor-mode');
+    var checkbox = document.getElementById('visitor-mode-checkbox');
+    if (checkbox) checkbox.checked = true;
+  }
+  
+  // FEATURE #10: Add service length badges to all church cards
+  addServiceLengthBadges();
+});
+
+// FEATURE #10: Service Length Indicators
+function addServiceLengthBadges() {
+  // Add ~90 min badge to all church schedule displays
+  setTimeout(function() {
+    document.querySelectorAll('.church-item').forEach(function(item) {
+      // Find schedule row if it exists and doesn't already have badge
+      var scheduleRow = item.querySelector('.church-detail-row');
+      if (scheduleRow && scheduleRow.textContent.includes('Schedule:') && !scheduleRow.querySelector('.service-length-badge')) {
+        var badge = document.createElement('span');
+        badge.className = 'service-length-badge';
+        badge.innerHTML = '<span class="icon">⏱️</span> ~90 min services';
+        scheduleRow.appendChild(badge);
+      }
+    });
+  }, 1000); // Wait for churches to render
+}
+
+// FEATURE #9: Tooltips are handled by CSS (hover effects)
+// No JavaScript needed - pure CSS solution
+
+// FEATURE #11: Enhanced About Modal - Next Steps Card
+// Already implemented in Feature #2 (What to Expect section)
 
 </script>
 
@@ -6320,6 +6704,9 @@ function selectUserType(type) {
   
   // Customize experience based on user type
   if (type === 'new-to-church') {
+    // Enable visitor mode automatically
+    document.getElementById('visitor-mode-checkbox').checked = true;
+    toggleVisitorMode(true);
     // Show New Here modal
     setTimeout(function() {
       document.getElementById('new-here-modal').classList.add('open');
@@ -6336,71 +6723,34 @@ function selectUserType(type) {
   }
 }
 
-// First-load: location prompt + user-type modal
+// Show user type modal on first visit (if not already selected)
 window.addEventListener('load', function() {
   var userType = localStorage.getItem('aaofcj_user_type');
   var hasVisited = localStorage.getItem('aaofcj_has_visited');
-  var locationAsked = localStorage.getItem('aaofcj_location_asked');
-
-  if (!locationAsked && navigator.geolocation) {
-    localStorage.setItem('aaofcj_location_asked', '1');
-    setTimeout(function() {
-      showLocationPrompt(function onAllow() {
-        document.getElementById('zip-radius').value = '25';
-        zipRadius = 25;
-        navigator.geolocation.getCurrentPosition(function(pos) {
-          userLatLng = {lat: pos.coords.latitude, lng: pos.coords.longitude};
-          if(userMarker) userMarker.remove();
-          userMarker = L.marker([userLatLng.lat, userLatLng.lng], {
-            icon: L.divIcon({html:'<div class="user-pin"></div>',iconSize:[18,18],iconAnchor:[9,9],className:""}),
-            zIndexOffset:9999
-          }).addTo(map).bindPopup('<div style="font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:#1565C0;padding:6px 10px;">📍 Your Location</div>');
-          zipLatLng = userLatLng;
-          map.setView([userLatLng.lat, userLatLng.lng], 10);
-          document.getElementById('sort-select').value = 'distance';
-          var btn = document.getElementById('btn-locate');
-          btn.innerHTML = '✓ Location Set'; btn.classList.add('active');
-          applyFilters();
-          const nearest = CHURCHES.reduce((b,c)=>{const d=distanceMi(userLatLng,{lat:c.lat,lng:c.lng});return d<b.d?{c,d}:b;},{c:null,d:Infinity});
-          if(nearest.c) showStatus('Nearest: <span>'+nearest.c.name+'</span> — '+nearest.d.toFixed(1)+' mi away');
-        }, function() { showToast('Location access denied — you can enable it anytime.', true); });
-      });
-    }, 800);
-  } else if (!userType && !hasVisited) {
+  
+  if (!userType && !hasVisited) {
     setTimeout(function() {
       document.getElementById('user-type-modal').classList.add('open');
       localStorage.setItem('aaofcj_has_visited', 'true');
-    }, 1500);
+    }, 1500); // Show after 1.5 seconds
   }
 });
 
-function showLocationPrompt(onAllow) {
-  var banner = document.createElement('div');
-  banner.id = 'loc-prompt';
-  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9000;background:#0D1B35;border-top:2px solid #1565C0;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.5);flex-wrap:wrap;';
-  banner.innerHTML =
-    '<span style="font-size:20px">📍</span>' +
-    '<span style="flex:1;font-size:13px;color:#EEF2FF;min-width:160px"><strong>Find churches near you</strong><br><span style="font-size:11px;color:#8BA3CC">Allow location access to see the 25 closest churches first</span></span>' +
-    '<button id="loc-allow" style="background:#1565C0;color:#fff;border:none;border-radius:6px;padding:9px 18px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;white-space:nowrap;">Allow Location</button>' +
-    '<button id="loc-deny" style="background:transparent;color:#6B9BD2;border:1px solid #1E3460;border-radius:6px;padding:9px 14px;font-family:system-ui,-apple-system,sans-serif;font-size:12px;cursor:pointer;white-space:nowrap;">Not Now</button>';
-  document.body.appendChild(banner);
-  document.getElementById('loc-allow').onclick = function() {
-    banner.remove();
-    onAllow();
-  };
-  document.getElementById('loc-deny').onclick = function() {
-    banner.remove();
-    var userType = localStorage.getItem('aaofcj_user_type');
-    var hasVisited = localStorage.getItem('aaofcj_has_visited');
-    if (!userType && !hasVisited) {
-      setTimeout(function() {
-        document.getElementById('user-type-modal').classList.add('open');
-        localStorage.setItem('aaofcj_has_visited', 'true');
-      }, 400);
-    }
-  };
+// FEATURE #14: Visitor Tips (Placeholder - requires church-specific data)
+function addVisitorTips() {
+  // Example structure for when data becomes available
+  // Each church would need a 'visitorTip' field in the data
+  // 
+  // Example:
+  // if (church.visitorTip) {
+  //   var tip = document.createElement('div');
+  //   tip.className = 'visitor-tip show';
+  //   tip.innerHTML = '<span class="tip-icon">💡</span>' + church.visitorTip;
+  //   churchCard.appendChild(tip);
+  // }
+  
+  console.log('Visitor tips feature ready - awaiting church-specific data');
 }
-
 
 // FEATURE #15: Similar Churches Algorithm
 function findSimilarChurches(currentChurch, allChurches) {
@@ -6464,6 +6814,64 @@ function addSimilarChurchesSection(churchElement, church, allChurches) {
   churchElement.appendChild(section);
 }
 
+// FEATURE #16: Testimonials (Placeholder - requires user-generated content)
+function addTestimonialsSection(churchElement, church) {
+  // Placeholder structure for when testimonial data becomes available
+  var section = document.createElement('div');
+  section.className = 'testimonials';
+  section.innerHTML = 
+    '<h4>💬 What Visitors Say</h4>' +
+    '<div class="testimonial-placeholder">' +
+    'Testimonials will appear here when available. ' +
+    'Contact church leadership to share your experience!' +
+    '</div>';
+  
+  // Example of how testimonials would be displayed:
+  // if (church.testimonials && church.testimonials.length > 0) {
+  //   church.testimonials.forEach(function(t) {
+  //     var item = document.createElement('div');
+  //     item.className = 'testimonial-item';
+  //     item.innerHTML = 
+  //       '<p class="testimonial-text">"' + t.text + '"</p>' +
+  //       '<div class="testimonial-author">— ' + t.author + '</div>';
+  //     section.appendChild(item);
+  //   });
+  // }
+  
+  churchElement.appendChild(section);
+}
+
+// FEATURE #17: Live Service Indicators (Placeholder - requires real-time data)
+function checkLiveServices() {
+  // This would require a backend API that tracks service times and current status
+  // For now, we'll create the structure
+  
+  var now = new Date();
+  var day = now.getDay(); // 0 = Sunday
+  var hour = now.getHours();
+  
+  // Example logic (would need actual service schedules from backend):
+  // Sunday morning services typically 9-11am or 11am-1pm
+  if (day === 0 && hour >= 9 && hour < 13) {
+    // Could mark churches as having services now
+    console.log('Sunday service hours - live indicators would show here');
+    // Example: Add live badge to church cards
+    // badge.innerHTML = '<span class="dot"></span> Service in progress';
+  }
+  
+  // Would need to be called periodically (every 5 minutes) to update
+}
+
+// Initialize features on page load
+window.addEventListener('load', function() {
+  addVisitorTips();
+  checkLiveServices();
+  
+  // Check for live services every 5 minutes
+  setInterval(checkLiveServices, 300000);
+});
+
+console.log('Features 12-17 initialized (some require additional data)');
 </script>
 
 
@@ -6573,23 +6981,68 @@ console.log('Keyboard navigation enabled - ESC to close modals, Tab to navigate'
 // ═══════════════════════════════════════════════════════════
 
 function initCollapsibleFilters() {
+  // Only apply on mobile
   if (window.innerWidth > 768) return;
-
-  var label = document.getElementById('filter-section-label');
-  var filterZone = document.getElementById('filter-zone');
-  var quickFilters = document.getElementById('quick-filters');
-  if (!label || !filterZone || label.dataset.initialized) return;
-  label.dataset.initialized = 'true';
-
-  // Start collapsed on mobile to maximise map space
-  filterZone.classList.add('mobile-hidden');
-  quickFilters.classList.add('mobile-hidden');
-
-  label.addEventListener('click', function() {
-    var open = label.classList.toggle('filter-open');
-    filterZone.classList.toggle('mobile-hidden', !open);
-    quickFilters.classList.toggle('mobile-hidden', !open);
+  
+  // Find all filter sections that need to be collapsible
+  var filterSelectors = [
+    '#language-filter',
+    '#district-filter', 
+    '#sector-filter'
+  ];
+  
+  filterSelectors.forEach(function(selector) {
+    var filterElement = document.querySelector(selector);
+    if (!filterElement) return;
+    
+    // Skip if already wrapped
+    if (filterElement.parentElement.classList.contains('filter-section-wrapper')) return;
+    
+    // Get the label text
+    var label = filterElement.previousElementSibling;
+    var labelText = label ? label.textContent : 'Filters';
+    
+    // Create wrapper
+    var wrapper = document.createElement('div');
+    wrapper.className = 'filter-section-wrapper';
+    
+    // Create header
+    var header = document.createElement('div');
+    header.className = 'filter-section-header collapsed';
+    header.innerHTML = 
+      '<h4>' + labelText + '</h4>' +
+      '<span class="filter-section-toggle">▼</span>';
+    
+    // Create content wrapper
+    var content = document.createElement('div');
+    content.className = 'filter-section-content collapsed';
+    
+    // Insert wrapper before filter
+    filterElement.parentNode.insertBefore(wrapper, filterElement);
+    
+    // Move elements into wrapper
+    wrapper.appendChild(header);
+    wrapper.appendChild(content);
+    if (label) content.appendChild(label);
+    content.appendChild(filterElement);
+    
+    // Add click handler
+    header.addEventListener('click', function() {
+      var isCollapsed = header.classList.contains('collapsed');
+      
+      if (isCollapsed) {
+        header.classList.remove('collapsed');
+        content.classList.remove('collapsed');
+        content.classList.add('expanded');
+      } else {
+        header.classList.add('collapsed');
+        content.classList.remove('expanded');
+        content.classList.add('collapsed');
+      }
+    });
   });
+  
+  console.log('Mobile collapsible filters initialized');
 }
 
 // Initialize on page load
