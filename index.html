@@ -518,6 +518,16 @@ select.si option{background:#fff;color:var(--text-primary)}
 #new-here-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:12px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 40px rgba(0,0,0,0.5)}
 #user-type-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:12px;max-width:600px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.5)}
 #share-box,#export-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:400px;overflow:hidden}
+/* Share / Export Modal text */
+#share-box h2,#export-box h2{font-size:15px;color:#EEF2FF;margin:0 0 4px;font-family:system-ui,-apple-system,sans-serif;padding:20px 20px 0}
+#share-box .sub,#export-box .sub{font-size:11px;color:#6B9BD2;margin:0 0 12px;padding:0 20px}
+.share-option,.export-option{display:flex;align-items:center;gap:12px;background:var(--navy3);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:12px 14px;margin:0 16px 8px;cursor:pointer;transition:border-color 0.15s}
+.share-option:hover,.export-option:hover{border-color:#4A90D9}
+.share-icon,.export-icon{font-size:22px;flex-shrink:0}
+.share-label,.export-label{font-size:13px;font-weight:600;color:#EEF2FF}
+.share-sub,.export-sub{font-size:11px;color:#6B9BD2;margin-top:1px}
+.share-close,.export-close{display:block;width:calc(100% - 32px);margin:8px 16px 16px;padding:10px;background:transparent;border:1px solid var(--navy4);color:#6B9BD2;border-radius:var(--radius-sm);cursor:pointer;font-size:13px;font-weight:600;font-family:system-ui,-apple-system,sans-serif;transition:border-color 0.15s}
+.share-close:hover,.export-close:hover{border-color:#4A90D9;color:#EEF2FF}
 
 /* Cal Modal */
 .cal-modal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.72);align-items:center;justify-content:center}
