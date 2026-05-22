@@ -716,8 +716,15 @@ select.si option{background:#fff;color:var(--text-primary)}
 .admin-table td{padding:7px 10px;border-bottom:1px solid var(--navy4);color:#CBD5E1;vertical-align:top}
 .admin-table tr:hover td{background:var(--navy2)}
 .cell-missing{color:#EF5350;font-size:10px}.cell-ok{color:#10B981;font-size:10px}.cell-partial{color:#F59E0B;font-size:10px}
-.admin-filter-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.admin-filter-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .admin-filter{background:var(--navy3);border:1px solid var(--navy4);color:#EEF2FF;padding:6px 10px;border-radius:var(--radius-sm);font-size:11px;font-family:var(--font);outline:none;cursor:pointer}
+.admin-download-bar{display:flex;align-items:center;justify-content:space-between;background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:8px 12px;margin-bottom:12px;gap:10px}
+.admin-dl-info{font-size:11px;color:#6B9BD2}
+.admin-dl-info strong{color:#EEF2FF}
+.admin-dl-btn{padding:7px 14px;border-radius:var(--radius-sm);cursor:pointer;font-size:11px;font-weight:700;border:none;letter-spacing:0.04em;font-family:var(--font);transition:all 0.15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.admin-dl-btn.csv{background:var(--blue);color:#fff}
+.admin-dl-btn.csv:hover{background:var(--blue2)}
+#admin-filter-sector{display:none}
 #admin-box h2{color:#EEF2FF;margin-bottom:4px;font-size:16px;font-family:var(--font)}
 #admin-box p{font-size:11px;color:#6B9BD2;margin-bottom:16px}
 #admin-password{width:100%;background:var(--navy3);border:1.5px solid var(--navy4);color:#EEF2FF;padding:10px 12px;border-radius:var(--radius-sm);font-size:14px;outline:none;margin-bottom:10px;font-family:var(--font)}
@@ -727,6 +734,37 @@ select.si option{background:#fff;color:var(--text-primary)}
 .admin-btn{flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;font-weight:700;border:none;letter-spacing:0.05em;font-family:var(--font)}
 .admin-btn.primary{background:var(--blue);color:#fff}
 .admin-btn.secondary{background:var(--navy3);color:#6B9BD2;border:1px solid var(--navy4)}
+/* CSV Import */
+.admin-section{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px}
+.admin-section-title{font-size:11px;font-weight:800;color:#4A6A9A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+.csv-drop-zone{border:2px dashed var(--navy4);border-radius:var(--radius-sm);padding:24px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative}
+.csv-drop-zone:hover,.csv-drop-zone.drag-over{border-color:var(--blue);background:rgba(26,86,160,0.08)}
+.csv-drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.csv-drop-icon{font-size:28px;margin-bottom:6px}
+.csv-drop-label{font-size:13px;font-weight:600;color:#EEF2FF;margin-bottom:3px}
+.csv-drop-sub{font-size:11px;color:#6B9BD2}
+.csv-info-bar{display:flex;align-items:center;justify-content:space-between;background:var(--navy3);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:9px 12px;margin-top:10px;display:none}
+.csv-info-bar.show{display:flex}
+.csv-info-name{font-size:12px;font-weight:600;color:#EEF2FF}
+.csv-info-count{font-size:11px;color:#6B9BD2}
+.csv-preview-wrap{margin-top:10px;overflow-x:auto;max-height:180px;overflow-y:auto;border-radius:var(--radius-sm);border:1px solid var(--navy4);display:none}
+.csv-preview-wrap.show{display:block}
+.csv-preview-table{width:100%;border-collapse:collapse;font-size:10px}
+.csv-preview-table th{background:var(--navy3);color:#4A6A9A;padding:5px 8px;text-align:left;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;position:sticky;top:0;white-space:nowrap}
+.csv-preview-table td{padding:5px 8px;border-bottom:1px solid var(--navy4);color:#CBD5E1;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.csv-preview-table tr:hover td{background:rgba(255,255,255,0.03)}
+.csv-action-row{display:flex;gap:8px;margin-top:12px}
+.csv-btn{padding:9px 16px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;font-weight:700;border:none;letter-spacing:0.04em;font-family:var(--font);transition:all 0.15s}
+.csv-btn.apply{background:#10B981;color:#fff;flex:1}
+.csv-btn.apply:hover{background:#059669}
+.csv-btn.apply:disabled{background:var(--navy3);color:#4A6A9A;cursor:not-allowed}
+.csv-btn.template{background:var(--navy3);color:#6B9BD2;border:1px solid var(--navy4)}
+.csv-btn.template:hover{border-color:var(--blue);color:#EEF2FF}
+.csv-btn.save{background:#F59E0B;color:#1A1A2E;flex:1}
+.csv-btn.save:hover{background:#D97706}
+.csv-status{font-size:11px;padding:7px 10px;border-radius:var(--radius-sm);margin-top:8px;display:none}
+.csv-status.success{display:block;background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3)}
+.csv-status.error{display:block;background:rgba(239,68,68,0.15);color:#EF5350;border:1px solid rgba(239,68,68,0.3)}
 
 /* Glossary */
 .glossary-header{padding:24px;border-bottom:1px solid var(--navy4)}
@@ -1327,6 +1365,8 @@ body.dark-mode{
 }
 body.dark-mode #panel-header{background:#131D2E}
 body.dark-mode .ph-inner{background:linear-gradient(180deg,#1A2540 0%,#131D2E 100%)}
+/* Logo in dark mode: white bg makes dark text readable without affecting emblem colors */
+body.dark-mode .panel-logo,body.dark-mode .fs-logo{background:#fff;border-radius:6px;padding:2px 8px}
 body.dark-mode #sidebar-tabs{background:#131D2E}
 body.dark-mode .stab:hover{background:rgba(43,133,228,0.08)}
 body.dark-mode .stab.active{background:rgba(43,133,228,0.1)}
@@ -4347,8 +4387,8 @@ function copyEmbedCode(){
 //  ADMIN MODE
 // ═══════════════════════════════════════════════════════════════════════
 // ⚠️  CHANGE THIS PASSWORD before going live
-// Admin password hash (SHA-256 of "aaofcj2025")
-const ADMIN_PASSWORD_HASH = "a30ac2ed4690e5a050105bc831c895247ed07dc6bc9278939c837e4fad143baf";
+// Admin password hash (SHA-256 of "aaofcjchurchfinder2025")
+const ADMIN_PASSWORD_HASH = "6222c70ca911b6952fba07dd98f6d64d3aa07d0ab6dc624e0163290f595623cc";
 
 // SHA-256 hash function
 async function sha256(str) {
@@ -4384,6 +4424,190 @@ async function checkAdminPassword(){
     document.getElementById("admin-password").focus();
   }
 }
+// ── CSV IMPORT ────────────────────────────────────────────────────────────
+const CSV_COLUMNS = ["name","address","city","county","state","zip","phone","website","schedule","language","pastor","lat","lng","district","sector","bishop","elder","facebook","instagram","youtube","tiktok","denomination"];
+
+let csvParsedRows = null;
+
+function parseCSV(text){
+  const lines = text.trim().split(/\r?\n/);
+  if(lines.length < 2) return null;
+  const headers = parseCSVRow(lines[0]).map(h => h.trim().toLowerCase());
+  const rows = [];
+  for(let i = 1; i < lines.length; i++){
+    if(!lines[i].trim()) continue;
+    const vals = parseCSVRow(lines[i]);
+    const obj = {};
+    headers.forEach((h, idx) => { obj[h] = (vals[idx] || "").trim(); });
+    obj.lat = parseFloat(obj.lat) || 0;
+    obj.lng = parseFloat(obj.lng) || 0;
+    rows.push(obj);
+  }
+  return { headers, rows };
+}
+
+function parseCSVRow(line){
+  const result = [];
+  let cur = "", inQuote = false;
+  for(let i = 0; i < line.length; i++){
+    const ch = line[i];
+    if(ch === '"'){
+      if(inQuote && line[i+1] === '"'){ cur += '"'; i++; }
+      else inQuote = !inQuote;
+    } else if(ch === ',' && !inQuote){
+      result.push(cur); cur = "";
+    } else { cur += ch; }
+  }
+  result.push(cur);
+  return result;
+}
+
+function handleCSVFile(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const parsed = parseCSV(e.target.result);
+    if(!parsed || parsed.rows.length === 0){
+      showCSVStatus("Could not parse file. Make sure it's a valid CSV.", "error");
+      return;
+    }
+    if(!parsed.headers.includes("name") || !parsed.headers.includes("lat")){
+      showCSVStatus("Missing required columns (name, lat, lng). Download the template for the correct format.", "error");
+      return;
+    }
+    csvParsedRows = parsed;
+    document.getElementById("csv-info-name").textContent = file.name;
+    document.getElementById("csv-info-count").textContent = parsed.rows.length + " churches found";
+    document.getElementById("csv-info-bar").classList.add("show");
+    renderCSVPreview(parsed);
+    document.getElementById("csv-apply-btn").disabled = false;
+    document.getElementById("csv-status").className = "csv-status";
+  };
+  reader.readAsText(file);
+}
+
+function renderCSVPreview(parsed){
+  const previewCols = ["name","city","state","pastor","phone","district"];
+  const cols = previewCols.filter(c => parsed.headers.includes(c));
+  const maxRows = 5;
+  let html = "<thead><tr>" + cols.map(c => `<th>${c}</th>`).join("") + "</tr></thead><tbody>";
+  parsed.rows.slice(0, maxRows).forEach(row => {
+    html += "<tr>" + cols.map(c => `<td title="${(row[c]||"").replace(/"/g,"&quot;")}">${row[c]||'<span style="color:#EF5350">—</span>'}</td>`).join("") + "</tr>";
+  });
+  if(parsed.rows.length > maxRows) html += `<tr><td colspan="${cols.length}" style="color:#6B9BD2;text-align:center;padding:6px">…and ${parsed.rows.length - maxRows} more</td></tr>`;
+  html += "</tbody>";
+  document.getElementById("csv-preview-table").innerHTML = html;
+  document.getElementById("csv-preview-wrap").classList.add("show");
+}
+
+function applyCSVImport(){
+  if(!csvParsedRows) return;
+  try {
+    CHURCHES.length = 0;
+    csvParsedRows.rows.forEach(r => CHURCHES.push(r));
+    // Rebuild markers
+    clusterGroup.clearLayers();
+    markers.length = 0;
+    CHURCHES.forEach((c, idx) => {
+      const meta = DISTRICT_META[c.district] || {};
+      const color = meta.color || "#c9a84c";
+      const icon = makeIcon(color);
+      const m = L.marker([c.lat, c.lng], {icon});
+      m._defaultIcon = icon;
+      m.bindPopup(() => buildPopup(c, idx), {maxWidth:330});
+      m.on("click", () => highlightItem(idx));
+      markers.push(m);
+      clusterGroup.addLayer(m);
+    });
+    rebuildDropdowns(CHURCHES);
+    applyFilters();
+    document.getElementById("csv-apply-btn").disabled = true;
+    document.getElementById("csv-save-row").style.display = "flex";
+    showCSVStatus(`✓ ${CHURCHES.length} churches loaded successfully. Use "Save Updated HTML File" to make the change permanent.`, "success");
+    // Refresh admin stats
+    openAdminPanel();
+  } catch(err) {
+    showCSVStatus("Import failed: " + err.message, "error");
+  }
+}
+
+function saveUpdatedHTML(){
+  const html = document.documentElement.outerHTML;
+  const churchesJSON = JSON.stringify(CHURCHES, null, 2);
+  // Locate const CHURCHES = [ ... ]; by tracking bracket depth so the
+  // match is exact regardless of content inside the array.
+  const startToken = "const CHURCHES = [";
+  const start = html.indexOf(startToken);
+  if(start === -1){ alert("Could not locate CHURCHES data in page source. Save failed."); return; }
+  let depth = 0, i = start + startToken.length - 1;
+  while(i < html.length){
+    if(html[i]==="[") depth++;
+    else if(html[i]==="]"){ depth--; if(depth===0) break; }
+    i++;
+  }
+  // i now points at the closing ] of the array; skip the trailing ;
+  const end = html.indexOf(";", i) + 1;
+  const updated = html.slice(0, start) + `const CHURCHES = ${churchesJSON};` + html.slice(end);
+  const blob = new Blob([updated], {type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  const today = new Date();
+  const mm = String(today.getMonth()+1).padStart(2,"0");
+  const dd = String(today.getDate()).padStart(2,"0");
+  const yy = String(today.getFullYear()).slice(-2);
+  a.download = `ChurchFinder${mm}.${dd}.${yy}.html`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function downloadCSVTemplate(){
+  const sample = [{name:"Example Church",address:"123 Main St",city:"Los Angeles",county:"Los Angeles",state:"CA",zip:"90001",phone:"(213) 555-0100",website:"example.com",schedule:"Service Sun 10am",language:"Spanish",pastor:"Juan Garcia",lat:"34.0522",lng:"-118.2437",district:"Southern CA",sector:"",bishop:"Bishop Name",elder:"",facebook:"",instagram:"",youtube:"",tiktok:"",denomination:"AAOFCJ"}];
+  let csv = CSV_COLUMNS.join(",") + "\n";
+  sample.forEach(row => {
+    csv += CSV_COLUMNS.map(col => {
+      const v = String(row[col] || "");
+      return v.includes(",") ? `"${v}"` : v;
+    }).join(",") + "\n";
+  });
+  const blob = new Blob([csv], {type:"text/csv"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "church_data_template.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function clearCSVImport(){
+  csvParsedRows = null;
+  document.getElementById("csv-file-input").value = "";
+  document.getElementById("csv-info-bar").classList.remove("show");
+  document.getElementById("csv-preview-wrap").classList.remove("show");
+  document.getElementById("csv-apply-btn").disabled = true;
+  document.getElementById("csv-save-row").style.display = "none";
+  document.getElementById("csv-status").className = "csv-status";
+}
+
+function showCSVStatus(msg, type){
+  const el = document.getElementById("csv-status");
+  el.textContent = msg;
+  el.className = "csv-status " + type;
+}
+
+// Drag-and-drop on the drop zone
+document.addEventListener("DOMContentLoaded", () => {
+  const zone = document.getElementById("csv-drop-zone");
+  if(!zone) return;
+  zone.addEventListener("dragover", e => { e.preventDefault(); zone.classList.add("drag-over"); });
+  zone.addEventListener("dragleave", () => zone.classList.remove("drag-over"));
+  zone.addEventListener("drop", e => {
+    e.preventDefault();
+    zone.classList.remove("drag-over");
+    const file = e.dataTransfer.files[0];
+    if(file) handleCSVFile(file);
+  });
+});
+// ─────────────────────────────────────────────────────────────────────────
+
 function openAdminPanel(){
   const panel = document.getElementById("admin-panel");
   panel.classList.add("open");
@@ -4407,19 +4631,38 @@ function openAdminPanel(){
 
   // Populate district filter
   const distSelect = document.getElementById("admin-filter-district");
+  const curDist = distSelect.value;
   const districts  = [...new Set(CHURCHES.map(c=>c.district).filter(Boolean))].sort();
-  distSelect.innerHTML='<option value="">All Districts</option>'+districts.map(d=>`<option value="${d}">${d}</option>`).join('');
+  distSelect.innerHTML='<option value="">All Districts</option>'+districts.map(d=>`<option value="${d}"${d===curDist?' selected':''}>${d}</option>`).join('');
 
   renderAdminTable();
 }
 
+function onAdminDistrictChange(){
+  const district = document.getElementById("admin-filter-district").value;
+  const sectorSel = document.getElementById("admin-filter-sector");
+  if(district){
+    const sectors = [...new Set(CHURCHES.filter(c=>c.district===district).map(c=>c.sector).filter(Boolean))].sort();
+    sectorSel.innerHTML = '<option value="">All Sectors</option>' + sectors.map(s=>`<option value="${s}">${s}</option>`).join('');
+    sectorSel.style.display = sectors.length ? 'block' : 'none';
+  } else {
+    sectorSel.innerHTML = '<option value="">All Sectors</option>';
+    sectorSel.style.display = 'none';
+  }
+  renderAdminTable();
+}
+
+let adminFilteredData = [];
+
 function renderAdminTable(){
   const issue    = document.getElementById("admin-filter-issue").value;
   const district = document.getElementById("admin-filter-district").value;
+  const sector   = document.getElementById("admin-filter-sector").value;
   const search   = document.getElementById("admin-search").value.toLowerCase();
 
-  const filtered = CHURCHES.map((c,i)=>({c,i})).filter(({c})=>{
+  adminFilteredData = CHURCHES.map((c,i)=>({c,i})).filter(({c})=>{
     if(district && c.district!==district) return false;
+    if(sector   && c.sector!==sector)     return false;
     if(search && !c.name.toLowerCase().includes(search) && !c.city.toLowerCase().includes(search)) return false;
     if(issue==="no-pastor"   && c.pastor)   return false;
     if(issue==="no-phone"    && c.phone)    return false;
@@ -4429,17 +4672,20 @@ function renderAdminTable(){
     return true;
   });
 
+  document.getElementById("admin-filtered-count").textContent = adminFilteredData.length;
+
   const tbody = document.getElementById("admin-tbody");
   tbody.innerHTML="";
-  filtered.slice(0,200).forEach(({c,i})=>{
+  adminFilteredData.slice(0,200).forEach(({c,i})=>{
     const row=document.createElement("tr");
     const cell=(val,ok)=>`<td class="${ok?'cell-ok':'cell-missing'}">${val||'—'}</td>`;
     row.innerHTML=`
       <td style="color:#4A6A9A">${i}</td>
-      <td style="font-weight:600;color:#EEF2FF;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name}</td>
+      <td style="font-weight:600;color:#EEF2FF;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name}</td>
       <td>${c.city}</td>
       <td>${c.state}</td>
       <td style="font-size:10px;color:#6B9BD2">${c.district||'—'}</td>
+      <td style="font-size:10px;color:#6B9BD2">${c.sector||'—'}</td>
       ${cell(c.pastor,!!c.pastor)}
       ${cell(c.phone,!!c.phone)}
       ${cell(c.schedule?'✓':'',!!c.schedule)}
@@ -4447,11 +4693,42 @@ function renderAdminTable(){
     `;
     tbody.appendChild(row);
   });
-  if(filtered.length>200){
+  if(adminFilteredData.length>200){
     const info=document.createElement("tr");
-    info.innerHTML=`<td colspan="9" style="text-align:center;color:#4A6A9A;padding:12px">Showing 200 of ${filtered.length} results — use filters to narrow down</td>`;
+    info.innerHTML=`<td colspan="10" style="text-align:center;color:#4A6A9A;padding:12px">Showing 200 of ${adminFilteredData.length} results — use filters to narrow down</td>`;
     tbody.appendChild(info);
   }
+}
+
+function downloadAdminCSV(){
+  const cols = ["#","name","address","city","state","zip","district","sector","pastor","phone","schedule","website","bishop","language"];
+  const header = cols.join(",");
+  const escCSV = v => {
+    const s = String(v||"");
+    return s.includes(",") || s.includes('"') || s.includes("\n") ? `"${s.replace(/"/g,'""')}"` : s;
+  };
+  const rows = adminFilteredData.map(({c,i}) => [
+    i, c.name, c.address, c.city, c.state, c.zip, c.district, c.sector,
+    c.pastor, c.phone, c.schedule, c.website, c.bishop, c.language
+  ].map(escCSV).join(","));
+
+  const district = document.getElementById("admin-filter-district").value;
+  const sector   = document.getElementById("admin-filter-sector").value;
+  const issue    = document.getElementById("admin-filter-issue").value;
+  const parts    = ["churches"];
+  if(district) parts.push(district.replace(/\s+/g,"_"));
+  if(sector)   parts.push(sector.replace(/\s+/g,"_"));
+  if(issue && issue!=="all") parts.push(issue);
+  const today = new Date();
+  parts.push(`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`);
+
+  const csv = [header, ...rows].join("\n");
+  const blob = new Blob([csv], {type:"text/csv"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = parts.join("_") + ".csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -5007,6 +5284,36 @@ setTimeout(function(){ map.invalidateSize(true); }, 300);
     <button class="admin-btn secondary" onclick="openBishopDir()">⚜ Bishop Directory</button>
     <button class="admin-btn secondary" onclick="openStats()">📊 Statistics</button>
   </div>
+
+  <!-- CSV Import -->
+  <div class="admin-section">
+    <div class="admin-section-title">📂 Import Church Data (CSV)</div>
+    <div class="csv-drop-zone" id="csv-drop-zone">
+      <input type="file" accept=".csv,text/csv" id="csv-file-input" onchange="handleCSVFile(this.files[0])">
+      <div class="csv-drop-icon">📄</div>
+      <div class="csv-drop-label">Drop a CSV file here, or click to browse</div>
+      <div class="csv-drop-sub">Must match the template column order</div>
+    </div>
+    <div class="csv-info-bar" id="csv-info-bar">
+      <div>
+        <div class="csv-info-name" id="csv-info-name"></div>
+        <div class="csv-info-count" id="csv-info-count"></div>
+      </div>
+      <button class="csv-btn template" onclick="clearCSVImport()" style="padding:5px 10px;font-size:11px">✕ Clear</button>
+    </div>
+    <div class="csv-preview-wrap" id="csv-preview-wrap">
+      <table class="csv-preview-table" id="csv-preview-table"></table>
+    </div>
+    <div class="csv-status" id="csv-status"></div>
+    <div class="csv-action-row">
+      <button class="csv-btn template" onclick="downloadCSVTemplate()">⬇ Download Template</button>
+      <button class="csv-btn apply" id="csv-apply-btn" onclick="applyCSVImport()" disabled>✓ Apply Import</button>
+    </div>
+    <div class="csv-action-row" id="csv-save-row" style="display:none">
+      <button class="csv-btn save" onclick="saveUpdatedHTML()">💾 Save Updated HTML File</button>
+    </div>
+  </div>
+
   <div class="admin-grid" id="admin-stats-grid"></div>
   <div class="admin-filter-row">
     <select class="admin-filter" id="admin-filter-issue" onchange="renderAdminTable()">
@@ -5017,15 +5324,22 @@ setTimeout(function(){ map.invalidateSize(true); }, 300);
       <option value="no-website">Missing Website</option>
       <option value="incomplete">Any Field Missing</option>
     </select>
-    <select class="admin-filter" id="admin-filter-district" onchange="renderAdminTable()">
+    <select class="admin-filter" id="admin-filter-district" onchange="onAdminDistrictChange()">
       <option value="">All Districts</option>
     </select>
+    <select class="admin-filter" id="admin-filter-sector" onchange="renderAdminTable()">
+      <option value="">All Sectors</option>
+    </select>
     <input class="admin-filter" type="text" id="admin-search" placeholder="Search by name or city..." oninput="renderAdminTable()" style="flex:1">
+  </div>
+  <div class="admin-download-bar">
+    <div class="admin-dl-info">Showing <strong id="admin-filtered-count">0</strong> churches</div>
+    <button class="admin-dl-btn csv" onclick="downloadAdminCSV()">⬇ Download as CSV</button>
   </div>
   <div style="overflow-x:auto">
     <table class="admin-table">
       <thead><tr>
-        <th>#</th><th>Church Name</th><th>City</th><th>St</th><th>District</th>
+        <th>#</th><th>Church Name</th><th>City</th><th>St</th><th>District</th><th>Sector</th>
         <th>Pastor</th><th>Phone</th><th>Schedule</th><th>Website</th>
       </tr></thead>
       <tbody id="admin-tbody"></tbody>
