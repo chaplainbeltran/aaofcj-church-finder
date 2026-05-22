@@ -955,6 +955,17 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
 /* Section wrapper */
 .panel-section{padding:12px 14px;border-bottom:1px solid var(--panel-border)}
 
+/* Address search row */
+.addr-row{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.addr-row #addr-input{
+  flex:1;background:#F8FAFC;border:1.5px solid var(--panel-border);
+  color:var(--text-primary);padding:7px 10px;border-radius:var(--radius-sm);
+  font-size:13px;font-family:var(--font);
+  outline:none;transition:border-color 0.15s;
+}
+.addr-row #addr-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,88,176,0.1)}
+.addr-row #addr-input::placeholder{color:var(--text-muted)}
+
 /* ZIP search row */
 .zip-row{display:flex;gap:6px;align-items:center}
 .zip-row #zip-input{
@@ -1391,6 +1402,7 @@ body.dark-mode .map-ctrl-btn,body.dark-mode #btn-satellite,body.dark-mode #btn-f
 body.dark-mode #sort-select{color:#8899BB;background:#131D2E}
 body.dark-mode .a11y-btn{background:#1A2540;border-color:#243352;color:#E8EEFF}
 body.dark-mode .zip-row #zip-input,body.dark-mode .zip-row #zip-radius{background:#1A2540;border-color:#243352;color:#E8EEFF}
+body.dark-mode .addr-row #addr-input{background:#1A2540;border-color:#243352;color:#E8EEFF}
 body.dark-mode .footer-link{color:#5A6E8A}
 body.dark-mode .footer-link:hover{color:#E8EEFF;background:rgba(43,133,228,0.1)}
 body.dark-mode #btn-dark-mode svg{display:none}
@@ -1469,6 +1481,10 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
 
     <!-- ZIP / radius search -->
     <div id="search-zone" class="panel-section">
+      <div class="addr-row">
+        <input id="addr-input" type="text" placeholder="Street address, city, state…" autocomplete="off" aria-label="Street address">
+        <button id="btn-addr" class="btn-primary">Search Address</button>
+      </div>
       <div class="zip-row">
         <input id="zip-input" type="text" placeholder="ZIP code" maxlength="10" inputmode="numeric" aria-label="ZIP code">
         <select id="zip-radius" aria-label="Search radius">
@@ -2568,7 +2584,7 @@ map.addLayer(clusterGroup);
 // ═══════════════════════════════════════════════════════════════════════
 //  STATE
 // ═══════════════════════════════════════════════════════════════════════
-let userLatLng=null, userMarker=null, zipLatLng=null, zipRadius=25;
+let userLatLng=null, userMarker=null, zipLatLng=null, zipRadius=25, addrMarker=null;
 var lastSelectedIdx = null;
 let activeIdx=null;
 const markers=[];
@@ -3017,6 +3033,54 @@ document.getElementById("btn-zip").addEventListener("click",()=>{
     });
 });
 
+// Address search
+document.getElementById("btn-addr").addEventListener("click",()=>{
+  const addr=document.getElementById("addr-input").value.trim();
+  if(!addr){showToast("Please enter an address to search.",true);return;}
+  zipRadius=+document.getElementById("zip-radius").value;
+  const btn=document.getElementById("btn-addr");
+  btn.textContent="Searching…";btn.disabled=true;
+
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(addr)}&countrycodes=us&format=json&limit=1`)
+    .then(r=>r.json())
+    .then(data=>{
+      if(!data.length){
+        showToast("Address not found. Try adding a city or state.",true);
+        btn.textContent="Search Address";btn.disabled=false;
+        return;
+      }
+      zipLatLng={lat:+data[0].lat,lng:+data[0].lon};
+      if(radiusCircle)map.removeLayer(radiusCircle);
+      radiusCircle=L.circle([zipLatLng.lat,zipLatLng.lng],{
+        radius:zipRadius*1609.34,
+        color:'#4A90D9',fillColor:'#1565C0',fillOpacity:0.1,weight:2,dashArray:'5, 5'
+      }).addTo(map);
+
+      // Drop address pin
+      if(addrMarker)addrMarker.remove();
+      const pinSVG=`<svg width="28" height="38" viewBox="0 0 28 38" xmlns="http://www.w3.org/2000/svg"><path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 24 14 24S28 24.5 28 14C28 6.268 21.732 0 14 0z" fill="#1A56A0" stroke="white" stroke-width="2.5"/><circle cx="14" cy="14" r="5" fill="white"/></svg>`;
+      const label=data[0].display_name.split(',').slice(0,2).join(', ');
+      addrMarker=L.marker([zipLatLng.lat,zipLatLng.lng],{
+        icon:L.divIcon({html:pinSVG,iconSize:[28,38],iconAnchor:[14,38],className:""}),
+        zIndexOffset:9998
+      }).addTo(map).bindPopup(`<div style="font-family:var(--font);font-size:12px;color:#1A56A0;padding:6px 10px;font-weight:600;">📍 ${label}</div>`);
+      addrMarker.openPopup();
+
+      map.setView([zipLatLng.lat,zipLatLng.lng],13);
+      showStatus(`Showing churches within ${zipRadius} miles of that address.`);
+      document.getElementById("sort-select").value="distance";
+      applyFilters();
+      btn.textContent="Search Address";btn.disabled=false;
+    })
+    .catch(()=>{
+      showToast("Could not geocode address. Check your connection.",true);
+      btn.textContent="Search Address";btn.disabled=false;
+    });
+});
+document.getElementById("addr-input").addEventListener("keydown",e=>{
+  if(e.key==="Enter")document.getElementById("btn-addr").click();
+});
+
 // Geolocation
 document.getElementById("btn-locate").addEventListener("click",()=>{
   if(!navigator.geolocation){showToast("Geolocation is not supported by your browser.", true);return;}
@@ -3048,9 +3112,11 @@ document.getElementById("btn-reset").addEventListener("click",()=>{
   ["f-district","f-sector","f-state","f-county","f-city","f-lang"].forEach(id=>document.getElementById(id).value="");
   document.getElementById("text-search").value="";
   document.getElementById("zip-input").value="";
+  document.getElementById("addr-input").value="";
   document.getElementById("sort-select").value="name";
   zipLatLng=null;userLatLng=null;
   if(userMarker){userMarker.remove();userMarker=null;}
+  if(addrMarker){addrMarker.remove();addrMarker=null;}
   if(radiusCircle){map.removeLayer(radiusCircle);radiusCircle=null;}
   activeTimeFilter=null;
   activeQuickFilters=[];
