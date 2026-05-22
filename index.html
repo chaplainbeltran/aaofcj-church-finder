@@ -1482,8 +1482,8 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
     <!-- ZIP / radius search -->
     <div id="search-zone" class="panel-section">
       <div class="addr-row">
-        <input id="addr-input" type="text" placeholder="Street address, city, state…" autocomplete="off" aria-label="Street address">
-        <button id="btn-addr" class="btn-primary">Search Address</button>
+        <input id="addr-input" type="text" placeholder="Street address, city, state…" data-i18n="addr_placeholder" autocomplete="off" aria-label="Street address">
+        <button id="btn-addr" class="btn-primary" data-i18n="btn_addr">Search Address</button>
       </div>
       <div class="zip-row">
         <input id="zip-input" type="text" placeholder="ZIP code" maxlength="10" inputmode="numeric" aria-label="ZIP code">
@@ -3036,17 +3036,17 @@ document.getElementById("btn-zip").addEventListener("click",()=>{
 // Address search
 document.getElementById("btn-addr").addEventListener("click",()=>{
   const addr=document.getElementById("addr-input").value.trim();
-  if(!addr){showToast("Please enter an address to search.",true);return;}
+  if(!addr){showToast(t("addr_empty"),true);return;}
   zipRadius=+document.getElementById("zip-radius").value;
   const btn=document.getElementById("btn-addr");
-  btn.textContent="Searching…";btn.disabled=true;
+  btn.textContent=t("addr_searching");btn.disabled=true;
 
   fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(addr)}&countrycodes=us&format=json&limit=1`)
     .then(r=>r.json())
     .then(data=>{
       if(!data.length){
-        showToast("Address not found. Try adding a city or state.",true);
-        btn.textContent="Search Address";btn.disabled=false;
+        showToast(t("addr_not_found"),true);
+        btn.textContent=t("btn_addr");btn.disabled=false;
         return;
       }
       zipLatLng={lat:+data[0].lat,lng:+data[0].lon};
@@ -3067,14 +3067,14 @@ document.getElementById("btn-addr").addEventListener("click",()=>{
       addrMarker.openPopup();
 
       map.setView([zipLatLng.lat,zipLatLng.lng],13);
-      showStatus(`Showing churches within ${zipRadius} miles of that address.`);
+      showStatus(t("addr_status").replace("{r}",zipRadius));
       document.getElementById("sort-select").value="distance";
       applyFilters();
-      btn.textContent="Search Address";btn.disabled=false;
+      btn.textContent=t("btn_addr");btn.disabled=false;
     })
     .catch(()=>{
-      showToast("Could not geocode address. Check your connection.",true);
-      btn.textContent="Search Address";btn.disabled=false;
+      showToast(t("addr_error"),true);
+      btn.textContent=t("btn_addr");btn.disabled=false;
     });
 });
 document.getElementById("addr-input").addEventListener("keydown",e=>{
@@ -3225,6 +3225,14 @@ const I18N = {
     btn_satellite:"Satellite",btn_street:"Street",btn_fit:"Fit Results",
     // Search input
     search_input:"Search church, city, pastor…",
+    // Address search
+    addr_placeholder:"Street address, city, state…",
+    btn_addr:"Search Address",
+    addr_not_found:"Address not found. Try adding a city or state.",
+    addr_empty:"Please enter an address to search.",
+    addr_error:"Could not geocode address. Check your connection.",
+    addr_status:"Showing churches within {r} miles of that address.",
+    addr_searching:"Searching…",
   },
   es:{
     // Tabs
@@ -3306,6 +3314,14 @@ const I18N = {
     btn_satellite:"Satélite",btn_street:"Calle",btn_fit:"Ajustar",
     // Campo de búsqueda
     search_input:"Buscar iglesia, ciudad, pastor…",
+    // Búsqueda por dirección
+    addr_placeholder:"Dirección, ciudad, estado…",
+    btn_addr:"Buscar Dirección",
+    addr_not_found:"Dirección no encontrada. Intenta agregar ciudad o estado.",
+    addr_empty:"Por favor ingresa una dirección para buscar.",
+    addr_error:"No se pudo encontrar la dirección. Verifica tu conexión.",
+    addr_status:"Mostrando iglesias a {r} millas de esa dirección.",
+    addr_searching:"Buscando…",
   }
 };
 function t(k){ return (I18N[LANG]||I18N.en)[k]||k; }
