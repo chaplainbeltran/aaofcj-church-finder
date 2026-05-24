@@ -495,13 +495,13 @@ select.si option{background:#fff;color:var(--text-primary)}
 
 /* ── MODALS (dark theme for focus) ── */
 #correction-modal,#stats-modal,#profile-modal,#bishop-dir-modal,
-#embed-modal,#feedback-modal,#about-modal,#admin-modal,
+#feedback-modal,#about-modal,#admin-modal,
 #glossary-modal,#new-here-modal,#user-type-modal,#share-modal,#export-modal{
   display:none;position:fixed;inset:0;z-index:9999;
   background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:16px;
 }
 #correction-modal.open,#stats-modal.open,#profile-modal.open,#bishop-dir-modal.open,
-#embed-modal.open,#feedback-modal.open,#about-modal.open,#admin-modal.open,
+#feedback-modal.open,#about-modal.open,#admin-modal.open,
 #glossary-modal.open,#new-here-modal.open,#user-type-modal.open,
 #share-modal.open,#export-modal.open{display:flex}
 #admin-panel{display:none;position:fixed;inset:0;z-index:10000;background:var(--navy);overflow-y:auto;padding:20px}
@@ -510,7 +510,6 @@ select.si option{background:#fff;color:var(--text-primary)}
 #stats-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:520px;max-height:85vh;overflow-y:auto}
 #profile-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:480px;max-height:88vh;overflow-y:auto}
 #bishop-dir-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:500px;max-height:88vh;overflow-y:auto}
-#embed-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:480px;overflow:hidden}
 #feedback-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:480px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
 #about-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:440px;overflow:hidden}
 #glossary-box{background:var(--navy2);border:1px solid var(--navy4);border-radius:12px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 40px rgba(0,0,0,0.5)}
@@ -661,25 +660,6 @@ select.si option{background:#fff;color:var(--text-primary)}
 .bd-meta{font-size:11px;color:#6B9BD2}
 .bd-count{display:inline-block;background:rgba(74,144,217,0.15);border:1px solid rgba(74,144,217,0.2);color:#7AABFF;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700;margin-top:4px;font-family:var(--font)}
 
-/* Embed */
-.embed-header{background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px}
-.embed-header h2{font-size:16px;color:#fff;margin-bottom:2px;font-family:var(--font)}
-.embed-header p{font-size:11px;color:rgba(255,255,255,0.65)}
-.embed-body{padding:18px 20px}
-.embed-option{display:flex;align-items:center;gap:12px;background:var(--navy3);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:border-color 0.15s}
-.embed-option:hover{border-color:#4A90D9}
-.embed-option.selected{border-color:#4A90D9;background:rgba(74,144,217,0.1)}
-.embed-option input[type=radio]{accent-color:var(--blue)}
-.embed-option-label{font-size:12px;font-weight:700;color:#EEF2FF}
-.embed-option-sub{font-size:10px;color:#6B9BD2}
-.embed-code-wrap{background:var(--navy);border:1px solid var(--navy4);border-radius:var(--radius-sm);padding:12px;margin-top:12px;position:relative}
-.embed-code{font-family:monospace;font-size:11px;color:#7AABFF;white-space:pre-wrap;word-break:break-all;line-height:1.5;max-height:120px;overflow-y:auto}
-.embed-copy-btn{position:absolute;top:8px;right:8px;background:var(--blue);color:#fff;border:none;border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font)}
-.embed-info{background:rgba(74,144,217,0.08);border:1px solid rgba(74,144,217,0.2);border-radius:var(--radius-sm);padding:10px 12px;margin-top:10px;font-size:11px;color:#7AABFF;line-height:1.6}
-.embed-footer{padding:0 20px 16px;display:flex;gap:8px}
-.embed-btn{flex:1;padding:9px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.05em;border:none;font-family:var(--font)}
-.embed-btn.primary{background:var(--blue);color:#fff}
-.embed-btn.secondary{background:var(--navy3);color:#6B9BD2;border:1px solid var(--navy4)}
 
 /* About */
 .about-header{background:linear-gradient(135deg,var(--blue),#1E3A8A);padding:18px 20px}
@@ -873,10 +853,10 @@ body.high-contrast .si:focus{border-color:#4A9EFF}
   #sidebar-tabs::-webkit-scrollbar{display:none}
   .stab{min-width:52px;padding:6px 4px 5px}
   #correction-modal,#stats-modal,#profile-modal,#bishop-dir-modal,
-  #embed-modal,#feedback-modal,#about-modal,#glossary-modal,
+  #feedback-modal,#about-modal,#glossary-modal,
   #new-here-modal,#user-type-modal,#share-modal,#export-modal{align-items:flex-end !important;padding:0 !important}
   #correction-box,#stats-box,#profile-box,#bishop-dir-box,
-  #embed-box,#feedback-box,#about-box,#glossary-box,#new-here-box,#user-type-box,
+  #feedback-box,#about-box,#glossary-box,#new-here-box,#user-type-box,
   #share-box,#export-box{max-width:100% !important;width:100% !important;border-radius:16px 16px 0 0 !important;max-height:92vh !important}
   #admin-box{max-width:100% !important;border-radius:16px 16px 0 0 !important}
   .cal-modal{align-items:flex-end !important;padding:0 !important}
@@ -1872,10 +1852,6 @@ body.dark-mode .lang-es details>div hr{border-top-color:#243352 !important}
       <div class="panel-section">
         <h3 class="filter-heading" data-i18n="more_resources">Resources</h3>
         <div class="info-grid">
-          <button class="ig-btn" onclick="openEmbedModal()">
-            <span class="ig-icon ig-slate">&#60;/&#62;</span>
-            <span data-i18n="btn_embed">Embed</span>
-          </button>
           <button class="ig-btn" onclick="openAboutModal()">
             <span class="ig-icon ig-violet">&#8505;</span>
             <span data-i18n="btn_about">About</span>
@@ -3463,7 +3439,7 @@ const I18N = {
     fav_empty_title:"No saved churches yet",fav_empty_hint:"Tap the star icon on any church to save it",
     recent_empty:"No recently viewed churches",
     // More tab
-    more_resources:"Resources",btn_embed:"Embed",btn_about:"About",btn_feedback:"Feedback",btn_support:"Support",
+    more_resources:"Resources",btn_about:"About",btn_feedback:"Feedback",btn_support:"Support",
     // Footer
     footer_feedback:"Feedback",footer_support:"Support",footer_about:"About",
     // Accessibility
@@ -3552,7 +3528,7 @@ const I18N = {
     fav_empty_title:"No hay iglesias guardadas",fav_empty_hint:"Toca el ícono de estrella para guardar",
     recent_empty:"No hay iglesias vistas recientemente",
     // Pestaña Más
-    more_resources:"Recursos",btn_embed:"Insertar",btn_about:"Acerca de",btn_feedback:"Comentarios",btn_support:"Apoyar",
+    more_resources:"Recursos",btn_about:"Acerca de",btn_feedback:"Comentarios",btn_support:"Apoyar",
     // Pie de página
     footer_feedback:"Comentarios",footer_support:"Apoyar",footer_about:"Acerca de",
     // Accesibilidad
@@ -4650,72 +4626,6 @@ function openBishopDir(){
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-//  EMBED CODE GENERATOR
-// ═══════════════════════════════════════════════════════════════════════
-var embedType = "full";
-const LIVE_URL = "https://your-domain.com/aaofcj-church-finder.html"; // ← update after going live
-
-function openEmbedModal(){
-  document.getElementById("embed-modal").classList.add("open");
-  generateEmbedCode();
-}
-function selectEmbed(el, type){
-  embedType = type;
-  document.querySelectorAll(".embed-option").forEach(o=>o.classList.remove("selected"));
-  el.classList.add("selected");
-  el.querySelector("input").checked=true;
-  generateEmbedCode();
-}
-function generateEmbedCode(){
-  const district = document.getElementById("f-district")?.value||"";
-  let code = "";
-  if(embedType==="full"){
-    code = `<!-- AAOFCJ Church Finder - Full Directory -->
-<iframe
-  src="${LIVE_URL}"
-  width="100%"
-  height="700px"
-  style="border:none;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12)"
-  title="AAOFCJ Church Finder"
-  loading="lazy"
-></iframe>`;
-  } else if(embedType==="district"){
-    code = `<!-- AAOFCJ Church Finder - ${district||'District'} -->
-<iframe
-  src="${LIVE_URL}${district?'?district='+encodeURIComponent(district):''}"
-  width="100%"
-  height="600px"
-  style="border:none;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12)"
-  title="AAOFCJ Church Finder"
-  loading="lazy"
-></iframe>`;
-    } else {
-    code = [
-      '<!-- AAOFCJ Simple Church List (APM / Chaplaincy site) -->',
-      '<style>',
-      '.aaofcj-list{font-family:sans-serif;max-width:600px;margin:0 auto}',
-      '.aaofcj-item{padding:12px 0;border-bottom:1px solid #eee;display:flex;gap:12px;align-items:flex-start}',
-      '.aaofcj-item h4{margin:0 0 4px;font-size:14px;color:#1565C0;font-weight:600}',
-      '.aaofcj-item p{margin:0;font-size:12px;color:#666;line-height:1.5}',
-      '.aaofcj-item a{color:#1565C0;text-decoration:none}',
-      '.aaofcj-footer{font-size:11px;color:#999;text-align:center;margin-top:12px;padding-top:8px;border-top:1px solid #eee}',
-      '</style>',
-      '<div class="aaofcj-list">',
-      '  <!-- Paste your churches here or use the full embed option above -->',
-      '  <div class="aaofcj-footer">',
-      '    Powered by <a href="'+LIVE_URL+'" target="_blank">AAOFCJ Church Finder</a>',
-      '  </div>',
-      '</div>',
-    ].join("\n")
-  }
-  document.getElementById("embed-code-output").textContent=code;
-}
-function copyEmbedCode(){
-  const code=document.getElementById("embed-code-output").textContent;
-  navigator.clipboard.writeText(code).then(()=>showToast("Embed code copied!")).catch(()=>{});
-}
-
-// ═══════════════════════════════════════════════════════════════════════
 //  ADMIN MODE
 // ═══════════════════════════════════════════════════════════════════════
 // ⚠️  CHANGE THIS PASSWORD before going live
@@ -5551,44 +5461,6 @@ setTimeout(function(){ map.invalidateSize(true); }, 300);
       <p>Official AAOFCJ Bishop Supervisors — 2023–2027 term</p>
     </div>
     <div class="bd-body" id="bishop-dir-list"></div>
-  </div>
-</div>
-
-<!-- EMBED MODAL -->
-<div id="embed-modal" onclick="if(event.target===this)document.getElementById('embed-modal').classList.remove('open')">
-  <div id="embed-box">
-    <div class="embed-header">
-      <h2>&lt;/&gt; Embed This Directory</h2>
-      <p>Add a church finder widget to any website</p>
-    </div>
-    <div class="embed-body">
-      <p style="font-size:11px;color:#6B9BD2;margin-bottom:12px">Choose what to embed — the code will appear below ready to copy and paste into any website's HTML.</p>
-      <div class="embed-option selected" onclick="selectEmbed(this,'full')">
-        <input type="radio" name="embed-type" checked>
-        <div><div class="embed-option-label">Full Church Finder</div><div class="embed-option-sub">Complete map + filters + all features</div></div>
-      </div>
-      <div class="embed-option" onclick="selectEmbed(this,'district')">
-        <input type="radio" name="embed-type">
-        <div><div class="embed-option-label">District Only</div><div class="embed-option-sub">Pre-filtered to current district selection</div></div>
-      </div>
-      <div class="embed-option" onclick="selectEmbed(this,'list')">
-        <input type="radio" name="embed-type">
-        <div><div class="embed-option-label">Simple Church List</div><div class="embed-option-sub">Name, city, phone — no map (good for APM site)</div></div>
-      </div>
-      <div class="embed-code-wrap">
-        <div class="embed-code" id="embed-code-output"></div>
-        <button class="embed-copy-btn" onclick="copyEmbedCode()">Copy</button>
-      </div>
-      <div class="embed-info">
-        ℹ️ Paste this code into any page's HTML where you want the widget to appear.
-        The embed links to the live directory — no maintenance needed on your end.
-        Works on Wix, Squarespace, WordPress, and any site that allows HTML embeds.
-      </div>
-    </div>
-    <div class="embed-footer">
-      <button class="embed-btn secondary" onclick="document.getElementById('embed-modal').classList.remove('open')">Close</button>
-      <button class="embed-btn primary" onclick="copyEmbedCode()">Copy Code</button>
-    </div>
   </div>
 </div>
 
