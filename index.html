@@ -1437,7 +1437,7 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
   <!-- Tabs -->
   <nav id="sidebar-tabs" role="tablist" aria-label="Panel sections">
     <button class="stab active" data-tab="search"    role="tab" aria-selected="true"  aria-controls="panel-search"    onclick="switchTab('search')"   ><span class="stab-icon">&#128269;</span><span class="stab-label" data-i18n="tab_search">Search</span></button>
-    <button class="stab"        data-tab="advanced"  role="tab" aria-selected="false" aria-controls="panel-advanced"  onclick="switchTab('advanced')" ><span class="stab-icon">&#9881;</span><span class="stab-label">Advanced</span></button>
+    <button class="stab"        data-tab="advanced"  role="tab" aria-selected="false" aria-controls="panel-advanced"  onclick="switchTab('advanced')" ><span class="stab-icon">&#9881;</span><span class="stab-label" data-i18n="tab_advanced">Advanced Search</span></button>
     <button class="stab"        data-tab="favorites" role="tab" aria-selected="false" aria-controls="panel-favorites" onclick="switchTab('favorites')"><span class="stab-icon">&#9733;</span><span class="stab-label" data-i18n="tab_favs">Saved</span></button>
     <button class="stab"        data-tab="recent"    role="tab" aria-selected="false" aria-controls="panel-recent"    onclick="switchTab('recent')"   ><span class="stab-icon">&#128336;</span><span class="stab-label" data-i18n="tab_recent">Recent</span></button>
     <button class="stab"        data-tab="more"      role="tab" aria-selected="false" aria-controls="panel-more"      onclick="switchTab('more')"     ><span class="stab-icon">&#8942;</span><span class="stab-label" data-i18n="tab_more">More</span></button>
@@ -1626,6 +1626,7 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
   <div id="panel-more" class="tab-panel" role="tabpanel">
     <div style="overflow-y:auto;flex:1">
 
+      <div class="lang-en">
       <!-- ── Getting Started Guide ── -->
       <div class="panel-section" style="padding:14px 14px 6px">
         <h3 class="filter-heading" style="margin-bottom:10px">&#128075; Getting Started</h3>
@@ -1654,10 +1655,11 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
 
             <p style="margin:0 0 8px;font-weight:700;color:var(--blue);">&#127930; Typical Sunday Service Flow</p>
             <ol style="margin:0 0 12px;padding-left:20px;">
-              <li style="margin:5px 0;"><strong>Praise &amp; Worship</strong> (20–40 min) — Live music, singing; expect an upbeat, expressive atmosphere</li>
-              <li style="margin:5px 0;"><strong>Congregational Prayer</strong> — Everyone prays aloud together; this can sound loud — that's normal!</li>
-              <li style="margin:5px 0;"><strong>Offering &amp; Announcements</strong> — Visitors are not expected to give</li>
+              <li style="margin:5px 0;"><strong>Praise &amp; Worship</strong> (20–40 min) — Live praise expression with music; can be upbeat and celebratory, or reserved and spiritually intimate</li>
+              <li style="margin:5px 0;"><strong>Congregational Prayer</strong> — Led by a minister or MC; the goal is personal prayer directed to Jesus Christ. Congregants may pray simultaneously but quietly, creating a unified and reverent atmosphere</li>
+              <li style="margin:5px 0;"><strong>Tithes &amp; Offerings</strong> — Members practice tithes and offerings; visitors are never expected to give</li>
               <li style="margin:5px 0;"><strong>Sermon</strong> (30–45 min) — A Bible-based message from the pastor</li>
+              <li style="margin:5px 0;"><strong>Announcements</strong> — Usually made after the sermon</li>
               <li style="margin:5px 0;"><strong>Altar Call</strong> — Open invitation to come forward for prayer; no pressure, fully optional</li>
               <li style="margin:5px 0;"><strong>Fellowship</strong> — Casual time to meet the congregation afterward</li>
             </ol>
@@ -1739,6 +1741,113 @@ body.dark-mode #btn-dark-mode::after{content:"☀";font-size:16px;line-height:1}
       </div>
 
       <hr style="border:none;border-top:1px solid var(--panel-border);margin:0">
+      </div><!-- /lang-en -->
+
+      <!-- ── Getting Started Guide (ES) ── -->
+      <div class="lang-es" style="display:none">
+      <div class="panel-section" style="padding:14px 14px 6px">
+        <h3 class="filter-heading" style="margin-bottom:10px">&#128075; Comenzando</h3>
+
+        <!-- Welcome card -->
+        <div style="background:linear-gradient(135deg,#10B981,#059669);border-radius:10px;padding:14px 16px;margin-bottom:10px;color:#fff;">
+          <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Bienvenido al Directorio de Iglesias AAOFCJ</div>
+          <div style="font-size:11px;opacity:0.9;line-height:1.5;margin-bottom:10px;">Encuentra una iglesia cerca de ti, aprende sobre la Asamblea Apostólica y descubre qué esperar en tu primera visita.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button onclick="openUserTypeModal()" style="background:#fff;color:#059669;border:none;border-radius:6px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">&#128257; Ver Guía de Bienvenida</button>
+            <button onclick="openGlossaryModal()" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">&#128214; Términos de Iglesia</button>
+          </div>
+        </div>
+
+        <!-- What to Expect accordion (ES) -->
+        <details style="margin-bottom:6px;border:1px solid var(--panel-border);border-radius:8px;overflow:hidden">
+          <summary style="padding:11px 14px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:#FAFBFF;">
+            <span>&#9432; Qué Esperar en una Iglesia AAOFCJ</span>
+            <span style="font-size:16px;color:var(--text-muted)">&#8250;</span>
+          </summary>
+          <div style="padding:14px;background:#fff;font-size:13px;color:var(--text-primary);line-height:1.6;">
+
+            <p style="margin:0 0 10px;"><strong>¿Qué es la AAOFCJ?</strong> La <em>Asamblea Apostólica de la Fe en Cristo Jesús</em> es una de las denominaciones pentecostales apostólicas latinas más antiguas de EE. UU., fundada en 1916, con más de 1,000 congregaciones en EE. UU. y otros países.</p>
+
+            <hr style="border:none;border-top:1px solid #EEF2F9;margin:12px 0">
+
+            <p style="margin:0 0 8px;font-weight:700;color:var(--blue);">&#127930; Flujo Típico del Servicio Dominical</p>
+            <ol style="margin:0 0 12px;padding-left:20px;">
+              <li style="margin:5px 0;"><strong>Alabanza y Adoración</strong> (20–40 min) — Expresión de alabanza en vivo con música; puede ser animada y celebratoria, o reservada y espiritualmente íntima</li>
+              <li style="margin:5px 0;"><strong>Oración Congregacional</strong> — Guiada por un ministro o maestro de ceremonias; el objetivo es la oración personal dirigida a Jesucristo. Los congregantes pueden orar simultáneamente en voz tranquila, creando una atmósfera unida y reverente</li>
+              <li style="margin:5px 0;"><strong>Diezmos y Ofrendas</strong> — Los miembros practican el diezmo y las ofrendas. Los visitantes nunca tienen obligación de dar</li>
+              <li style="margin:5px 0;"><strong>Sermón</strong> (30–45 min) — Un mensaje basado en la Biblia del pastor</li>
+              <li style="margin:5px 0;"><strong>Anuncios</strong> — Generalmente se hacen después del sermón</li>
+              <li style="margin:5px 0;"><strong>Llamado al Altar</strong> — Invitación abierta a pasar al frente para orar; sin presión, completamente opcional</li>
+              <li style="margin:5px 0;"><strong>Confraternidad</strong> — Tiempo para conocer a la congregación después del servicio</li>
+            </ol>
+
+            <hr style="border:none;border-top:1px solid #EEF2F9;margin:12px 0">
+
+            <p style="margin:0 0 8px;font-weight:700;color:var(--blue);">&#128101; Para Visitantes por Primera Vez</p>
+            <ul style="margin:0 0 12px;padding-left:20px;">
+              <li style="margin:5px 0;">&#128248; <strong>Vestimenta:</strong> Ven como estás — casual a semiformal está bien</li>
+              <li style="margin:5px 0;">&#127758; <strong>Idioma:</strong> Las iglesias pueden ser en español, inglés o bilingüe — revisa la tarjeta antes de visitar</li>
+              <li style="margin:5px 0;">&#128100; <strong>No necesitas cita</strong> — los visitantes siempre son bienvenidos</li>
+              <li style="margin:5px 0;">&#127774; <strong>Niños:</strong> La mayoría ofrece ministerio infantil o guardería durante el servicio</li>
+              <li style="margin:5px 0;">&#128240; <strong>Trae una Biblia</strong> si tienes — muchos servicios siguen pasajes bíblicos</li>
+              <li style="margin:5px 0;">&#9749; <strong>Confraternidad después del servicio</strong> — excelente oportunidad para presentarte</li>
+            </ul>
+
+            <hr style="border:none;border-top:1px solid #EEF2F9;margin:12px 0">
+
+            <p style="margin:0 0 8px;font-weight:700;color:var(--blue);">&#128218; Términos Clave Explicados</p>
+            <dl style="margin:0;font-size:12px;">
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Apostólico</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Basado en las enseñanzas de los apóstoles originales — enfatiza el bautismo en el nombre de Jesús y recibir el Espíritu Santo</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Pentecostal de la Unicidad</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Creencia cristiana de que Dios es uno. Jesús es visto como la expresión completa de Dios Padre, Hijo y Espíritu Santo</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Altar / Llamado al Altar</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">El área al frente donde las personas van a orar. El llamado al altar es una invitación al final del servicio — para salvación, oración o apoyo espiritual. Sin presión</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Espíritu Santo / Hablar en Lenguas</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Recibir el Espíritu Santo es central en la fe apostólica. Hablar en lenguas (un idioma espiritual no aprendido) se considera la señal inicial. Puede ser nuevo para ti — está completamente bien</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Bautismo</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Inmersión total en agua en el nombre de Jesucristo — un paso clave en la doctrina apostólica de salvación</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Distrito y Sector</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Agrupaciones geográficas de iglesias. Un Distrito cubre una región grande; un Sector es una sub-región más pequeña</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Obispo</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Líder principal que supervisa todas las iglesias en un Distrito</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Superintendente</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Lidera un Sector de iglesias dentro de un Distrito</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Pastor</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">El ministro principal de la congregación local — tu principal punto de contacto</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Anciano / Diácono</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Líderes que asisten al pastor. Los <em>Ancianos</em> son ministros ordenados; los <em>Diáconos</em> sirven en roles prácticos y administrativos</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Diezmos y Ofrendas</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Dar financiero por parte de los miembros. Diezmos = 10% del ingreso. Ofrendas = donaciones voluntarias. Los visitantes <strong>nunca</strong> están obligados a dar</dd>
+              <dt style="font-weight:700;color:var(--navy);margin-top:8px;">Bilingüe</dt>
+              <dd style="margin:2px 0 0 14px;color:var(--text-secondary);">Servicios en español e inglés — algunas iglesias alternan idiomas, otras traducen en tiempo real</dd>
+            </dl>
+
+          </div>
+        </details>
+
+        <!-- Tips card (ES) -->
+        <details style="margin-bottom:10px;border:1px solid var(--panel-border);border-radius:8px;overflow:hidden">
+          <summary style="padding:11px 14px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:#FAFBFF;">
+            <span>&#128161; Consejos para Tu Primera Visita</span>
+            <span style="font-size:16px;color:var(--text-muted)">&#8250;</span>
+          </summary>
+          <div style="padding:14px;background:#fff;font-size:13px;line-height:1.7;">
+            <ol style="margin:0;padding-left:20px;color:var(--text-primary);">
+              <li style="margin:6px 0;">&#128222; <strong>Llama con anticipación</strong> si tienes preguntas — la mayoría de los pastores lo agradecen</li>
+              <li style="margin:6px 0;">&#128205; <strong>Llega 10–15 min temprano</strong> — los encargados de bienvenida te recibirán en la puerta</li>
+              <li style="margin:6px 0;">&#127793; <strong>Siéntate donde quieras</strong> — no hay asientos asignados</li>
+              <li style="margin:6px 0;">&#128591; <strong>Siéntete libre de observar</strong> durante la adoración y oración — nadie espera que hagas algo con lo que no te sientas cómodo/a</li>
+              <li style="margin:6px 0;">&#9749; <strong>Quédate a la confraternidad</strong> después del servicio — la mejor forma de conocer a la comunidad</li>
+              <li style="margin:6px 0;">&#9733; <strong>Guarda tus iglesias favoritas</strong> usando el ícono de corazón en cualquier tarjeta de iglesia</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+      <hr style="border:none;border-top:1px solid var(--panel-border);margin:0">
+      </div><!-- /lang-es -->
+
 
       <!-- Resources grid -->
       <div class="panel-section">
@@ -3264,7 +3373,7 @@ function showStatus(html){
 const I18N = {
   en:{
     // Tabs
-    tab_search:"Search",tab_route:"Route",tab_favs:"Saved",
+    tab_search:"Search",tab_route:"Route",tab_advanced:"Advanced Search",tab_favs:"Saved",
     // Search & Filters
     search_placeholder:"Search churches, cities, or pastors...",
     zip_placeholder:"ZIP code",
@@ -3355,7 +3464,7 @@ const I18N = {
   },
   es:{
     // Tabs
-    tab_search:"Búsqueda",tab_route:"Ruta",tab_favs:"Guardados",
+    tab_search:"Búsqueda",tab_route:"Ruta",tab_advanced:"Búsqueda Avanzada",tab_favs:"Guardados",
     // Búsqueda y Filtros
     search_placeholder:"Buscar iglesias, ciudades o pastores...",
     zip_placeholder:"Código postal",
@@ -3488,6 +3597,9 @@ function setLang(lang){
   // Update map control button text
   const satBtn=document.getElementById("btn-satellite");
   if(satBtn&&!satBtn.classList.contains("sat-active")){const sp=satBtn.querySelector("span[data-i18n]");if(sp)sp.textContent=t("btn_satellite");}
+  // Toggle language-specific rich content blocks
+  document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'es' ? 'none' : '');
+  document.querySelectorAll('.lang-es').forEach(el => el.style.display = lang === 'es' ? '' : 'none');
   applyFilters();
 }
 
