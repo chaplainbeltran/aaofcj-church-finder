@@ -2022,18 +2022,7 @@ const selectedMarkerIcon = L.divIcon({
   iconSize:[16,16],iconAnchor:[8,8],className:""
 });
 
-// Build markers
-CHURCHES.forEach((c,idx)=>{
-  const meta = DISTRICT_META[c.district]||{};
-  const color = meta.color||"#c9a84c";
-  const icon = makeIcon(color);
-  const m = L.marker([c.lat,c.lng],{icon:icon});
-  m._defaultIcon = icon;
-  m.bindPopup(()=>buildPopup(c,idx),{maxWidth:330});
-  m.on("click",()=>highlightItem(idx));
-  markers.push(m);
-  clusterGroup.addLayer(m);
-});
+// Markers are built after churches.json loads (see fetch below)
 
 // ═══════════════════════════════════════════════════════════════════════
 //  POPUP BUILDER
@@ -2132,7 +2121,7 @@ function rebuildDropdowns(source){
   populateDropdown(document.getElementById("f-sector"),sectors,"All Sectors");
 }
 
-rebuildDropdowns(CHURCHES);
+// rebuildDropdowns called after churches.json loads (see fetch below)
 
 // ═══════════════════════════════════════════════════════════════════════
 //  FILTER & RENDER
@@ -4456,6 +4445,19 @@ fetch('churches.json')
   .then(function(r){ return r.json(); })
   .then(function(data){
     CHURCHES = data;
+    // Build markers now that data is available
+    CHURCHES.forEach(function(c, idx){
+      var meta = DISTRICT_META[c.district]||{};
+      var color = meta.color||"#c9a84c";
+      var icon = makeIcon(color);
+      var m = L.marker([c.lat,c.lng],{icon:icon});
+      m._defaultIcon = icon;
+      m.bindPopup(function(){ return buildPopup(c,idx); },{maxWidth:330});
+      m.on("click",function(){ highlightItem(idx); });
+      markers.push(m);
+      clusterGroup.addLayer(m);
+    });
+    rebuildDropdowns(CHURCHES);
     applyFilters();
     updateFavBadge();
     restoreFiltersFromURL();
