@@ -4441,7 +4441,7 @@ function pickRouteSug(inputId, boxId, el){
   var box=document.getElementById(boxId); if(box){box.className="search-sug-box";box.innerHTML="";}
 }
 
-fetch('churches.json')
+fetch('https://church-data.chaplainbeltran.workers.dev')
   .then(function(r){ return r.json(); })
   .then(function(data){
     CHURCHES = data;
