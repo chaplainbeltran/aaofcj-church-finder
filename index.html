@@ -3985,6 +3985,14 @@ function renderCSVPreview(parsed){
 
 function applyCSVImport(){
   if(!csvParsedRows) return;
+  if(CHURCHES.length > 0 && csvParsedRows.rows.length < CHURCHES.length * 0.5){
+    const ok = confirm(
+      `This CSV has ${csvParsedRows.rows.length} churches, but you currently have ${CHURCHES.length}. ` +
+      `Importing will REPLACE all of them -- if this CSV is a filtered export (e.g. "Missing Pastor" only), ` +
+      `the rest of your directory will be lost once you push. Continue anyway?`
+    );
+    if(!ok) return;
+  }
   try {
     CHURCHES.length = 0;
     csvParsedRows.rows.forEach(r => CHURCHES.push(r));
@@ -4183,16 +4191,19 @@ function renderAdminTable(){
 }
 
 function downloadAdminCSV(){
-  const cols = ["#","name","address","city","state","zip","district","sector","pastor","phone","schedule","website","bishop","language"];
+  // Uses the full CSV_COLUMNS schema (not just the on-screen table columns) so
+  // this export can be edited and fed straight back into CSV Import without a
+  // column mismatch. NOTE: if a district/sector/issue filter is active, this
+  // only exports the filtered subset -- re-importing a filtered export will
+  // REPLACE all churches with just that subset. Reset filters to "All" first
+  // if you intend to re-import the result.
+  const cols = CSV_COLUMNS;
   const header = cols.join(",");
   const escCSV = v => {
     const s = String(v||"");
     return s.includes(",") || s.includes('"') || s.includes("\n") ? `"${s.replace(/"/g,'""')}"` : s;
   };
-  const rows = adminFilteredData.map(({c,i}) => [
-    i, c.name, c.address, c.city, c.state, c.zip, c.district, c.sector,
-    c.pastor, c.phone, c.schedule, c.website, c.bishop, c.language
-  ].map(escCSV).join(","));
+  const rows = adminFilteredData.map(({c}) => cols.map(col => escCSV(c[col])).join(","));
 
   const district = document.getElementById("admin-filter-district").value;
   const sector   = document.getElementById("admin-filter-sector").value;
