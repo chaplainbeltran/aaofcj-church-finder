@@ -738,6 +738,7 @@ select.si option{background:#fff;color:var(--text-primary)}
 .csv-status{font-size:11px;padding:7px 10px;border-radius:var(--radius-sm);margin-top:8px;display:none}
 .csv-status.success{display:block;background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3)}
 .csv-status.error{display:block;background:rgba(239,68,68,0.15);color:#EF5350;border:1px solid rgba(239,68,68,0.3)}
+.csv-status.info{display:block;background:rgba(21,101,192,0.12);color:#1565C0;border:1px solid rgba(21,101,192,0.3)}
 
 /* Glossary */
 .glossary-header{padding:24px;border-bottom:1px solid var(--navy4)}
@@ -3855,19 +3856,16 @@ function openBishopDir(){
 // ═══════════════════════════════════════════════════════════════════════
 //  ADMIN MODE
 // ═══════════════════════════════════════════════════════════════════════
-// ⚠️  CHANGE THIS PASSWORD before going live
-// Admin password hash (SHA-256 of "aaofcjchurchfinder2025")
-const ADMIN_PASSWORD_HASH = "6222c70ca911b6952fba07dd98f6d64d3aa07d0ab6dc624e0163290f595623cc";
-
-// SHA-256 hash function
-async function sha256(str) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
+// Admin writes are authorized server-side by the church-finder-admin-update
+// Worker (holds the real secret + GitHub token). This page never contains
+// the password -- it just forwards whatever's typed to the Worker and goes
+// by whether the Worker accepts it.
+const ADMIN_WORKER_URL = "https://church-finder-admin-update.chaplainbeltran.workers.dev";
+let adminSecretValue = sessionStorage.getItem("aaofcj_admin_secret") || null;
 
 function openAdminLogin(){
-  // Check if already unlocked this session
-  if(sessionStorage.getItem("aaofcj_admin_unlocked") === "1"){
+  // Check if already unlocked this session (and we still have the secret in memory)
+  if(sessionStorage.getItem("aaofcj_admin_unlocked") === "1" && adminSecretValue){
     openAdminPanel();
     return;
   }
@@ -3882,15 +3880,31 @@ function closeAdmin(){
 }
 async function checkAdminPassword(){
   const pw = document.getElementById("admin-password").value;
-  const hash = await sha256(pw);
-  if(hash === ADMIN_PASSWORD_HASH){
-    sessionStorage.setItem("aaofcj_admin_unlocked", "1");
-    closeAdmin();
-    openAdminPanel();
-  } else {
+  const enterBtn = document.querySelector("#admin-box .admin-btn.primary");
+  if(enterBtn){ enterBtn.disabled = true; enterBtn.textContent = "Checking..."; }
+  try {
+    const res = await fetch(ADMIN_WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Admin-Secret": pw },
+      body: JSON.stringify({ ping: true }),
+    });
+    if(res.ok){
+      adminSecretValue = pw;
+      sessionStorage.setItem("aaofcj_admin_unlocked", "1");
+      sessionStorage.setItem("aaofcj_admin_secret", pw);
+      closeAdmin();
+      openAdminPanel();
+    } else {
+      document.getElementById("admin-error").textContent = "Incorrect password. Try again.";
+      document.getElementById("admin-error").style.display="block";
+      document.getElementById("admin-password").value="";
+      document.getElementById("admin-password").focus();
+    }
+  } catch(err) {
+    document.getElementById("admin-error").textContent = "Could not reach the server -- check your connection and try again.";
     document.getElementById("admin-error").style.display="block";
-    document.getElementById("admin-password").value="";
-    document.getElementById("admin-password").focus();
+  } finally {
+    if(enterBtn){ enterBtn.disabled = false; enterBtn.textContent = "Enter"; }
   }
 }
 // ── CSV IMPORT ────────────────────────────────────────────────────────────
@@ -3992,7 +4006,7 @@ function applyCSVImport(){
     applyFilters();
     document.getElementById("csv-apply-btn").disabled = true;
     document.getElementById("csv-save-row").style.display = "flex";
-    showCSVStatus(`✓ ${CHURCHES.length} churches loaded successfully. Use "Save Updated HTML File" to make the change permanent.`, "success");
+    showCSVStatus(`✓ ${CHURCHES.length} churches loaded successfully. Click "Push to Live Site" below to make it permanent.`, "success");
     // Refresh admin stats
     openAdminPanel();
   } catch(err) {
@@ -4000,33 +4014,32 @@ function applyCSVImport(){
   }
 }
 
-function saveUpdatedHTML(){
-  const html = document.documentElement.outerHTML;
-  const churchesJSON = JSON.stringify(CHURCHES, null, 2);
-  // Locate const CHURCHES = [ ... ]; by tracking bracket depth so the
-  // match is exact regardless of content inside the array.
-  const startToken = "const CHURCHES = [";
-  const start = html.indexOf(startToken);
-  if(start === -1){ alert("Could not locate CHURCHES data in page source. Save failed."); return; }
-  let depth = 0, i = start + startToken.length - 1;
-  while(i < html.length){
-    if(html[i]==="[") depth++;
-    else if(html[i]==="]"){ depth--; if(depth===0) break; }
-    i++;
+async function saveUpdatedHTML(){
+  const btn = document.querySelector("#csv-save-row .csv-btn.save");
+  if(!adminSecretValue){
+    showCSVStatus("Not logged in -- close this panel and log in again.", "error");
+    return;
   }
-  // i now points at the closing ] of the array; skip the trailing ;
-  const end = html.indexOf(";", i) + 1;
-  const updated = html.slice(0, start) + `const CHURCHES = ${churchesJSON};` + html.slice(end);
-  const blob = new Blob([updated], {type:"text/html"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  const today = new Date();
-  const mm = String(today.getMonth()+1).padStart(2,"0");
-  const dd = String(today.getDate()).padStart(2,"0");
-  const yy = String(today.getFullYear()).slice(-2);
-  a.download = `ChurchFinder${mm}.${dd}.${yy}.html`;
-  a.click();
-  URL.revokeObjectURL(a.href);
+  if(btn){ btn.disabled = true; btn.textContent = "Pushing..."; }
+  showCSVStatus("Pushing " + CHURCHES.length + " churches to the live site...", "info");
+  try {
+    const res = await fetch(ADMIN_WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Admin-Secret": adminSecretValue },
+      body: JSON.stringify(CHURCHES),
+    });
+    const result = await res.json();
+    if(res.ok && result.success){
+      showCSVStatus(`✓ Live! ${result.count} churches pushed (commit ${result.commit}). The site will update within a minute or two.`, "success");
+      document.getElementById("csv-save-row").style.display = "none";
+    } else {
+      showCSVStatus("Push failed: " + (result.error || "unknown error"), "error");
+    }
+  } catch(err) {
+    showCSVStatus("Push failed: could not reach the server. Check your connection.", "error");
+  } finally {
+    if(btn){ btn.disabled = false; btn.textContent = "🚀 Push to Live Site"; }
+  }
 }
 
 function downloadCSVTemplate(){
@@ -4764,7 +4777,7 @@ fetch('https://church-data.chaplainbeltran.workers.dev')
       <button class="csv-btn apply" id="csv-apply-btn" onclick="applyCSVImport()" disabled>✓ Apply Import</button>
     </div>
     <div class="csv-action-row" id="csv-save-row" style="display:none">
-      <button class="csv-btn save" onclick="saveUpdatedHTML()">💾 Save Updated HTML File</button>
+      <button class="csv-btn save" onclick="saveUpdatedHTML()">🚀 Push to Live Site</button>
     </div>
   </div>
 
