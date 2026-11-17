@@ -3913,13 +3913,44 @@ const CSV_COLUMNS = ["name","address","city","county","state","zip","phone","web
 let csvParsedRows = null;
 
 function parseCSV(text){
-  const lines = text.trim().split(/\r?\n/);
-  if(lines.length < 2) return null;
-  const headers = parseCSVRow(lines[0]).map(h => h.trim().toLowerCase());
+  // Single-pass parse over the whole file (not line-by-line) so a quoted
+  // field containing a literal newline -- e.g. a multi-line "schedule"
+  // value like "Sunday 10am\nWednesday 7pm" -- is kept as one field instead
+  // of fracturing into multiple broken rows.
+  const rawRows = [];
+  let row = [], field = "", inQuote = false;
+  const pushField = () => { row.push(field); field = ""; };
+  const pushRow = () => { pushField(); rawRows.push(row); row = []; };
+  for(let i = 0; i < text.length; i++){
+    const ch = text[i];
+    if(inQuote){
+      if(ch === '"'){
+        if(text[i+1] === '"'){ field += '"'; i++; }
+        else inQuote = false;
+      } else { field += ch; }
+    } else if(ch === '"'){
+      inQuote = true;
+    } else if(ch === ','){
+      pushField();
+    } else if(ch === '\r'){
+      // skip -- \r\n line endings are handled when we hit \n
+    } else if(ch === '\n'){
+      pushRow();
+    } else {
+      field += ch;
+    }
+  }
+  if(field.length > 0 || row.length > 0) pushRow(); // file with no trailing newline
+  while(rawRows.length && rawRows[rawRows.length-1].length === 1 && rawRows[rawRows.length-1][0] === ""){
+    rawRows.pop(); // drop trailing blank line(s)
+  }
+
+  if(rawRows.length < 2) return null;
+  const headers = rawRows[0].map(h => h.trim().toLowerCase());
   const rows = [];
-  for(let i = 1; i < lines.length; i++){
-    if(!lines[i].trim()) continue;
-    const vals = parseCSVRow(lines[i]);
+  for(let i = 1; i < rawRows.length; i++){
+    const vals = rawRows[i];
+    if(vals.length === 1 && vals[0].trim() === "") continue; // stray blank line
     const obj = {};
     headers.forEach((h, idx) => { obj[h] = (vals[idx] || "").trim(); });
     obj.lat = parseFloat(obj.lat) || 0;
@@ -3927,22 +3958,6 @@ function parseCSV(text){
     rows.push(obj);
   }
   return { headers, rows };
-}
-
-function parseCSVRow(line){
-  const result = [];
-  let cur = "", inQuote = false;
-  for(let i = 0; i < line.length; i++){
-    const ch = line[i];
-    if(ch === '"'){
-      if(inQuote && line[i+1] === '"'){ cur += '"'; i++; }
-      else inQuote = !inQuote;
-    } else if(ch === ',' && !inQuote){
-      result.push(cur); cur = "";
-    } else { cur += ch; }
-  }
-  result.push(cur);
-  return result;
 }
 
 function handleCSVFile(file){
